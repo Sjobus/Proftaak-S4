@@ -8,6 +8,7 @@
       <root url="jar://$PROJECT_DIR$/lib/jersey-common.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jersey-container-servlet-core.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jersey-server.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/JCB source/ojdbc6.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
