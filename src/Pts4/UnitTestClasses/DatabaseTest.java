@@ -1,4 +1,4 @@
-package Pts4.UnitTestClass;
+package Pts4.UnitTestClasses;
 
 import Pts4.Database.DatabaseConnection;
 import org.junit.Assert;
