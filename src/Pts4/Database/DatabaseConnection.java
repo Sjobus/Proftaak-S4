@@ -30,8 +30,8 @@ public class DatabaseConnection {
     //connect database
     public static Connection connect() {
         try {
-                    Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:oracle://fhictora01.fhict.local/dbi331842?autoReconnect=true&useSSL=false&useUnicode=true", "dbi331842", "Qwerty123");
+                    //Class.forName("com.mysql.cj.jdbc.Driver");
+            return DriverManager.getConnection("jdbc:oracle:thin:@fhictora01.fhict.local:1521:fhictora", "dbi331842", "Qwerty123");
 
         } catch (Exception e) {
             e.printStackTrace();
