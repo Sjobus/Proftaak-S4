@@ -1,4 +1,4 @@
-package Test.Enums;
+package Pts4.Enums;
 
 /**
  * Created by Gebruiker on 20-3-2017.

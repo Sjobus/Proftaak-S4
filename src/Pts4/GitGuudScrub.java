@@ -1,4 +1,4 @@
-package Test;
+package Pts4;
 
 /**
  * Created by Sibe on 13-3-2017.

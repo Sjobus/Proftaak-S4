@@ -1,6 +1,4 @@
-package Test.Classes;
-
-import sun.security.krb5.internal.crypto.Des;
+package Pts4.Classes;
 
 /**
  * Created by Gebruiker on 20-3-2017.
