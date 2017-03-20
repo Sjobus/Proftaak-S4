@@ -13,7 +13,7 @@ public class DatabaseConnection {
     String user = "root";
     String pass = "root";
 
-    private Connection connection;
+    private static Connection connection;
     private Properties properties;
 
     //Create properties
@@ -41,7 +41,7 @@ public class DatabaseConnection {
         return null;
     }
 
-    public void disconnect() {
+    public static void disconnect() {
         if (connection != null) {
             try {
                 connection.close();

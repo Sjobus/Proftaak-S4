@@ -57,9 +57,8 @@ public class Timestamp {
 
     public boolean Insert()
     {
-       if( dbTimestamp.InsertTimestamp(this))
+       if(dbTimestamp.InsertTimestamp(this))
        {
-
            return true;
        }
        else
@@ -67,6 +66,7 @@ public class Timestamp {
            return false;
        }
     }
+
 
 
 

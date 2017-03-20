@@ -1,5 +1,9 @@
 package Pts4.Classes;
 
+import Pts4.Database.dbProject;
+
+import java.util.ArrayList;
+
 /**
  * Created by Gebruiker on 20-3-2017.
  */
@@ -18,6 +22,12 @@ public class Project {
     {
         this.ID = ID;
         this.Description = Description;
+    }
+
+    public ArrayList<Project> GetProject()
+    {
+        ArrayList<Project> list = dbProject.GetAllProjects();
+        return list;
     }
 
 
