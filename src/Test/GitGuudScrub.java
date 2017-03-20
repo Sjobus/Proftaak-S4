@@ -7,6 +7,6 @@ package Test;
 public class GitGuudScrub
 {
     public static String getMessage(){
-        return "Hoi allemaal hoe gaat het met jullie?";
+        return "Git gud!";
     }
 }
