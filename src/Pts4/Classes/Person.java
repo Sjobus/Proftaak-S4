@@ -1,6 +1,7 @@
 package Pts4.Classes;
 
 import Pts4.Enums.Function;
+import Test.Database.DatabaseConnection;
 
 /**
  * Created by Gebruiker on 20-3-2017.
@@ -26,6 +27,23 @@ public class Person {
         this.Name = name;
         this.function = function;
     }
+
+    public Person(String name)
+    {
+        this.Name = name;
+    }
+
+    public void Getfields(String Name)
+    {
+//        DatabaseConnection db;
+//        Person P = db.getPerson();
+//
+//        this.ID = P.GetID() ;
+//        this.function = P.GetFunction();
+    }
+
+
+
 
 
 
