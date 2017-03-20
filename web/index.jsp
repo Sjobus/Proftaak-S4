@@ -1,4 +1,4 @@
-<%@ page import="Test.GitGuudScrub" %><%--
+<%@ page import="" %><%--
   Created by IntelliJ IDEA.
   User: Sibe
   Date: 13-3-2017
@@ -11,6 +11,6 @@
     <title>AXI</title>
   </head>
   <body>
-  <h1 class="message"><%=GitGuudScrub.getMessage()%></h1>
+
   </body>
 </html>
