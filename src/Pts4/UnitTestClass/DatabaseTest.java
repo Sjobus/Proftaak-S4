@@ -1,6 +1,6 @@
 package Pts4.UnitTestClass;
 
-import Test.Database.DatabaseConnection;
+import Pts4.Database.DatabaseConnection;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class DatabaseTest {
     public void DatabaseConnectionTest() throws Exception
     {
         DatabaseConnection db = new DatabaseConnection();
-        Assert.assertTrue(DatabaseConnection.connect().equals(null));
+        Assert.assertFalse(DatabaseConnection.connect().equals(null));
     }
 
 

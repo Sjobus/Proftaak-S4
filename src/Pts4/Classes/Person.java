@@ -1,7 +1,6 @@
 package Pts4.Classes;
 
 import Pts4.Enums.Function;
-import Test.Database.DatabaseConnection;
 
 /**
  * Created by Gebruiker on 20-3-2017.
