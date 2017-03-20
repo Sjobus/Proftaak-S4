@@ -1,5 +1,7 @@
 package Pts4.Classes;
 
+import Pts4.Database.dbTimestamp;
+
 import java.util.Date;
 
 /**
@@ -43,6 +45,27 @@ public class Timestamp {
         this.date = date;
         this.project = project;
         this.person = person;
+    }
+
+    public Timestamp(int Hour, Date date, Project project, Person person)
+    {
+        this.Hour = Hour;
+        this.date = date;
+        this.project = project;
+        this.person = person;
+    }
+
+    public boolean Insert()
+    {
+       if( dbTimestamp.InsertTimestamp(this))
+       {
+
+           return true;
+       }
+       else
+       {
+           return false;
+       }
     }
 
 
