@@ -5,6 +5,6 @@ package Pts4.Enums;
  */
 public enum Function
 {
-    Manager,
-    Programmer
+    Beheerder,
+    Werknemer
 }

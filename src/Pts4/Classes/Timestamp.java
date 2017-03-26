@@ -55,7 +55,8 @@ public class Timestamp {
         this.person = person;
     }
 
-    public boolean Insert()
+
+    public boolean InsertTimestamp()
     {
        if(dbTimestamp.InsertTimestamp(this))
        {
