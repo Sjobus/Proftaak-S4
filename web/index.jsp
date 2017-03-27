@@ -28,14 +28,13 @@
       <li role="presentation" class="disabled"><a href="index.jsp"> Uitloggen</a> </li>
     </ul>
   </div>
-  <div></div>
   <form action="HomeController" method="post">
       <div class="col-lg-6">
           <div class="input-group">
               <input type="text" name="tbUserName" class="form-control" placeholder="Name"/>
               <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">Login</button>
-      </span>
+                  <button type="submit" class="btn btn-default">Login</button>
+              </span>
           </div>
       </div>
 

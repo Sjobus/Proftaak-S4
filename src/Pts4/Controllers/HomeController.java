@@ -1,5 +1,4 @@
 package Pts4.Controllers;
-import Pts4.Classes.staticPerson;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,14 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 public class HomeController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userName = request.getParameter("tbUserName");
-        //staticPerson sp = new staticPerson();
         try
         {
-            //if(sp.GetPersonData(userName))
-        //{
-           // RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-           // view.forward(request, response);
-        //}
             if (userName.equals("Jan"))
             {
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
