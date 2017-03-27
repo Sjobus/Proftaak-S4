@@ -5,7 +5,12 @@ import Pts4.Classes.Timestamp;
 import Pts4.Classes.Person;
 
 import java.sql.*;
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+>>>>>>> origin/Sprint1
 
 import static Pts4.Database.DatabaseConnection.disconnect;
 
@@ -25,7 +30,7 @@ public class dbTimestamp {
 
             //Date converter
 
-            java.util.Date utilDate = t.GetDate();
+            java.util.Date utilDate = new java.util.Date(t.GetDate().getTime());
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
             cstmt.setDate(1, sqlDate);
