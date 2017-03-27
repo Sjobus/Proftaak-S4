@@ -1,8 +1,11 @@
 package Pts4.Database;
 
+import Pts4.Classes.Project;
 import Pts4.Classes.Timestamp;
+import Pts4.Classes.Person;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import static Pts4.Database.DatabaseConnection.disconnect;
 
@@ -41,5 +44,39 @@ public class dbTimestamp {
         } finally {
             disconnect();
         }
+    }
+
+    public static ArrayList<Timestamp> GetTimeStampFromPerson(Person person)
+    {
+        ArrayList<Timestamp> list = new ArrayList<>();
+
+        try {
+            String sql = "select * from tbhours t\n" +
+                    "join tbperson p on t.PersonID = p.ID\n" +
+                    "join tbproject pr on pr.ID = t.PROJECTID;";
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ID = resultSet.getInt("ID");
+                String projectID = resultSet.getString("ID_2");
+                int hours = resultSet.getInt("Hours");
+                Date date = resultSet.getDate("DateWorked");
+                String Description = resultSet.getString("Description");
+
+                Project project = new Project(projectID, Description);
+                Timestamp timestamp = new Timestamp(ID, hours, date, project);
+                list.add(timestamp);
+            }
+        }
+        catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            disconnect();
+        }
+
+        return list;
     }
 }

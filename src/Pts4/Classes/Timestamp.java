@@ -56,6 +56,14 @@ public class Timestamp {
         this.person = person;
     }
 
+    public Timestamp(int ID, int Hour, Date date, Project project)
+    {
+        this.ID = ID;
+        this.Hour = Hour;
+        this.date = date;
+        this.project = project;
+    }
+
 
     public boolean InsertTimestamp()
     {
