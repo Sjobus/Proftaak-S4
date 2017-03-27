@@ -49,13 +49,14 @@ public class dbTimestamp {
     public static ArrayList<Timestamp> GetTimeStampFromPerson(Person person)
     {
         ArrayList<Timestamp> list = new ArrayList<>();
+        String personID = String.valueOf(person.GetID());
 
         try {
             String sql = "select * from tbhours t\n" +
-                    "join tbperson p on t.PersonID = p.ID\n" +
+                    "join tbperson p on t.PersonID = p.?\n" +
                     "join tbproject pr on pr.ID = t.PROJECTID;";
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
-
+            preparedStatement.setString(1, personID);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
