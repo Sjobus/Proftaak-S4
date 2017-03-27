@@ -30,7 +30,16 @@ public class Project {
         return list;
     }
 
-
-
-
+    public static ArrayList<Project> GetAllProjects()
+    {
+        ArrayList<Project> ProjectList = dbProject.GetAllProjects();
+        if(ProjectList != null)
+        {
+            return ProjectList;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

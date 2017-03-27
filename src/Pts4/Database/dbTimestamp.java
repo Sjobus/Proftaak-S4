@@ -3,6 +3,8 @@ package Pts4.Database;
 import Pts4.Classes.Project;
 import Pts4.Classes.Timestamp;
 import Pts4.Classes.Person;
+import Pts4.Classes.staticPerson;
+import Pts4.Enums.Function;
 
 import java.sql.*;
 
@@ -51,7 +53,7 @@ public class dbTimestamp {
         }
     }
 
-    public static ArrayList<Timestamp> GetTimeStampFromPerson(Person person)
+    public static ArrayList<Timestamp> GetTimeStampForPerson(Person person)
     {
         ArrayList<Timestamp> list = new ArrayList<>();
         String personID = String.valueOf(person.GetID());
@@ -89,4 +91,37 @@ public class dbTimestamp {
 
         return list;
     }
+
+    public static ArrayList<Timestamp> GetTimeStampForManager(Project prProject)
+    {
+        ArrayList<Timestamp> List = new ArrayList();
+
+        String sql = "Select * From TBPerson Where Name = ?";
+        try {
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            //preparedStatement.setString(1, Name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                int Hours = resultSet.getInt("Hours");
+                int PersonID = resultSet.getInt("PersonID");
+
+//                Person person = new Person();
+//
+//                Timestamp ts = new Timestamp(Hours, Person);
+//                List.add(ts);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        } finally {
+            disconnect();
+        }
+
+        return  List;
+    }
+
+
 }

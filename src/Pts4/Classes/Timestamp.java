@@ -1,7 +1,9 @@
 package Pts4.Classes;
 
+import Pts4.Database.dbProject;
 import Pts4.Database.dbTimestamp;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -64,6 +66,12 @@ public class Timestamp {
         this.project = project;
     }
 
+    public Timestamp(int Hour, Person person)
+    {
+        this.Hour = Hour;
+        this.person = person;
+    }
+
 
     public boolean InsertTimestamp()
     {
@@ -75,6 +83,19 @@ public class Timestamp {
        {
            return false;
        }
+    }
+
+    public static ArrayList<Timestamp> GetAllTimestampsByProject(Project PrProject)
+    {
+        ArrayList<Timestamp> TimeStampList = dbTimestamp.GetTimeStampForManager(PrProject);
+        if(TimeStampList != null)
+        {
+            return TimeStampList;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 

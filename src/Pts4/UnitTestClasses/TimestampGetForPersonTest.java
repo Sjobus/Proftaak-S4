@@ -18,7 +18,7 @@ public class TimestampGetForPersonTest {
         dbTimestamp dbTimestamp = new dbTimestamp();
         Person person = new Person(12345,"Henk", Function.Werknemer);
 
-        ArrayList<Timestamp> arraylist = dbTimestamp.GetTimeStampFromPerson(person);
+        ArrayList<Timestamp> arraylist = dbTimestamp.GetTimeStampForPerson(person);
         System.out.println("Getting stuff");
         System.out.println("Size of list: " + arraylist.size());
 

@@ -26,19 +26,29 @@
     <loaded-nodes>
       <connection connection-id="db442241-cddb-4476-8024-6cebae74b008">
         <schema name="APEX_030200" object-types="procedure, synonym" />
-        <schema name="DBI331842" object-types="column, function, materialized view, package, package function, sequence, synonym, table, type, type function, view" />
+        <schema name="DBI331842" object-types="column, function, materialized view, package, package function, package type, sequence, synonym, table, type, type function, view" />
         <schema name="PUBLIC" object-types="function, materialized view, package, sequence, synonym, table, type, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="db442241-cddb-4476-8024-6cebae74b008">
-      <console name="Proftaak-PTS41" type="STANDARD"><![CDATA[Select ID
---INTO Contrl
-from TBHOURS
-Where DateWorked = '16-3-2017'
-AND PersonID = 12345
-AND PROJECTID = 'PTS41']]></console>
+      <console name="Proftaak-PTS41" type="STANDARD"><![CDATA[Select H.PROJECTID, sum(H.HOURS) AS Hours
+From TBHOURS H
+Join TBPERSON P on H.PERSONID = P."ID"
+Join TBPROJECT PJ on H.PROJECTID = PJ."ID"
+Group BY H.PROJECTID
+
+Select P."NAME", sum(H.HOURS) AS Hours
+From TBHOURS H
+Join TBPERSON P on H.PERSONID = P."ID"
+Join TBPROJECT PJ on H.PROJECTID = PJ."ID"
+Where PJ."ID" = 'PTS41'
+Group BY P."NAME"
+Order BY PJ."ID"
+
+select *
+From TBPROJECT PJ]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
