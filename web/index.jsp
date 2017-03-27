@@ -1,4 +1,5 @@
-<%@ page import="Pts4.Database.DatabaseConnection" %><%--
+<%@ page import="Pts4.Database.DatabaseConnection,Pts4.Classes.staticPerson,Pts4.Controllers.HomeController"%>
+<%--
   Created by IntelliJ IDEA.
   User: Sibe
   Date: 13-3-2017
@@ -28,19 +29,18 @@
       <li role="presentation" class="disabled"><a href="index.jsp"> Uitloggen</a> </li>
     </ul>
   </div>
-  <div></div>
-  <form action="urenReg.jsp" method="get">
+
+  <form action="HomeController.do" method="post">
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Name">
+      <input type="text" name="tbUserName" class="form-control" placeholder="Name"/>
       <span class="input-group-btn">
-        <a href="urenReg.jsp">
-          <button class="btn btn-default" type="button">Go!</button>
-        </a>
+        <button type="submit" class="btn btn-default">Login</button>
       </span>
     </div>
   </div>
-  </div>
+
   </form>
+
   </body>
 </html>

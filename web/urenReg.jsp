@@ -19,6 +19,7 @@
     <title>AXI</title>
 </head>
 <body>
+<%= request.getParameter("tbUserName")%>
     <div>
         <ul class="nav nav-tabs nav-justified">
             <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
