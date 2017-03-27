@@ -96,22 +96,22 @@ public class dbTimestamp {
     {
         ArrayList<Timestamp> List = new ArrayList();
 
-        String sql = "Select * From TBPerson Where Name = ?";
+        String sql = "Select P.NAME, P.ID AS ID, sum(H.HOURS) AS Hours From TBHOURS H Join TBPERSON P on H.PERSONID = P.ID Join TBPROJECT PJ on H.PROJECTID = PJ.ID Where PJ.ID = ? Group BY P.NAME, P.ID Order BY PJ.ID";
         try {
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
-            //preparedStatement.setString(1, Name);
+            preparedStatement.setString(1, prProject.GetID());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
 
                 int Hours = resultSet.getInt("Hours");
-                int PersonID = resultSet.getInt("PersonID");
+                int PersonID = resultSet.getInt("ID");
 
-//                Person person = new Person();
-//
-//                Timestamp ts = new Timestamp(Hours, Person);
-//                List.add(ts);
+                Person person = dbPerson.GetpersonDataByID(PersonID);
+
+                Timestamp ts = new Timestamp(Hours, person);
+                List.add(ts);
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

@@ -31,4 +31,11 @@ public class TimestampTest {
 
         Assert.assertTrue(ts.InsertTimestamp());
     }
+
+    @Test
+    public void TimestampFormanager() throws Exception
+    {
+        Project pr = new Project("PTS41", "test");
+        Assert.assertFalse(Timestamp.GetAllTimestampsByProject(pr).equals(null));
+    }
 }

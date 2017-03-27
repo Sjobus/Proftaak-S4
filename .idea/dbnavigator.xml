@@ -25,8 +25,7 @@
     <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="db442241-cddb-4476-8024-6cebae74b008">
-        <schema name="APEX_030200" object-types="procedure, synonym" />
-        <schema name="DBI331842" object-types="column, function, materialized view, package, package function, package type, sequence, synonym, table, type, type function, view" />
+        <schema name="DBI331842" object-types="column, function, materialized view, package, package function, sequence, synonym, table, type, type function, view" />
         <schema name="PUBLIC" object-types="function, materialized view, package, sequence, synonym, table, type, view" />
       </connection>
     </loaded-nodes>
@@ -48,7 +47,15 @@ Group BY P."NAME"
 Order BY PJ."ID"
 
 select *
-From TBPROJECT PJ]]></console>
+From TBPROJECT PJ
+
+Select P.NAME, P.ID AS ID, sum(H.HOURS) AS Hours
+From TBHOURS H
+Join TBPERSON P on H.PERSONID = P.ID
+Join TBPROJECT PJ on H.PROJECTID = PJ.ID
+Where PJ.ID = 'PTS41'
+Group BY P.NAME, P.ID
+Order BY PJ.ID]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
