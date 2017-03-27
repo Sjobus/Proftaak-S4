@@ -43,4 +43,17 @@ public class dbPerson {
         return null;
 
     }
+
+    public static Boolean SetPersonData(Person person)
+    {
+        try{
+
+            return true;
+        } catch (Exception ex){
+            System.out.println(ex.getMessage());
+            return false;
+        } finally {
+            disconnect();
+        }
+    }
 }

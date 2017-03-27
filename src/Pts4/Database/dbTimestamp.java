@@ -31,7 +31,7 @@ public class dbTimestamp {
 
             //cstmt.setDate(1, now);
             cstmt.execute();
-           // Double str = cstmt.getDouble(2);
+            //Double str = cstmt.getDouble(2);
             cstmt.close();
             return true;
         } catch (SQLException ex) {
