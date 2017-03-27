@@ -21,8 +21,9 @@ public class dbTimestamp {
             //cstmt.registerOutParameter(2, Types.DECIMAL);
 
             //Date converter
-            java.util.Date date = t.GetDate();
-            java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+
+            java.util.Date utilDate = t.GetDate();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
             cstmt.setDate(1, sqlDate);
             cstmt.setInt(2, t.GetHour());
