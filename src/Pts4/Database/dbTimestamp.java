@@ -5,12 +5,12 @@ import Pts4.Classes.Timestamp;
 import Pts4.Classes.Person;
 
 import java.sql.*;
-<<<<<<< HEAD
+
 import java.util.ArrayList;
-=======
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
->>>>>>> origin/Sprint1
+
 
 import static Pts4.Database.DatabaseConnection.disconnect;
 
