@@ -3,6 +3,8 @@ package Pts4.Database;
 import Pts4.Classes.Timestamp;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import static Pts4.Database.DatabaseConnection.disconnect;
 
@@ -22,7 +24,7 @@ public class dbTimestamp {
 
             //Date converter
 
-            java.util.Date utilDate = t.GetDate();
+            java.util.Date utilDate = new java.util.Date(t.GetDate().getTime());
             java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 
             cstmt.setDate(1, sqlDate);

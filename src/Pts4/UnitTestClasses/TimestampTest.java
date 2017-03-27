@@ -22,8 +22,15 @@ public class TimestampTest {
     public void TimestampInsertTest() throws Exception
     {
         DatabaseConnection db = new DatabaseConnection();
-        
-        Date date = new Date(2017, 2, 16);
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2017);
+        cal.set(Calendar.MONTH, Calendar.MARCH);
+        cal.set(Calendar.DAY_OF_MONTH, 16);
+        Date date = cal.getTime();
+
+        //Date date = new Date(2017 - 1900, 2, 16);
+
         Project pj = new Project("PTS41", "test");
         Person per = new Person(12345, "Jan", Function.Werknemer);
 

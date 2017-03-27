@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c14d6ec-299e-4aef-8856-a949a6898f79" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Proftaak-S4/Pts4/UnitTestClasses/UnitTestClass1.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Proftaak-S4/Pts4/Database/dbPerson.class" afterPath="$PROJECT_DIR$/out/production/Proftaak-S4/Pts4/Database/dbPerson.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Proftaak-S4/Pts4/UnitTestClasses/TimestampTest.class" afterPath="$PROJECT_DIR$/out/production/Proftaak-S4/Pts4/UnitTestClasses/TimestampTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sonarIssues.xml" afterPath="$PROJECT_DIR$/.idea/sonarIssues.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pts4/Classes/Timestamp.java" afterPath="$PROJECT_DIR$/src/Pts4/Classes/Timestamp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pts4/Database/dbTimestamp.java" afterPath="$PROJECT_DIR$/src/Pts4/Database/dbTimestamp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Pts4/UnitTestClasses/TimestampTest.java" afterPath="$PROJECT_DIR$/src/Pts4/UnitTestClasses/TimestampTest.java" />
     </list>
@@ -30,21 +27,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="DatabaseConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pts4/Database/DatabaseConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="method#getProperties#0;class#DatabaseConnection#0" expanded="false" />
-                <element signature="method#connect#0;class#DatabaseConnection#0" expanded="false" />
-                <element signature="method#disconnect#0;class#DatabaseConnection#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PersonTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pts4/UnitTestClasses/PersonTest.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,8 +65,8 @@
       <file leaf-file-name="TimestampTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Pts4/UnitTestClasses/TimestampTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state relative-caret-position="215">
+              <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,10 +74,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Proftaak-PTS41" pinned="false" current-in-tab="false">
-        <entry file="db://db442241-cddb-4476-8024-6cebae74b008/console#Proftaak-PTS41">
-          <provider selected="true" editor-type-id="0.CONSOLE">
-            <state line="0" column="0" selection-start="0" selection-end="112" vertical-scroll-proportion="-0.0" current-schema="DBI331842" />
+      <file leaf-file-name="Assert.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/Assert.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="e#680#681#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="staticPerson.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Pts4/Classes/staticPerson.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="797">
+              <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrameworkMethod.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -106,18 +113,6 @@
               <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dbPerson.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Pts4/Database/dbPerson.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-              <folding>
-                <marker date="1490532852151" expanded="true" signature="419:456" ph="Select * Fro... TBPerson" />
               </folding>
             </state>
           </provider>
@@ -136,8 +131,8 @@
       <file leaf-file-name="dbTimestamp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Pts4/Database/dbTimestamp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="149">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1057,44 +1052,44 @@
       <workItem from="1490010425025" duration="1979000" />
       <workItem from="1490013214258" duration="91000" />
       <workItem from="1490520023289" duration="7735000" />
-      <workItem from="1490596033973" duration="5706000" />
+      <workItem from="1490596033973" duration="10788000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 09h 54m 10s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 28m 55s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 09h 54m 11s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 29m 36s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 02m 15s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 29m 46s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 02m 33s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 30m 18s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 02m 42s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 31m 02s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 08m 45s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 31m 11s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 09m 09s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 32m 10s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 10m 15s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 37m 38s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 13m 27s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 37m 45s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 10h 13m 28s.xml">
+    <history-entry file="TimestampTest_TimestampInsertTest - 2017.03.27 at 11h 37m 54s.xml">
       <configuration name="TimestampTest.TimestampInsertTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28101000" />
+    <option name="totallyTimeSpent" value="33183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1114,7 +1109,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39929327" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39929327" sideWeight="0.49570817" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299356" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
@@ -1123,7 +1118,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31919906" sideWeight="0.4892704" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31919906" sideWeight="0.4892704" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27950644" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1145,21 +1140,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Pts4/Database/dbTimestamp.java</url>
-          <line>22</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Pts4/UnitTestClasses/TimestampTest.java</url>
-          <line>26</line>
-          <properties />
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="21" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1168,27 +1149,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="db://[Proftaak-PTS41] SESSION BROWSER - Proftaak-PTS41" />
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pts4/Database/DatabaseConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#getProperties#0;class#DatabaseConnection#0" expanded="false" />
-            <element signature="method#connect#0;class#DatabaseConnection#0" expanded="false" />
-            <element signature="method#disconnect#0;class#DatabaseConnection#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pts4/UnitTestClasses/PersonTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -1362,14 +1322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Pts4/Classes/staticPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pts4/Database/DatabaseConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1388,7 +1340,7 @@
         <state relative-caret-position="220">
           <caret line="19" column="38" lean-forward="false" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding>
-            <marker date="1490532852151" expanded="true" signature="419:456" ph="Select * Fro... TBPerson" />
+            <marker date="1490603043679" expanded="true" signature="419:456" ph="Select * Fro... TBPerson" />
           </folding>
         </state>
       </provider>
@@ -1465,6 +1417,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="db://[Proftaak-PTS41] CONSOLE - Proftaak-PTS41">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="0" column="0" selection-start="0" selection-end="112" vertical-scroll-proportion="-0.0" current-schema="DBI331842" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Pts4/Classes/staticPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="797">
+          <caret line="65" column="20" lean-forward="false" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#680#681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Pts4/Classes/Timestamp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
@@ -1477,8 +1460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pts4/Database/dbTimestamp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="149">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1487,8 +1470,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Pts4/UnitTestClasses/TimestampTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="24" column="8" lean-forward="false" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="215">
+          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
