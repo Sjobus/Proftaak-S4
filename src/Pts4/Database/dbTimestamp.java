@@ -50,18 +50,22 @@ public class dbTimestamp {
     {
         ArrayList<Timestamp> list = new ArrayList<>();
         String personID = String.valueOf(person.GetID());
+      //  int personid2 = person.GetID();
 
         try {
-            String sql = "select * from tbhours t\n" +
-                    "join tbperson p on t.PersonID = p.?\n" +
-                    "join tbproject pr on pr.ID = t.PROJECTID;";
+            String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID , pr.DESCRIPTION from tbhours t\n" +
+                    "join tbperson p on t.PersonID = p.ID\n" +
+                    "join tbproject pr on pr.ID = t.PROJECTID\n" +
+                    "where p.ID = ?";
+
+
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
             preparedStatement.setString(1, personID);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
                 int ID = resultSet.getInt("ID");
-                String projectID = resultSet.getString("ID_2");
+                String projectID = resultSet.getString("prID");
                 int hours = resultSet.getInt("Hours");
                 Date date = resultSet.getDate("DateWorked");
                 String Description = resultSet.getString("Description");
