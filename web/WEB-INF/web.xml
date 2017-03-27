@@ -9,6 +9,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
-        <url-pattern>/HomeController</url-pattern>
+        <url-pattern>/HomeController</url-pattern> 
     </servlet-mapping>
 </web-app>
