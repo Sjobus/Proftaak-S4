@@ -1,5 +1,6 @@
 package Pts4.Controllers;
 
+import Pts4.Classes.Timestamp;
 import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
@@ -7,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.View;
 import java.awt.image.ImagingOpException;
 import java.io.IOException;
 
@@ -38,4 +40,5 @@ public class HomeController extends HttpServlet
             System.out.println("Er is een fout op getreden. Error:" + e.getMessage());
         }
     }
+
 }
