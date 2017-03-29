@@ -24,20 +24,16 @@ public class HomeController extends HttpServlet
         staticPerson sp = new staticPerson();
         try
         {
-            if(staticPerson.GetPersonData(userName))
+            /*if(sp.GetPersonData(userName))
+            {
+                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+                view.forward(request, response);
+            }*/
+            if (userName == "Jan")
             {
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }
-            else
-            {
-
-            }
-//            if (userName == "Jan")
-//            {
-//                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-//                view.forward(request, response);
-//            }
         }
         catch (IOException e)
         {
