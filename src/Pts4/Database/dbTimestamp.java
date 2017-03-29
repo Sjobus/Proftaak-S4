@@ -63,7 +63,7 @@ public class dbTimestamp {
             String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID , pr.DESCRIPTION from tbhours t\n" +
                     "join tbperson p on t.PersonID = p.ID\n" +
                     "join tbproject pr on pr.ID = t.PROJECTID\n" +
-                    "where p.ID = ?";
+                    "where p.ID = ? AND dateworked > sysdate - 35;";
 
 
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
