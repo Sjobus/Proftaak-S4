@@ -22,18 +22,18 @@ public class HomeController extends HttpServlet
         staticPerson sp = new staticPerson();
         try
         {
-            /*if(sp.GetPersonData(userName))
-            {
-                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-                view.forward(request, response);
-            }*/
-            if (userName.equals("Jan"))
+            if(sp.GetPersonData(userName))
             {
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }
+//            if (userName.equals("Jan"))
+//            {
+//                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+//                view.forward(request, response);
+//            }
         }
-        catch (IOException e)
+        catch (Exception e)
         {
             System.out.println("Er is een fout op getreden. Error:" + e.getMessage());
         }

@@ -30,7 +30,7 @@ public class DatabaseConnection {
     //connect database
     public static Connection connect() {
         try {
-                    //Class.forName("com.mysql.cj.jdbc.Driver");
+                 Class.forName("oracle.jdbc.driver.OracleDriver");
             return DriverManager.getConnection("jdbc:oracle:thin:@fhictora01.fhict.local:1521:fhictora", "dbi331842", "Qwerty123");
             //jdbc:oracle:thin:@fhictora01.fhict.local:1521:fhictora
 
