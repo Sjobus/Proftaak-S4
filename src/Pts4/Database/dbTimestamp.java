@@ -45,7 +45,7 @@ public class dbTimestamp {
             //Double str = cstmt.getDouble(2);
             cstmt.close();
             return true;
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         } finally {
@@ -82,7 +82,7 @@ public class dbTimestamp {
                 list.add(timestamp);
             }
         }
-        catch (SQLException ex) {
+        catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         finally {
@@ -113,7 +113,7 @@ public class dbTimestamp {
                 Timestamp ts = new Timestamp(Hours, person);
                 List.add(ts);
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return null;
         } finally {

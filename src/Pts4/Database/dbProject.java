@@ -33,7 +33,7 @@ public class dbProject {
                 list.add(p);
             }
         }
-        catch (SQLException ex) {
+        catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         finally {

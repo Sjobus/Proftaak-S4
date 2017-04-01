@@ -34,7 +34,7 @@ public class dbPerson {
                 Person p = new Person(ID, Name, Func);
                 return p;
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return null;
         } finally {
@@ -63,7 +63,7 @@ public class dbPerson {
                 Person p = new Person(PersonID, name, Func);
                 return p;
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return null;
         } finally {
