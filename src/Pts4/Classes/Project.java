@@ -1,5 +1,6 @@
 package Pts4.Classes;
 
+import Pts4.Database.dbPerson;
 import Pts4.Database.dbProject;
 
 import java.util.ArrayList;
@@ -24,6 +25,12 @@ public class Project {
         this.Description = Description;
     }
 
+    public Project(String ID)
+    {
+        this.ID = ID;
+}
+
+
     public ArrayList<Project> GetProject()
     {
         ArrayList<Project> list = dbProject.GetAllProjects();
@@ -40,6 +47,20 @@ public class Project {
         else
         {
             return null;
+        }
+    }
+
+    public boolean Getproject()
+    {
+        Project pro = dbProject.GetprojectID(this);
+        if(pro != null)
+        {
+            this.Description = pro.Description;
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

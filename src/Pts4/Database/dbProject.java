@@ -1,6 +1,9 @@
 package Pts4.Database;
 
+import Pts4.Classes.Person;
 import Pts4.Classes.Project;
+import Pts4.Classes.staticPerson;
+import Pts4.Enums.Function;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,5 +46,29 @@ public class dbProject {
       return list;
     }
 
+    public static Project GetprojectID(Project project)
+    {
+        String sql = "Select * From TBProject Where ID = ?";
+        try {
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            preparedStatement.setString(1, project.GetID());
 
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+
+                String ID = resultSet.getString("ID");
+                String description = resultSet.getString("Description");
+
+                Project pro = new Project(ID, description);
+                return pro;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        } finally {
+            disconnect();
+        }
+        return null;
+    }
 }
