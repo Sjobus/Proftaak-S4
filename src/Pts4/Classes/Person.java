@@ -27,6 +27,23 @@ public class Person {
         this.function = function;
     }
 
+    public Person(String name)
+    {
+        this.Name = name;
+    }
+
+    public void Getfields(String Name)
+    {
+//        DatabaseConnection db;
+//        Person P = db.getPerson();
+//
+//        this.ID = P.GetID() ;
+//        this.function = P.GetFunction();
+    }
+
+
+
+
 
 
 

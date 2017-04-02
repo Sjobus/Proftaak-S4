@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <%--
+=======
+<%@ page import="Pts4.Database.DatabaseConnection" %><%--
+>>>>>>> refs/remotes/origin/Sprint1
   Created by IntelliJ IDEA.
   User: Sibe
   Date: 13-3-2017
@@ -19,6 +23,7 @@
     <title>AXI</title>
   </head>
   <body>
+<<<<<<< HEAD
   <div class="row">
     <div class="col-lg-6">
       <div class="input-group">
@@ -30,6 +35,27 @@
     </div>
   </div>
 
+=======
+  <div>
+    <ul class="nav nav-tabs nav-justified">
+      <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
+      <li role="presentation" class="disabled"><a href="urenReg.jsp">Uren registratie</a> </li>
+      <li role="presentation" class="disabled"><a href="#">Overzicht</a></li>
+      <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
+      <li role="presentation" class="disabled"><a href="index.jsp"> Uitloggen</a> </li>
+    </ul>
+  </div>
+  <form action="HomeController" method="post">
+      <div class="col-lg-6">
+          <div class="input-group">
+              <input type="text" name="tbUserName" class="form-control" placeholder="Name"/>
+              <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default">Login</button>
+              </span>
+          </div>
+      </div>
+>>>>>>> refs/remotes/origin/Sprint1
 
+  </form>
   </body>
 </html>

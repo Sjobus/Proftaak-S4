@@ -25,16 +25,37 @@
     <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="db442241-cddb-4476-8024-6cebae74b008">
-        <schema name="262044" object-types="function, materialized view, package, sequence, synonym, table, type, view" />
-        <schema name="DBI331842" object-types="materialized view, synonym, table, view" />
+        <schema name="DBI331842" object-types="column, function, materialized view, package, package function, sequence, synonym, table, type, type function, view" />
         <schema name="PUBLIC" object-types="function, materialized view, package, sequence, synonym, table, type, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="db442241-cddb-4476-8024-6cebae74b008">
-      <console name="Proftaak-PTS41" type="STANDARD"><![CDATA[select *
-from tbPerson]]></console>
+      <console name="Proftaak-PTS41" type="STANDARD"><![CDATA[Select H.PROJECTID, sum(H.HOURS) AS Hours
+From TBHOURS H
+Join TBPERSON P on H.PERSONID = P."ID"
+Join TBPROJECT PJ on H.PROJECTID = PJ."ID"
+Group BY H.PROJECTID
+
+Select P."NAME", sum(H.HOURS) AS Hours
+From TBHOURS H
+Join TBPERSON P on H.PERSONID = P."ID"
+Join TBPROJECT PJ on H.PROJECTID = PJ."ID"
+Where PJ."ID" = 'PTS41'
+Group BY P."NAME"
+Order BY PJ."ID"
+
+select *
+From TBPROJECT PJ
+
+Select P.NAME, P.ID AS ID, sum(H.HOURS) AS Hours
+From TBHOURS H
+Join TBPERSON P on H.PERSONID = P.ID
+Join TBPROJECT PJ on H.PROJECTID = PJ.ID
+Where PJ.ID = 'PTS41'
+Group BY P.NAME, P.ID
+Order BY PJ.ID]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">

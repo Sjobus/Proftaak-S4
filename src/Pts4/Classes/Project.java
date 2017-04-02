@@ -1,5 +1,10 @@
 package Pts4.Classes;
 
+import Pts4.Database.dbPerson;
+import Pts4.Database.dbProject;
+
+import java.util.ArrayList;
+
 /**
  * Created by Gebruiker on 20-3-2017.
  */
@@ -20,5 +25,42 @@ public class Project {
         this.Description = Description;
     }
 
+    public Project(String ID)
+    {
+        this.ID = ID;
+}
 
+
+    public ArrayList<Project> GetProject()
+    {
+        ArrayList<Project> list = dbProject.GetAllProjects();
+        return list;
+    }
+
+    public static ArrayList<Project> GetAllProjects()
+    {
+        ArrayList<Project> ProjectList = dbProject.GetAllProjects();
+        if(ProjectList != null)
+        {
+            return ProjectList;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public boolean Getproject()
+    {
+        Project pro = dbProject.GetprojectID(this);
+        if(pro != null)
+        {
+            this.Description = pro.Description;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
