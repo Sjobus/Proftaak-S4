@@ -28,7 +28,7 @@
             <li role="presentation"><a href="index.jsp"> Uitloggen</a> </li>
         </ul>
     </div>
-    <form method="post">
+    <form action="TimestampController" method="post">
         Project Code:<br>
         <input type="text" name="Project" placeholder="Project code"><br>
         Uren:<br>
