@@ -29,6 +29,8 @@
         </ul>
     </div>
     <form method="post">
+        Project Code:<br>
+        <input type="text" name="Project" placeholder="Project code"><br>
         Uren:<br>
         <input type="number" name="Uren" min="1" max="24" placeholder="1"><br>
         Datum:<br>
