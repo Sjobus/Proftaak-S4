@@ -32,7 +32,7 @@
         Uren:<br>
         <input type="number" name="Uren" min="1" max="24" placeholder="1"><br>
         Datum:<br>
-        <input type="date" name="Work Date" min="2017-01-01"><br>
+        <input type="date" name="Work_Date" min="2017-01-01"><br>
         <button type="submit">Geef uren op.</button>
     </form>
 </body>

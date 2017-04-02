@@ -19,10 +19,9 @@ public class HomeController extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ImagingOpException, ServletException, IOException
     {
         String userName = request.getParameter("tbUserName");
-        staticPerson sp = new staticPerson();
         try
         {
-            if(sp.GetPersonData(userName))
+            if(staticPerson.GetPersonData(userName))
             {
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
