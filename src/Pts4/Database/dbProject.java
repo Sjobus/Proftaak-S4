@@ -5,9 +5,7 @@ import Pts4.Classes.Project;
 import Pts4.Classes.staticPerson;
 import Pts4.Enums.Function;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import static Pts4.Database.DatabaseConnection.disconnect;
@@ -70,5 +68,47 @@ public class dbProject {
             disconnect();
         }
         return null;
+    }
+
+    public static ArrayList<String> GetTop()
+    {
+        ArrayList<String> list = new ArrayList<>();
+
+        try {
+            String sql = "Select PROJECTID" +
+                    "from (Select H.PROJECTID, Max(H.DateWorked) AS something" +
+                    "      From TBHOURS H" +
+                    "      Join TBPerson P on H.PERSONID = P.ID" +
+                    "      Where P.NAME = 'Jan'" +
+                    "      Group by H.PROJECTID" +
+                    "      Order BY something desc)" +
+                    "WHERE rownum <= 3;";
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            //preparedStatement.setString(1, name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String ProjectID = resultSet.getString("PROJECTID");
+                list.add(ProjectID);
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            disconnect();
+        }
+        return list;
+    }
+
+    public static ArrayList<Project> GetTheRest()
+    {
+        ArrayList<Project> list = new ArrayList<>();
+
+        //here comes code
+
+
+        return list;
     }
 }
