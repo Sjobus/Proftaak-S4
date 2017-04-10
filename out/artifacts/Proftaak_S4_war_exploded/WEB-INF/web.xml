@@ -11,4 +11,13 @@
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/HomeController</url-pattern> 
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TimestampController</servlet-name>
+        <servlet-class>Pts4.Controllers.TimestampController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TimestampController</servlet-name>
+        <url-pattern>/TimestampController</url-pattern> 
+    </servlet-mapping>
 </web-app>

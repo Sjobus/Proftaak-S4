@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%--
 =======
 <%@ page import="Pts4.Database.DatabaseConnection" %><%--
@@ -23,19 +22,6 @@
     <title>AXI</title>
   </head>
   <body>
-<<<<<<< HEAD
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Naam">
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Go!</button>
-        </span>
-      </div>
-    </div>
-  </div>
-
-=======
   <div>
     <ul class="nav nav-tabs nav-justified">
       <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
@@ -54,8 +40,6 @@
               </span>
           </div>
       </div>
->>>>>>> refs/remotes/origin/Sprint1
-
   </form>
   </body>
 </html>

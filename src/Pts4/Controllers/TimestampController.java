@@ -39,11 +39,10 @@ public class TimestampController extends HttpServlet{
         try {
             date = dateformat.parse(dateStr);
         }
-        catch(ParseException e)
-        { e.printStackTrace();}
-
+        catch(ParseException e) {
+            e.printStackTrace();
+        }
         Timestamp time = new Timestamp(Hour, date , pro, per);
-
         try
         {
             if(time.InsertTimestamp())
@@ -62,9 +61,4 @@ public class TimestampController extends HttpServlet{
             System.out.println("Er is een fout op getreden. Error:" + e.getMessage());
         }
     }
-
-
-
-
-
 }
