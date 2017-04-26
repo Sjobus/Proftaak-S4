@@ -10,7 +10,7 @@
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -28,6 +28,17 @@
             <li role="presentation"><a href="index.jsp"> Uitloggen</a> </li>
         </ul>
     </div>
+
+    <br />
+    <div class="Fout"><h2>
+        <%
+            if(null!=request.getAttribute("errorMessage"))
+            {
+                out.println(request.getAttribute("errorMessage"));
+            }
+        %>
+    </h2></div>
+
     <form action="TimestampController" method="post">
         Project Code:<br>
         <input type="text" name="Project" placeholder="Project code"><br>

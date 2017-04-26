@@ -52,8 +52,11 @@ public class TimestampController extends HttpServlet{
             }
             else
             {
-                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-                view.forward(request, response);
+                request.setAttribute("errorMessage", "Niet alles goed ingevuld");
+                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                rd.forward(request, response);
+//                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+//                view.forward(request, response);
             }
         }
         catch (Exception e)
