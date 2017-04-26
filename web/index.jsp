@@ -39,6 +39,16 @@
           out.println(request.getAttribute("errorMessage"));
       }
       %>
+      <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
+      <c:set var="val" value="5"/>
+      <c:choose>
+          <c:when test="${val == '5'}">
+              Value is 5
+          </c:when>
+          <c:otherwise>
+              Value is not 5
+          </c:otherwise>
+      </c:choose>
   </h2></div>
 
   <form action="HomeController" method="post">
