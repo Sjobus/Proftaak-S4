@@ -13,7 +13,7 @@
   <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -31,6 +31,26 @@
       <li role="presentation" class="disabled"><a href="index.jsp"> Uitloggen</a> </li>
     </ul>
   </div>
+  <br />
+  <div class="Fout"><h2>
+      <%
+      if(null!=request.getAttribute("errorMessage"))
+      {
+          out.println(request.getAttribute("errorMessage"));
+      }
+      %>
+      <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
+      <c:set var="val" value="5"/>
+      <c:choose>
+          <c:when test="${val == '5'}">
+              Value is 5
+          </c:when>
+          <c:otherwise>
+              Value is not 5
+          </c:otherwise>
+      </c:choose>
+  </h2></div>
+
   <form action="HomeController" method="post">
       <div class="col-lg-6">
           <div class="input-group">
