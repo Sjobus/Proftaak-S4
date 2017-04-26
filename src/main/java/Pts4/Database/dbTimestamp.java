@@ -1,20 +1,14 @@
-package Pts4.Database;
+package main.java.Pts4.Database;
 
-import Pts4.Classes.Project;
-import Pts4.Classes.Timestamp;
-import Pts4.Classes.Person;
-import Pts4.Classes.staticPerson;
-import Pts4.Enums.Function;
+import main.java.Pts4.Classes.Person;
+import main.java.Pts4.Classes.Project;
+import main.java.Pts4.Classes.Timestamp;
 
 import java.sql.*;
-
 import java.util.ArrayList;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-
-import static Pts4.Database.DatabaseConnection.disconnect;
+import static main.java.Pts4.Database.DatabaseConnection.connect;
+import static main.java.Pts4.Database.DatabaseConnection.disconnect;
 
 /**
  * Created by Gebruiker on 20-3-2017.
@@ -24,7 +18,7 @@ public class dbTimestamp {
     public static boolean InsertTimestamp(Timestamp t)
     {
         try {
-            Connection con = DatabaseConnection.connect();
+            Connection con = connect();
 
             String command = "{call InsertTimestamp(?,?,?,?)}";
             CallableStatement cstmt = con.prepareCall(command);
@@ -66,7 +60,7 @@ public class dbTimestamp {
                     "where p.ID = ? AND dateworked > sysdate - 35;";
 
 
-            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setString(1, personID);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -98,7 +92,7 @@ public class dbTimestamp {
 
         String sql = "Select P.NAME, P.ID AS ID, sum(H.HOURS) AS Hours From TBHOURS H Join TBPERSON P on H.PERSONID = P.ID Join TBPROJECT PJ on H.PROJECTID = PJ.ID Where PJ.ID = ? Group BY P.NAME, P.ID Order BY PJ.ID";
         try {
-            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setString(1, prProject.GetID());
 
             ResultSet resultSet = preparedStatement.executeQuery();

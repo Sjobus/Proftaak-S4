@@ -1,10 +1,8 @@
-package Pts4.Classes;
+package main.java.Pts4.Classes;
 
-import Pts4.Database.dbProject;
-import Pts4.Database.dbTimestamp;
+import main.java.Pts4.Database.dbTimestamp;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -87,7 +85,8 @@ public class Timestamp {
 
     public static ArrayList<Timestamp> GetAllTimestampsByProject(Project PrProject)
     {
-        ArrayList<Timestamp> TimeStampList = dbTimestamp.GetTimeStampForManager(PrProject);
+        ArrayList<Timestamp> TimeStampList = new ArrayList<>();
+               TimeStampList = dbTimestamp.GetTimeStampForManager(PrProject);
         if(TimeStampList != null)
         {
             return TimeStampList;

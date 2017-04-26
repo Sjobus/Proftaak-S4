@@ -1,15 +1,13 @@
-package Pts4.UnitTestClasses;
+package main.java.Pts4.UnitTestClasses;
 
-import Pts4.Classes.Person;
-import Pts4.Classes.Project;
-import Pts4.Classes.Timestamp;
-import Pts4.Database.DatabaseConnection;
-import Pts4.Enums.Function;
+import main.java.Pts4.Classes.Person;
+import main.java.Pts4.Classes.Project;
+import main.java.Pts4.Classes.Timestamp;
+import main.java.Pts4.Database.DatabaseConnection;
+import main.java.Pts4.Enums.Function;
 import org.junit.Assert;
 import org.junit.Test;
-import sun.util.calendar.BaseCalendar;
 
-import java.util.Calendar;
 import java.util.Date;
 
 /**

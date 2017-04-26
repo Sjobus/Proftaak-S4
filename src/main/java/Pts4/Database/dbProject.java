@@ -1,14 +1,14 @@
-package Pts4.Database;
+package main.java.Pts4.Database;
 
-import Pts4.Classes.Person;
-import Pts4.Classes.Project;
-import Pts4.Classes.staticPerson;
-import Pts4.Enums.Function;
+import main.java.Pts4.Classes.Project;
+import main.java.Pts4.Classes.staticPerson;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import static Pts4.Database.DatabaseConnection.disconnect;
+import static main.java.Pts4.Database.DatabaseConnection.connect;
+import static main.java.Pts4.Database.DatabaseConnection.disconnect;
 
 /**
  * Created by Gebruiker on 20-3-2017.
@@ -21,7 +21,7 @@ public class dbProject {
 
         try {
             String sql = "select * from Project";
-            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
             //preparedStatement.setString(1, name);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -48,7 +48,7 @@ public class dbProject {
     {
         String sql = "Select * From TBProject Where ID = ?";
         try {
-            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setString(1, project.GetID());
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -76,7 +76,7 @@ public class dbProject {
 
         try {
             String sql = "Select PROJECTID from (Select H.PROJECTID, Max(H.DateWorked) AS something From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where P.ID = ? Group by H.PROJECTID Order BY something desc) WHERE rownum <= 3";
-            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setInt(1, staticPerson.GetID());
             //preparedStatement.setString(1, name);
 
@@ -102,7 +102,7 @@ public class dbProject {
 
         try {
             String sql = "SELECT H.PROJECTID From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where H.PROJECTID not in (Select PROJECTID from (Select H.PROJECTID, Max(H.DateWorked) AS something From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where P.ID = ? Group by H.PROJECTID Order BY something desc) WHERE rownum <= 3) group by H.ProjectID";
-            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setInt(1, staticPerson.GetID());
 
             ResultSet resultSet = preparedStatement.executeQuery();

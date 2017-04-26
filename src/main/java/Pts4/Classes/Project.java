@@ -1,7 +1,7 @@
-package Pts4.Classes;
+package main.java.Pts4.Classes;
 
-import Pts4.Database.dbPerson;
-import Pts4.Database.dbProject;
+import main.java.Pts4.Database.dbPerson;
+import main.java.Pts4.Database.dbProject;
 
 import java.util.ArrayList;
 

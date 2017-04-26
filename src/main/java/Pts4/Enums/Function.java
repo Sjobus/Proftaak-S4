@@ -1,4 +1,4 @@
-package Pts4.Enums;
+package main.java.Pts4.Enums;
 
 /**
  * Created by Gebruiker on 20-3-2017.

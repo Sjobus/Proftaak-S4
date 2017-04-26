@@ -1,6 +1,6 @@
-package Pts4.Controllers;
+package main.java.Pts4.Controllers;
 
-import Pts4.Classes.staticPerson;
+import main.java.Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
