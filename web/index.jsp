@@ -51,7 +51,28 @@
       </c:choose>
   </h2></div>
 
-  <form action="HomeController" method="post">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+  <script>
+      function onSignIn(googleUser) {
+          // Useful data for your client-side scripts:
+          var profile = googleUser.getBasicProfile();
+          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+          console.log('Full Name: ' + profile.getName());
+          console.log('Given Name: ' + profile.getGivenName());
+          console.log('Family Name: ' + profile.getFamilyName());
+          console.log("Image URL: " + profile.getImageUrl());
+          console.log("Email: " + profile.getEmail()); }
+
+      function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function() {
+              console.log('User signed out.'); } )}
+
+  </script>
+
+
+      <form action="HomeController" method="post">
       <div class="col-lg-6">
           <div class="input-group">
               <input type="text" name="tbUserName" class="form-control" placeholder="Name"/>
