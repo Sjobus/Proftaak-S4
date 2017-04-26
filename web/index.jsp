@@ -45,6 +45,7 @@
       <div class="col-lg-6">
           <div class="input-group">
               <input type="text" name="tbUserName" class="form-control" placeholder="Name"/>
+              <input type="password" name="tbPassword" class="form-control" placeholder="Password"/>
               <span class="input-group-btn">
                   <button type="submit" class="btn btn-default">Login</button>
               </span>

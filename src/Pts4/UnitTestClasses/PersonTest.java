@@ -16,7 +16,7 @@ public class PersonTest {
     @Test
     public void PersonGetTest() throws Exception
     {
-        Assert.assertTrue(staticPerson.GetPersonData("Jan"));
+        Assert.assertTrue(staticPerson.GetPersonData("Jan", "Jan123"));
 
         String name = staticPerson.GetName();
         Assert.assertTrue(name.equals("Jan"));

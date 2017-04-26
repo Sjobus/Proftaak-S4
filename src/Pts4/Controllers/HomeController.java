@@ -20,10 +20,11 @@ public class HomeController extends HttpServlet
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ImagingOpException, ServletException, IOException
     {
         String userName = request.getParameter("tbUserName");
+        String Password = request.getParameter("tbPassword");
         try
         {
             PrintWriter out = response.getWriter();
-            if(staticPerson.GetPersonData(userName))
+            if(staticPerson.GetPersonData(userName, Password))
             {
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);

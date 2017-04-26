@@ -15,12 +15,13 @@ import static Pts4.Database.DatabaseConnection.disconnect;
  */
 public class dbPerson {
 
-    public static Person GetpersonData(String Name)
+    public static Person GetpersonData(String Name, String Password)
     {
-        String sql = "Select * From TBPerson Where Name = ?";
+        String sql = "Select * From TBPerson Where Name = ? AND Password = ?";
         try {
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
             preparedStatement.setString(1, Name);
+            preparedStatement.setString(2, Password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 

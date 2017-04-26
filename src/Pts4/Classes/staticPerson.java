@@ -28,9 +28,9 @@ public class staticPerson {
 
     }
 
-    public static boolean GetPersonData(String prName)
+    public static boolean GetPersonData(String prName, String prPassword)
     {
-        Person per = dbPerson.GetpersonData(prName);
+        Person per = dbPerson.GetpersonData(prName, prPassword);
         if(per != null)
         {
             ID = per.GetID();
