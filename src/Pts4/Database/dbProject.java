@@ -75,15 +75,9 @@ public class dbProject {
         ArrayList<String> list = new ArrayList<>();
 
         try {
-            String sql = "Select PROJECTID" +
-                    "from (Select H.PROJECTID, Max(H.DateWorked) AS something" +
-                    "      From TBHOURS H" +
-                    "      Join TBPerson P on H.PERSONID = P.ID" +
-                    "      Where P.NAME = 'Jan'" +
-                    "      Group by H.PROJECTID" +
-                    "      Order BY something desc)" +
-                    "WHERE rownum <= 3;";
+            String sql = "Select PROJECTID from (Select H.PROJECTID, Max(H.DateWorked) AS something From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where P.ID = ? Group by H.PROJECTID Order BY something desc) WHERE rownum <= 3";
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            preparedStatement.setInt(1, staticPerson.GetID());
             //preparedStatement.setString(1, name);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -102,13 +96,29 @@ public class dbProject {
         return list;
     }
 
-    public static ArrayList<Project> GetTheRest()
+    public static ArrayList<String> GetTheRest()
     {
-        ArrayList<Project> list = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
-        //here comes code
+        try {
+            String sql = "SELECT H.PROJECTID From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where H.PROJECTID not in (Select PROJECTID from (Select H.PROJECTID, Max(H.DateWorked) AS something From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where P.ID = ? Group by H.PROJECTID Order BY something desc) WHERE rownum <= 3) group by H.ProjectID";
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            preparedStatement.setInt(1, staticPerson.GetID());
 
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-        return list;
+            while (resultSet.next()) {
+                String ProjectID = resultSet.getString("PROJECTID");
+                list.add(ProjectID);
+            }
+            return list;
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        finally {
+            disconnect();
+        }
     }
 }

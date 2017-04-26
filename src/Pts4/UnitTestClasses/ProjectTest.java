@@ -12,9 +12,16 @@ import org.junit.Test;
 public class ProjectTest {
 
     @Test
-    public void PersonGetTest() throws Exception
+    public void ProjectGetTest() throws Exception
     {
         dbProject.GetTop();
+        Assert.assertFalse(dbProject.GetTop().equals(null));
+    }
+
+    @Test
+    public void ProjectGetTest2() throws Exception
+    {
+        dbProject.GetTheRest();
         Assert.assertFalse(dbProject.GetTop().equals(null));
     }
 }
