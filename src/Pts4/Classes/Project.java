@@ -63,4 +63,30 @@ public class Project {
             return false;
         }
     }
+
+    public static ArrayList<String> GetTopProjects()
+    {
+        ArrayList<String> toplist = dbProject.GetTop();
+        if(toplist != null)
+        {
+            return toplist;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public static ArrayList<String> GetBottomProjects()
+    {
+        ArrayList<String> toplist = dbProject.GetTheRest();
+        if(toplist != null)
+        {
+            return toplist;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
