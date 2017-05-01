@@ -27,9 +27,9 @@ public class dbPerson {
             while (resultSet.next()) {
                 int ID = resultSet.getInt("ID");
                 //String name = resultSet.getString("max");
-                String Function = resultSet.getString("Function");
+                String function = resultSet.getString("Function");
 
-                Function Func = staticPerson.Translatefunction(Function);
+                Function Func = staticPerson.Translatefunction(function);
 
                 Person p = new Person(ID, Name, Func);
                 return p;
@@ -70,6 +70,39 @@ public class dbPerson {
             disconnect();
         }
         return null;
+
+    }
+
+    public static Person GetpersonDataByGoogleID(int googleID)
+    {
+        String sql = "Select * From TBPerson Where GoogleID = ?";
+        try {
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            preparedStatement.setInt(1, googleID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ID = resultSet.getInt("ID");
+                String name = resultSet.getString("Name");
+                String function = resultSet.getString("Function");
+
+                Function Func = staticPerson.Translatefunction(function);
+
+                Person p = new Person(ID, name, Func);
+
+                return p;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+            return null;
+        } finally {
+            disconnect();
+        }
+
+        return null;
+
 
     }
 
