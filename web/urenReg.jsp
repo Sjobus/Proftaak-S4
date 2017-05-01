@@ -67,7 +67,7 @@
                         <c:forEach items="${TopProject}" var="topcurrent">
                             <option value="${topcurrent.GetID()}"><c:out value="${topcurrent.GetID()}"/></option>
                         </c:forEach>
-                        <li class="divider" />
+
                         <c:forEach items="${BottomProject}" var="bottomCurrent">
                             <option value="${bottomCurrent.GetID()}"><c:out value="${bottomCurrent.GetID()}"/></option>
                         </c:forEach>

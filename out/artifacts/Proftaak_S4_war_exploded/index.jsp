@@ -19,7 +19,10 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <title>AXI</title>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+      <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
+
+      <title>AXI</title>
   </head>
   <body>
   <div>
@@ -50,11 +53,33 @@
           </c:otherwise>
       </c:choose>
   </h2></div>
+  <script>
+      function onSignIn(googleUser) {
+          //var auth2 = gapi.auth2.getAuthInstance();
+          // Useful data for your client-side scripts:
+          var profile = googleUser.getBasicProfile();
+          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+          console.log('Full Name: ' + profile.getName());
+          console.log('Given Name: ' + profile.getGivenName());
+          console.log('Family Name: ' + profile.getFamilyName());
+          console.log("Image URL: " + profile.getImageUrl());
+          console.log("Email: " + profile.getEmail()); }
 
-  <form action="HomeController" method="post">
+      function signOut() {
+          var auth2 = gapi.auth2.getAuthInstance();
+          auth2.signOut().then(function() {
+              console.log('User signed out.'); } )}
+
+  </script>
+
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+  <button onclick="signOut()">Logout</button>
+
+      <form action="HomeController" method="post">
       <div class="col-lg-6">
           <div class="input-group">
-              <input type="text" name="tbUserName" class="form-control" placeholder="Name"/>
+              <input type="text" name="tbUserName" class="form-control" placeholder="Name" autofocus/>
               <input type="password" name="tbPassword" class="form-control" placeholder="Password"/>
               <span class="input-group-btn">
                   <button type="submit" class="btn btn-default">Login</button>
