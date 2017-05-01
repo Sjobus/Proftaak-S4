@@ -70,9 +70,9 @@ public class dbProject {
         return null;
     }
 
-    public static ArrayList<String> GetTop()
+    public static ArrayList<Project> GetTop()
     {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<Project> list = new ArrayList<>();
 
         try {
             String sql = "Select PROJECTID from (Select H.PROJECTID, Max(H.DateWorked) AS something From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where P.ID = ? Group by H.PROJECTID Order BY something desc) WHERE rownum <= 3";
@@ -84,7 +84,8 @@ public class dbProject {
 
             while (resultSet.next()) {
                 String ProjectID = resultSet.getString("PROJECTID");
-                list.add(ProjectID);
+                Project p = new Project(ProjectID);
+                list.add(p);
             }
         }
         catch (Exception ex) {
@@ -96,9 +97,9 @@ public class dbProject {
         return list;
     }
 
-    public static ArrayList<String> GetTheRest()
+    public static ArrayList<Project> GetTheRest()
     {
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<Project> list = new ArrayList<>();
 
         try {
             String sql = "SELECT H.PROJECTID From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where H.PROJECTID not in (Select PROJECTID from (Select H.PROJECTID, Max(H.DateWorked) AS something From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where P.ID = ? Group by H.PROJECTID Order BY something desc) WHERE rownum <= 3) group by H.ProjectID";
@@ -109,7 +110,8 @@ public class dbProject {
 
             while (resultSet.next()) {
                 String ProjectID = resultSet.getString("PROJECTID");
-                list.add(ProjectID);
+                Project p = new Project(ProjectID);
+                list.add(p);
             }
             return list;
         }
