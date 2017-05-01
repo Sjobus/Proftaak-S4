@@ -38,7 +38,8 @@
                 out.println(request.getAttribute("errorMessage"));
             }
         %>
-        </div>
+        </div></h2>
+    <h2>
         <div class="Goed">
         <%
             if(null!=request.getAttribute("confirmMessage"))
