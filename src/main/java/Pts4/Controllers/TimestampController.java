@@ -47,6 +47,7 @@ public class TimestampController extends HttpServlet{
         {
             if(time.InsertTimestamp())
             {
+                request.setAttribute("confirmMessage", "Opdracht opgeslagen");
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }

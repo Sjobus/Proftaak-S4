@@ -30,14 +30,24 @@
     </div>
 
     <br />
-    <div class="Fout"><h2>
+    <h2>
+        <div class="Fout">
         <%
             if(null!=request.getAttribute("errorMessage"))
             {
                 out.println(request.getAttribute("errorMessage"));
             }
         %>
-    </h2></div>
+        </div>
+        <div class="Goed">
+        <%
+            if(null!=request.getAttribute("confirmMessage"))
+            {
+                out.println(request.getAttribute("confirmMessage"));
+            }
+        %>
+        </div>
+    </h2>
 
     <form action="TimestampController" method="post">
         Project Code:<br>
