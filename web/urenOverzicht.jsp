@@ -33,7 +33,7 @@
         <ul class="nav nav-tabs nav-justified">
             <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
             <li role="presentation"><a href="urenReg.jsp">Uren registratie</a> </li>
-            <li role="presentation" class="active"><a href="Persoon_Overzicht.jsp">Overzicht</a></li>
+            <li role="presentation" class="active"><a href="urenOverzicht.jsp">Overzicht</a></li>
             <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
             <li role="presentation" class="disabled"><a href="index.jsp"> Uitloggen</a> </li>
         </ul>
@@ -60,19 +60,6 @@
         </div>
     </div>
     <br>
-    <ul class="media">
-        <li class="media">
-            <div class="media-body">
-                <h4 class="media-heading">Week 13  22-03 t/m 29-03 Totaal aantal uren: 24</h4>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">22-03-2017  Project: PTS41  Uren: 5</a>
-                    <a href="#" class="list-group-item">22-03-2017  Project: PTS32  Uren: 3</a>
-                    <a href="#" class="list-group-item">23-03-2017  Project: S42T   Uren: 8</a>
-                    <a href="#" class="list-group-item">24-03-2017  Project: S42T   Uren: 5</a>
-                    <a href="#" class="list-group-item">25-03-2017  Project: S42T   Uren: 3</a>
-                </div>
-            </div>
-        </li>
-    </ul>
+
 </body>
 </html>

@@ -29,7 +29,7 @@
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
                 <li role="presentation" class="active"><a href="urenReg.jsp">Uren registratie</a> </li>
-                <li role="presentation" class="disabled"><a href="#">Overzicht</a></li>
+                <li role="presentation" ><a href="urenOverzicht.jsp">Overzicht</a></li>
                 <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
                 <li role="presentation"><a href="index.jsp"> Uitloggen</a> </li>
             </ul>
