@@ -1,4 +1,5 @@
-<%--
+<%@ page import="main.java.Pts4.Classes.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Sibe
   Date: 20-3-2017
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
     <head>
         <!-- JQuery -->
@@ -32,22 +34,46 @@
                 <li role="presentation"><a href="index.jsp"> Uitloggen</a> </li>
             </ul>
         </div>
-        <div class="Fout">
-            <h2>
-            <%
-                if(null!=request.getAttribute("errorMessage"))
-                {
-                    out.println(request.getAttribute("errorMessage"));
-                }
-            %>
-            </h2>
-        </div>
-
+        <h2>
+            <div class="Fout">
+                <%
+                    if(null!=request.getAttribute("errorMessage"))
+                    {
+                        out.println(request.getAttribute("errorMessage"));
+                    }
+                %>
+            </div>
+        </h2>
+        <h2>
+            <div class="Goed">
+                <%
+                    if(null!=request.getAttribute("confirmMessage"))
+                    {
+                        out.println(request.getAttribute("confirmMessage"));
+                    }
+                %>
+            </div>
+        </h2>
         <form class="form-horizontal" action="TimestampController" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Project">Project Code:</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="Project" id="Project" placeholder="Project code">
+                    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                    <%
+                        ArrayList<Project> topList = Project.GetTopProjects();
+                        ArrayList<Project> bottomList = Project.GetBottomProjects();
+                        pageContext.setAttribute("TopProject", topList);
+                        pageContext.setAttribute("BottomProject",bottomList);
+                    %>
+                    <select class="form-control" name="Project" id="Project">
+                        <c:forEach items="${TopProject}" var="topcurrent">
+                            <option value="${topcurrent.GetID()}"><c:out value="${topcurrent.GetID()}"/></option>
+                        </c:forEach>
+                        <li class="divider" />
+                        <c:forEach items="${BottomProject}" var="bottomCurrent">
+                            <option value="${bottomCurrent.GetID()}"><c:out value="${bottomCurrent.GetID()}"/></option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
             <div class="form-group">

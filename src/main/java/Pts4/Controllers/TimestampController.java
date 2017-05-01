@@ -47,16 +47,15 @@ public class TimestampController extends HttpServlet{
         {
             if(time.InsertTimestamp())
             {
+                request.setAttribute("confirmMessage", "Opdracht opgeslagen");
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }
             else
             {
                 request.setAttribute("errorMessage", "Niet alles goed ingevuld");
-                RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("urenReg.jsp");
                 rd.forward(request, response);
-//                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-//                view.forward(request, response);
             }
         }
         catch (Exception e)
