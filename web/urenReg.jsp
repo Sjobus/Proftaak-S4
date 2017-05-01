@@ -34,26 +34,24 @@
                 <li role="presentation"><a href="index.jsp"> Uitloggen</a> </li>
             </ul>
         </div>
-        <h2>
-            <div class="Fout">
                 <%
                     if(null!=request.getAttribute("errorMessage"))
                     {
-                        out.println(request.getAttribute("errorMessage"));
+                        %>
+                        <div class="alert alert-danger">
+                        <% out.println(request.getAttribute("errorMessage")); %>
+                        </div>
+                        <%
                     }
-                %>
-            </div>
-        </h2>
-        <h2>
-            <div class="Goed">
-                <%
                     if(null!=request.getAttribute("confirmMessage"))
                     {
-                        out.println(request.getAttribute("confirmMessage"));
+                        %>
+                        <div class="alert alert-success">
+                        <% out.println(request.getAttribute("confirmMessage")); %>
+                        </div>
+                        <%
                     }
                 %>
-            </div>
-        </h2>
         <form class="form-horizontal" action="TimestampController" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Project">Project Code:</label>
@@ -86,7 +84,7 @@
                 <label class="control-label col-sm-2" for="Work_Date">Datum:</label>
                 <div class="col-sm-10">
                     <div class="input-group date">
-                        <input type="text" class="form-control" id="Work_Date">
+                        <input type="text" class="form-control" id="Work_Date" name="Work_Date">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                     </div>
                 </div>
