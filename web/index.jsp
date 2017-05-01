@@ -53,11 +53,9 @@
           </c:otherwise>
       </c:choose>
   </h2></div>
-
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
   <script>
       function onSignIn(googleUser) {
+          //var auth2 = gapi.auth2.getAuthInstance();
           // Useful data for your client-side scripts:
           var profile = googleUser.getBasicProfile();
           console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -74,6 +72,9 @@
 
   </script>
 
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+  <button onclick="signOut()">Logout</button>
 
       <form action="HomeController" method="post">
       <div class="col-lg-6">
