@@ -1,4 +1,5 @@
-<%--
+<%@ page import="main.java.Pts4.Classes.Project" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Sibe
   Date: 20-3-2017
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <!-- Latest compiled and minified CSS -->
@@ -52,7 +54,23 @@
 
     <form action="TimestampController" method="post">
         Project Code:<br>
-        <input type="text" name="Project" placeholder="Project code"><br>
+
+        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%  ArrayList<Project> topList = Project.GetTopProjects();
+            ArrayList<Project> bottomList = Project.GetBottomProjects();
+            pageContext.setAttribute("TopProject", topList);
+            pageContext.setAttribute("BottomProject",bottomList);
+        %>
+        <select name="projects">
+            <c:forEach items="${TopProject}" var="topcurrent">
+                <option value="${topcurrent.GetID()}"><c:out value="${topcurrent.GetID()}"/></option>
+            </c:forEach>
+            <li class="divider" />
+            <c:forEach items="${BottomProject}" var="bottomCurrent">
+                <option value="${bottomCurrent.GetID()}"><c:out value="${bottomCurrent.GetID()}"/></option>
+            </c:forEach>
+        </select>
+        <br>
         Uren:<br>
         <input type="number" name="Uren" min="1" max="24" placeholder="1"><br>
         Datum:<br>
