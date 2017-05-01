@@ -51,3 +51,5 @@ fabric.properties
 
 # *.iml
 # modules.xml
+.idea/workspace.xml
+out/artifacts/Proftaak_S4_war_exploded/META-INF/MANIFEST.MF
