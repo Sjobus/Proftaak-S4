@@ -28,7 +28,7 @@ public class Project {
     public Project(String ID)
     {
         this.ID = ID;
-}
+    }
 
 
     public ArrayList<Project> GetProject()
@@ -64,9 +64,9 @@ public class Project {
         }
     }
 
-    public static ArrayList<String> GetTopProjects()
+    public static ArrayList<Project> GetTopProjects()
     {
-        ArrayList<String> toplist = dbProject.GetTop();
+        ArrayList<Project> toplist = dbProject.GetTop();
         if(toplist != null)
         {
             return toplist;
@@ -77,9 +77,9 @@ public class Project {
         }
     }
 
-    public static ArrayList<String> GetBottomProjects()
+    public static ArrayList<Project> GetBottomProjects()
     {
-        ArrayList<String> toplist = dbProject.GetTheRest();
+        ArrayList<Project> toplist = dbProject.GetTheRest();
         if(toplist != null)
         {
             return toplist;
