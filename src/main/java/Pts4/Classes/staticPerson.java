@@ -44,6 +44,22 @@ public class staticPerson {
         }
     }
 
+    public static boolean GetGooglePersonData(int googleID)
+    {
+        Person per = dbPerson.GetpersonDataByGoogleID(googleID);
+        if(per != null)
+        {
+            ID = per.GetID();
+            Name = per.GetName();
+            function = per.GetFunction();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public static Function Translatefunction(String function)
     {
         Function Func = Function.Werknemer;
