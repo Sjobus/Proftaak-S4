@@ -64,7 +64,9 @@
           console.log('Given Name: ' + profile.getGivenName());
           console.log('Family Name: ' + profile.getFamilyName());
           console.log("Image URL: " + profile.getImageUrl());
-          console.log("Email: " + profile.getEmail()); }
+          console.log("Email: " + profile.getEmail());
+
+          document.getElementById('prGoogleID').value = profile.getId();} //this should do it
 
       function signOut() {
           var auth2 = gapi.auth2.getAuthInstance();
@@ -72,7 +74,7 @@
               console.log('User signed out.'); } )}
 
   </script>
-
+      <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
   <button onclick="signOut()">Logout</button>
