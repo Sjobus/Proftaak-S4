@@ -54,7 +54,8 @@
       </c:choose>
   </h2></div>
   <script>
-      function onSignIn(googleUser) {
+      function onSignIn(googleUser)
+      {
           //var auth2 = gapi.auth2.getAuthInstance();
           // Useful data for your client-side scripts:
           var profile = googleUser.getBasicProfile();
@@ -66,7 +67,10 @@
           console.log("Image URL: " + profile.getImageUrl());
           console.log("Email: " + profile.getEmail());
 
-          document.getElementById('prGoogleID').value = profile.getId();} //this should do it
+          document.getElementById('prGoogleID').value = profile.getId();
+          document.getElementById("googleID").value = profile.getId();
+          document.getElementById('loginForm').submit();
+      } //this should do it
 
       function signOut() {
           var auth2 = gapi.auth2.getAuthInstance();
@@ -74,12 +78,11 @@
               console.log('User signed out.'); } )}
 
   </script>
-      <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
+  <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
   <button onclick="signOut()">Logout</button>
 
-      <form action="HomeController" method="post">
+  <form action="HomeController" method="post" id="loginForm">
       <div class="col-lg-6">
           <div class="input-group">
               <input type="text" name="tbUserName" class="form-control" placeholder="Name" autofocus/>
@@ -89,6 +92,7 @@
               </span>
           </div>
       </div>
+      <input name="googleID" type="hidden" id="googleID" value="">
   </form>
   </body>
 </html>
