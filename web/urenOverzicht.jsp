@@ -10,35 +10,37 @@
 <head>
     <script src="/js/jquery-3.2.0.min.js"></script>
     <!-- Latest compiled and minified CSS -->
+    <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/bootstrap.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+    <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
+    <script src="js/GoogleLogout.js"></script>
     <script>
         $(document).ready(function(){
-        $(".spoiler-trigger").click(function()
-        {
-            $(this).parent().next().collapse('toggle');
-        });
+            $(".spoiler-trigger").click(function()
+            {
+                $(this).parent().next().collapse('toggle');
+            });
         });
     </script>
-    <title>AXI</title>
+    <title>UrenOverzicht | AXI</title>
 </head>
 <body>
     <div>
         <ul class="nav nav-tabs nav-justified">
-            <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
+            <li role="presentation"><a href="index.jsp">Home</a></li>
             <li role="presentation"><a href="urenReg.jsp">Uren registratie</a> </li>
             <li role="presentation" class="active"><a href="urenOverzicht.jsp">Overzicht</a></li>
             <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
-            <li role="presentation" class="disabled"><a href="index.jsp"> Uitloggen</a> </li>
+            <li role="presentation"><a onclick="signOut()"> Uitloggen</a></li>
         </ul>
     </div>
-
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading">

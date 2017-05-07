@@ -73,14 +73,7 @@ public class Timestamp {
 
     public boolean InsertTimestamp()
     {
-       if(dbTimestamp.InsertTimestamp(this))
-       {
-           return true;
-       }
-       else
-       {
-           return false;
-       }
+        return dbTimestamp.InsertTimestamp(this);
     }
 
     public static ArrayList<Timestamp> GetAllTimestampsByProject(Project PrProject)

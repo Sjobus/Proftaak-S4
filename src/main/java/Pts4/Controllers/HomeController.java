@@ -20,6 +20,7 @@ public class HomeController extends HttpServlet
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ImagingOpException, ServletException, IOException
     {
+        System.out.println("Loggin in please wait");
         try
         {
             PrintWriter out = response.getWriter();

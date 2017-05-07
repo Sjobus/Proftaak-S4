@@ -11,6 +11,7 @@
 <html>
     <head>
         <!-- JQuery -->
+        <script src="js/bootstrap.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
@@ -22,36 +23,40 @@
         <!-- Latest compiled and minified JavaScript -->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-        <title>AXI</title>
+
+        <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+        <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
+        <script src="js/GoogleLogout.js"></script>
+        <title>UrenRegistratie | AXI</title>
     </head>
     <body>
         <div>
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation"><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a> </li>
+                <li role="presentation"><a href="index.jsp">Home</a></li>
                 <li role="presentation" class="active"><a href="urenReg.jsp">Uren registratie</a> </li>
                 <li role="presentation" ><a href="urenOverzicht.jsp">Overzicht</a></li>
                 <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
-                <li role="presentation"><a href="index.jsp"> Uitloggen</a> </li>
+                <li role="presentation"><a onclick="signOut()"> Uitloggen</a> </li>
             </ul>
         </div>
-                <%
-                    if(null!=request.getAttribute("errorMessage"))
-                    {
-                        %>
-                        <div class="alert alert-danger">
-                        <% out.println(request.getAttribute("errorMessage")); %>
-                        </div>
-                        <%
-                    }
-                    if(null!=request.getAttribute("confirmMessage"))
-                    {
-                        %>
-                        <div class="alert alert-success">
-                        <% out.println(request.getAttribute("confirmMessage")); %>
-                        </div>
-                        <%
-                    }
-                %>
+            <%
+                if(null!=request.getAttribute("errorMessage"))
+                {
+                    %>
+                    <div class="alert alert-danger">
+                    <% out.println(request.getAttribute("errorMessage")); %>
+                    </div>
+                    <%
+                }
+                if(null!=request.getAttribute("confirmMessage"))
+                {
+                    %>
+                    <div class="alert alert-success">
+                    <% out.println(request.getAttribute("confirmMessage")); %>
+                    </div>
+                    <%
+                }
+            %>
         <form class="form-horizontal" action="TimestampController" method="post">
             <div class="form-group">
                 <label class="control-label col-sm-2" for="Project">Project Code:</label>
