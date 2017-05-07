@@ -39,6 +39,7 @@
                 <li role="presentation"><a onclick="signOut()"> Uitloggen</a> </li>
             </ul>
         </div>
+        <div class="container">
             <%
                 if(null!=request.getAttribute("errorMessage"))
                 {
@@ -57,60 +58,61 @@
                     <%
                 }
             %>
-        <form class="form-horizontal" action="TimestampController" method="post">
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Project">Project Code:</label>
-                <div class="col-sm-10">
-                    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                    <%
-                        ArrayList<Project> topList = Project.GetTopProjects();
-                        ArrayList<Project> bottomList = Project.GetBottomProjects();
-                        pageContext.setAttribute("TopProject", topList);
-                        pageContext.setAttribute("BottomProject",bottomList);
-                    %>
-                    <select class="form-control" name="Project" id="Project">
-                        <c:forEach items="${TopProject}" var="topcurrent">
-                            <option value="${topcurrent.GetID()}"><c:out value="${topcurrent.GetID()}"/></option>
-                        </c:forEach>
+            <form class="form-horizontal" action="TimestampController" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="Project">Project Code:</label>
+                    <div class="col-sm-10">
+                        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                        <%
+                            ArrayList<Project> topList = Project.GetTopProjects();
+                            ArrayList<Project> bottomList = Project.GetBottomProjects();
+                            pageContext.setAttribute("TopProject", topList);
+                            pageContext.setAttribute("BottomProject",bottomList);
+                        %>
+                        <select class="form-control" name="Project" id="Project">
+                            <c:forEach items="${TopProject}" var="topcurrent">
+                                <option value="${topcurrent.GetID()}"><c:out value="${topcurrent.GetID()}"/></option>
+                            </c:forEach>
 
-                        <c:forEach items="${BottomProject}" var="bottomCurrent">
-                            <option value="${bottomCurrent.GetID()}"><c:out value="${bottomCurrent.GetID()}"/></option>
-                        </c:forEach>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Uren">Uren:</label>
-                <div class="col-sm-10">
-                    <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="Work_Date">Datum:</label>
-                <div class="col-sm-10">
-                    <div class="input-group date">
-                        <input type="text" class="form-control" id="Work_Date" name="Work_Date">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            <c:forEach items="${BottomProject}" var="bottomCurrent">
+                                <option value="${bottomCurrent.GetID()}"><c:out value="${bottomCurrent.GetID()}"/></option>
+                            </c:forEach>
+                        </select>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    $('.input-group.date').datepicker({
-                        format: "dd/mm/yyyy",
-                        todayBtn: "linked",
-                        language: "nl",
-                        orientation: "auto",
-                        daysOfWeekDisabled: "0,6",
-                        daysOfWeekHighlighted: "0,6",
-                        autoclose: true,
-                        todayHighlight: true
-                    });
-                </script>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Geef uren op.</button>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="Uren">Uren:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus>
+                    </div>
                 </div>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="Work_Date">Datum:</label>
+                    <div class="col-sm-10">
+                        <div class="input-group date">
+                            <input type="text" class="form-control" id="Work_Date" name="Work_Date">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $('.input-group.date').datepicker({
+                            format: "dd/mm/yyyy",
+                            todayBtn: "linked",
+                            language: "nl",
+                            orientation: "auto",
+                            daysOfWeekDisabled: "0,6",
+                            daysOfWeekHighlighted: "0,6",
+                            autoclose: true,
+                            todayHighlight: true
+                        });
+                    </script>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Geef uren op.</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

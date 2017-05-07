@@ -36,29 +36,33 @@ To change this template use File | Settings | File Templates.
                 <li role="presentation" class="active"><a href="index.jsp"> Inloggen</a></li>
             </ul>
         </div>
-        <div class="Fout">
-            <h2>
-                <%
-                    if(null!=request.getAttribute("errorMessage"))
-                    {
-                        out.println(request.getAttribute("errorMessage"));
-                    }
-                %>
-            </h2>
-        </div>
-        <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        <form action="HomeController" method="post" id="loginForm">
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <input type="text" name="tbUserName" class="form-control" placeholder="Name" autofocus/>
-                    <input type="password" name="tbPassword" class="form-control" placeholder="Password"/>
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-default">Login</button>
-                    </span>
-                </div>
+        <div class="container">
+            <div class="Fout">
+                <h2>
+                    <%
+                        if(null!=request.getAttribute("errorMessage"))
+                        {
+                            out.println(request.getAttribute("errorMessage"));
+                        }
+                    %>
+                </h2>
             </div>
-            <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
-        </form>
+            <form action="HomeController" method="post" id="loginForm" class="navbar-form">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="text" name="tbUserName" class="form-control" placeholder="Name" autofocus/>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input type="password" name="tbPassword" class="form-control" placeholder="Password"/>
+                </div>
+                <div class="input-group">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+                <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
+                <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </form>
+        </div>
     </body>
 </html>
