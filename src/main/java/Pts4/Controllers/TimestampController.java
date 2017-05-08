@@ -24,7 +24,7 @@ public class TimestampController extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ImagingOpException, ServletException, IOException
     {
 
-        int Hour = Integer.parseInt(request.getParameter("Uren"));
+        String hourStr = request.getParameter("Uren");
         String dateStr = request.getParameter("Work_Date"); //moet geconvert worden naar date
         String projectID = request.getParameter("Project");
 
@@ -36,10 +36,14 @@ public class TimestampController extends HttpServlet{
 //        String dateStr = "22/12/2017";
         SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
-        try {
+        int Hour = 0;
+        try
+        {
             date = dateformat.parse(dateStr);
+            Hour = Integer.parseInt(hourStr);
         }
-        catch(ParseException e) {
+        catch (ParseException e)
+        {
             e.printStackTrace();
         }
         Timestamp time = new Timestamp(Hour, date , pro, per);

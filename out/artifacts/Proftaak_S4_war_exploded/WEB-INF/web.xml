@@ -5,7 +5,7 @@
          id="WebApp_ID" version="3.0">
     <servlet>
         <servlet-name>HomeController</servlet-name>
-        <servlet-class>main.java.Pts4.Controllers.HomeController</servlet-class>
+        <servlet-class>Pts4.Controllers.HomeController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
@@ -14,7 +14,7 @@
 
     <servlet>
         <servlet-name>TimestampController</servlet-name>
-        <servlet-class>main.java.Pts4.Controllers.TimestampController</servlet-class>
+        <servlet-class>Pts4.Controllers.TimestampController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TimestampController</servlet-name>

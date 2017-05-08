@@ -11,6 +11,7 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
+        <!-- Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <script src="js/bootstrap.js"></script>
@@ -25,6 +26,8 @@ To change this template use File | Settings | File Templates.
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogin.js"></script>
         <script src="js/GoogleLogout.js"></script>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/customStyle.css">
         <title>AXI</title>
     </head>
     <body>
@@ -38,16 +41,16 @@ To change this template use File | Settings | File Templates.
             </ul>
         </div>
         <div class="container">
-            <div class="Fout">
-                <h2>
-                    <%
-                        if(null!=request.getAttribute("errorMessage"))
-                        {
-                            out.println(request.getAttribute("errorMessage"));
-                        }
-                    %>
-                </h2>
-            </div>
+            <%
+                if(null!=request.getAttribute("errorMessage"))
+                {
+                %>
+                    <div class="alert alert-danger">
+                        <% out.println(request.getAttribute("errorMessage")); %>
+                    </div>
+                <%
+                }
+            %>
             <form action="HomeController" method="post" id="loginForm" class="navbar-form">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>

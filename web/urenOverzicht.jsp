@@ -23,6 +23,8 @@
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogout.js"></script>
         <script src="js/Spoiler.js"></script>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/customStyle.css">
         <title>UrenOverzicht | AXI</title>
     </head>
     <body>

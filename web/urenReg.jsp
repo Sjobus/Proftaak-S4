@@ -27,6 +27,8 @@
         <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogout.js"></script>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/customStyle.css">
         <title>UrenRegistratie | AXI</title>
     </head>
     <body>
@@ -97,13 +99,14 @@
                     <script type="text/javascript">
                         $('.input-group.date').datepicker({
                             format: "dd/mm/yyyy",
+                            maxViewMode: 1,
                             todayBtn: "linked",
                             language: "nl",
-                            orientation: "bottom auto",
                             daysOfWeekDisabled: "0,6",
                             daysOfWeekHighlighted: "0,6",
                             autoclose: true,
-                            todayHighlight: true
+                            todayHighlight: true,
+                            orientation: "auto"
                         });
                     </script>
                 </div>
