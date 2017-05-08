@@ -1,4 +1,4 @@
-package main.java.Pts4.Database;
+package Pts4.Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

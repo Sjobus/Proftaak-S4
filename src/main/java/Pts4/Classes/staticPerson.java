@@ -1,7 +1,7 @@
-package main.java.Pts4.Classes;
+package Pts4.Classes;
 
-import main.java.Pts4.Database.dbPerson;
-import main.java.Pts4.Enums.Function;
+import Pts4.Database.dbPerson;
+import Pts4.Enums.Function;
 //import com.sun.java.util.jar.pack.Instruction;
 
 /**

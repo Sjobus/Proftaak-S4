@@ -1,7 +1,7 @@
-package main.java.Pts4.Controllers;
+package Pts4.Controllers;
 
 import com.sun.corba.se.spi.activation.Server;
-import main.java.Pts4.Classes.staticPerson;
+import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

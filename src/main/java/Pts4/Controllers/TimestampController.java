@@ -1,9 +1,9 @@
-package main.java.Pts4.Controllers;
+package Pts4.Controllers;
 
-import main.java.Pts4.Classes.Person;
-import main.java.Pts4.Classes.Project;
-import main.java.Pts4.Classes.Timestamp;
-import main.java.Pts4.Classes.staticPerson;
+import Pts4.Classes.Person;
+import Pts4.Classes.Project;
+import Pts4.Classes.Timestamp;
+import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

@@ -1,14 +1,14 @@
-package main.java.Pts4.Database;
+package Pts4.Database;
 
-import main.java.Pts4.Classes.Project;
-import main.java.Pts4.Classes.staticPerson;
+import Pts4.Classes.Project;
+import Pts4.Classes.staticPerson;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import static main.java.Pts4.Database.DatabaseConnection.connect;
-import static main.java.Pts4.Database.DatabaseConnection.disconnect;
+import static Pts4.Database.DatabaseConnection.connect;
+import static Pts4.Database.DatabaseConnection.disconnect;
 
 /**
  * Created by Gebruiker on 20-3-2017.

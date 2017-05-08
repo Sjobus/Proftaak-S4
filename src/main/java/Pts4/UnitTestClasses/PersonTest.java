@@ -1,7 +1,7 @@
-package main.java.Pts4.UnitTestClasses;
+package Pts4.UnitTestClasses;
 
-import main.java.Pts4.Classes.staticPerson;
-import main.java.Pts4.Enums.Function;
+import Pts4.Classes.staticPerson;
+import Pts4.Enums.Function;
 import org.junit.Assert;
 import org.junit.Test;
 

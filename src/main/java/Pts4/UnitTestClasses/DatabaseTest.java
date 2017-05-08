@@ -1,6 +1,6 @@
-package main.java.Pts4.UnitTestClasses;
+package Pts4.UnitTestClasses;
 
-import main.java.Pts4.Database.DatabaseConnection;
+import Pts4.Database.DatabaseConnection;
 import org.junit.Assert;
 import org.junit.Test;
 

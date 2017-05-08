@@ -1,4 +1,4 @@
-<%@ page import="main.java.Pts4.Classes.Project" %>
+<%@ page import="Pts4.Classes.Project" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Sibe

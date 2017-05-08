@@ -1,6 +1,6 @@
-package main.java.Pts4.Classes;
+package Pts4.Classes;
 
-import main.java.Pts4.Enums.Function;
+import Pts4.Enums.Function;
 
 /**
  * Created by Gebruiker on 20-3-2017.

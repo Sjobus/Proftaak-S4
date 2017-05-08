@@ -1,13 +1,13 @@
-package main.java.Pts4.Database;
+package Pts4.Database;
 
-import main.java.Pts4.Classes.Person;
-import main.java.Pts4.Classes.staticPerson;
-import main.java.Pts4.Enums.Function;
+import Pts4.Classes.Person;
+import Pts4.Classes.staticPerson;
+import Pts4.Enums.Function;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static main.java.Pts4.Database.DatabaseConnection.disconnect;
+import static Pts4.Database.DatabaseConnection.disconnect;
 
 /**
  * Created by Gebruiker on 26-3-2017.

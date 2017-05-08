@@ -1,6 +1,6 @@
-package main.java.Pts4.Classes;
+package Pts4.Classes;
 
-import main.java.Pts4.Database.dbTimestamp;
+import Pts4.Database.dbTimestamp;
 
 import java.util.ArrayList;
 import java.util.Date;
