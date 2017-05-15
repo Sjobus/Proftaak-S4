@@ -9,6 +9,11 @@ Time: 12:46
 To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text.text" />
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -48,17 +53,26 @@ To change this template use File | Settings | File Templates.
                     %>
                 </h2>
             </div>
+            <form>
+                <select id="language" name="language" onchange="submit()">
+                    <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
+                    <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                </select>
+            </form>
             <form action="HomeController" method="post" id="loginForm" class="navbar-form">
                 <div class="input-group">
+                    <label for="tbUserName"><fmt:message key="index.label.username"  />:</label>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" name="tbUserName" class="form-control" placeholder="Name" autofocus/>
+                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" autofocus/>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input type="password" name="tbPassword" class="form-control" placeholder="Password"/>
+                    <fmt:message key="index.input.password" var="passInput" />
+                    <input type="password" name="tbPassword" class="form-control" value="${passInput}"/>
                 </div>
                 <div class="input-group">
-                        <button type="submit" class="btn btn-primary">Login</button>
+                    <fmt:message key="index.button.submit" var="buttonValue" />
+                        <button type="submit" class="btn btn-primary" value="${buttonValue}" />
                 </div>
                 <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
                 <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
