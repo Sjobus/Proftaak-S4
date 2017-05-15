@@ -65,16 +65,20 @@ To change this template use File | Settings | File Templates.
 
             <form action="HomeController" method="post" id="loginForm" class="navbar-form">
                 <div class="input-group">
-                    <label for="tbUserName"></label>
+
                     <%--<label for="tbUserName"><fmt:message key="index.label.username"/>:</label>--%>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" autofocus/>
+
+                    <fmt:message key="index.label.username" var="userInput"/>
+                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" placeholder="${userInput}" autofocus/>
+
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <label for="tbPassword"></label>
-                    <%--<label for="tbPassword"><fmt:message key="index.label.password" var="passInput"/>:</label>--%>
-                    <input type="password" id="tbPassword" name="tbPassword" class="form-control" />
+
+                    <fmt:message key="index.label.password" var="passInput"/>
+                    <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" />
+
                 </div>
                 <div class="input-group">
                     <fmt:message key="index.button.submit" var="buttonValue" />
