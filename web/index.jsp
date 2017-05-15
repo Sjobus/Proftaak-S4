@@ -14,7 +14,7 @@ To change this template use File | Settings | File Templates.
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="text.text" />
-<html>
+<html lang="${language}">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
@@ -68,7 +68,7 @@ To change this template use File | Settings | File Templates.
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                     <fmt:message key="index.input.password" var="passInput" />
-                    <input type="password" name="tbPassword" class="form-control" value="${passInput}"/>
+                    <input type="password" name="tbPassword" class="form-control" />
                 </div>
                 <div class="input-group">
                     <fmt:message key="index.button.submit" var="buttonValue" />
