@@ -22,6 +22,7 @@ To change this template use File | Settings | File Templates.
         <script src="js/bootstrap.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/custom.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -44,18 +45,18 @@ To change this template use File | Settings | File Templates.
             </ul>
         </div>
         <div class="container">
-            <div class="Fout">
-                <h2>
-                    <%
-                        if(null!=request.getAttribute("errorMessage"))
-                        {
-                            out.println(request.getAttribute("errorMessage"));
-                        }
+            <%
+                if(null!=request.getAttribute("errorMessage"))
+                {
                     %>
-                </h2>
-            </div>
-
-
+                    <div class="alert alert-danger">
+                        <%
+                        out.println(request.getAttribute("errorMessage"));
+                        %>
+                    </div>
+                    <%
+                }
+            %>
             <form>
                 <select id="language" name="language" onchange="submit()">
                     <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>

@@ -92,8 +92,30 @@ public class Timestamp {
         }
     }
 
+    public static ArrayList<Timestamp> GetTimestampsByProject(Person person)
+    {
+        ArrayList<Timestamp> TimeStampList = new ArrayList<>();
+        TimeStampList = dbTimestamp.GetTimeStampForPerson(person);
+        if(TimeStampList != null)
+        {
+            return TimeStampList;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
-
-
+    @Override
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(date);
+        sb.append(" Project: ");
+        sb.append(project);
+        sb.append(" Hours: ");
+        sb.append(Hour);
+        return sb.toString();
+    }
 
 }
