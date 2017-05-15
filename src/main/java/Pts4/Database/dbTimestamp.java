@@ -54,11 +54,11 @@ public class dbTimestamp {
       //  int personid2 = person.GetID();
 
         try {
-            String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID , pr.DESCRIPTION from tbhours t\n" +
-                    "join tbperson p on t.PersonID = p.ID\n" +
-                    "join tbproject pr on pr.ID = t.PROJECTID\n" +
-                    "where p.ID = ? AND dateworked > sysdate - 35;";
-
+            String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID, pr.DESCRIPTION " +
+                    "from tbhours t " +
+                    "join tbperson p on t.PersonID = p.ID " +
+                    "join tbproject pr on pr.ID = t.PROJECTID " +
+                    "where p.ID = ? AND t.DATEWORKED > sysdate - 35";
 
             PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setString(1, personID);

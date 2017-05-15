@@ -76,6 +76,8 @@ public class Timestamp {
         return dbTimestamp.InsertTimestamp(this);
     }
 
+
+
     public static ArrayList<Timestamp> GetAllTimestampsByProject(Project PrProject)
     {
         ArrayList<Timestamp> TimeStampList = new ArrayList<>();
