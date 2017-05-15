@@ -13,7 +13,8 @@ To change this template use File | Settings | File Templates.
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
-<fmt:setBundle basename="com.tale.i18n" />
+<fmt:setBundle basename="text" />
+<!DOCTYPE html>
 <html lang="${language}">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -61,25 +62,32 @@ To change this template use File | Settings | File Templates.
                     <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                 </select>
             </form>
+
             <form action="HomeController" method="post" id="loginForm" class="navbar-form">
                 <div class="input-group">
-                    <label for="tbUserName"><fmt:message key="index.label.username"/>:</label>
+                    <label for="tbUserName"></label>
+                    <%--<label for="tbUserName"><fmt:message key="index.label.username"/>:</label>--%>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <input type="text" id="tbUserName" name="tbUserName" class="form-control" autofocus/>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <label for="tbPassword"><fmt:message key="index.label.password" var="passInput"/>:</label>
+                    <label for="tbPassword"></label>
+                    <%--<label for="tbPassword"><fmt:message key="index.label.password" var="passInput"/>:</label>--%>
                     <input type="password" id="tbPassword" name="tbPassword" class="form-control" />
                 </div>
                 <div class="input-group">
                     <fmt:message key="index.button.submit" var="buttonValue" />
-                    <button type="submit" class="btn btn-primary" value="${buttonValue}" />
+
+                    <input type="submit" class="btn btn-primary" value="${buttonValue}">
+                    <%--<button type="submit" class="btn btn-primary" value="${buttonValue}" />--%>
                 </div>
+
                 <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
                 <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </form>
+
         </div>
     </body>
 </html>
