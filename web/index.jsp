@@ -50,9 +50,7 @@ To change this template use File | Settings | File Templates.
                 {
                     %>
                     <div class="alert alert-danger">
-                        <%
-                        out.println(request.getAttribute("errorMessage"));
-                        %>
+                    <% out.println(request.getAttribute("errorMessage")); %>
                     </div>
                     <%
                 }
