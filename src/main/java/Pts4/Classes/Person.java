@@ -1,5 +1,6 @@
 package Pts4.Classes;
 
+import Pts4.Database.DatabaseConnection;
 import Pts4.Enums.Function;
 
 /**
@@ -32,14 +33,7 @@ public class Person {
         this.Name = name;
     }
 
-    public void Getfields(String Name)
-    {
-//        DatabaseConnection db;
-//        Person P = db.getPerson();
-//
-//        this.ID = P.GetID() ;
-//        this.function = P.GetFunction();
-    }
+
 
 
 

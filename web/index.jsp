@@ -53,6 +53,8 @@ To change this template use File | Settings | File Templates.
                     %>
                 </h2>
             </div>
+
+
             <form>
                 <select id="language" name="language" onchange="submit()">
                     <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
