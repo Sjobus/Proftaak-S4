@@ -89,6 +89,19 @@ public class Timestamp {
             return null;
         }
     }
+    public static ArrayList<Timestamp> GetTimestampsByProject(Person person)
+    {
+        ArrayList<Timestamp> TimeStampList = new ArrayList<>();
+               TimeStampList = dbTimestamp.GetTimeStampForPerson(person);
+        if(TimeStampList != null)
+        {
+            return TimeStampList;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
 
 

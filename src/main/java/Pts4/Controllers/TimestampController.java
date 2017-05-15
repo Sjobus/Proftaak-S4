@@ -27,7 +27,9 @@ public class TimestampController extends HttpServlet{
         String hourStr = request.getParameter("Uren");
         String dateStr = request.getParameter("Work_Date"); //moet geconvert worden naar date
         String projectID = request.getParameter("Project");
-
+        System.out.println("========================================");
+        System.out.println("Uren: " + hourStr + " Datum: " + dateStr + " Project: " + projectID);
+        System.out.println("========================================");
         Project pro = new Project(projectID);
         pro.Getproject();
 
@@ -36,7 +38,7 @@ public class TimestampController extends HttpServlet{
 //        String dateStr = "22/12/2017";
         SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
-        int Hour = 0;
+        int Hour = 1;
         try
         {
             date = dateformat.parse(dateStr);
@@ -44,7 +46,12 @@ public class TimestampController extends HttpServlet{
         }
         catch (ParseException e)
         {
+            System.out.println("Er is een Parse fout op getreden. Error:" + e.getMessage());
             e.printStackTrace();
+        }
+        catch (NumberFormatException e)
+        {
+            System.out.println("Er is een Format fout op getreden. Error:" + e.getMessage());
         }
         Timestamp time = new Timestamp(Hour, date , pro, per);
         try
