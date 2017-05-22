@@ -12,6 +12,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Pts4.Classes.Person" %>
 
+<%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="text" />
@@ -44,10 +46,10 @@
             <fmt:message key="navBar.label.logout" var="logout"/>
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
-                <li role="presentation"><a href="urenReg.jsp">${regis}</a> </li>
-                <li role="presentation" class="active"><a href="urenOverzicht.jsp">${view}</a></li>
+                <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
+                <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
                 <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
-                <li role="presentation"><a onclick="signOut()"> ${logout}</a></li>
+                <li role="presentation" class="active"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
         <div class="container">

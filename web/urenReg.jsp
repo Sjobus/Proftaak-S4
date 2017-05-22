@@ -46,10 +46,10 @@
 
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
-                <li role="presentation" class="disabled"><a href="#">${regis}</a></li>
-                <li role="presentation" class="disabled"><a href="#">${view}</a></li>
+                <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
+                <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
                 <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
-                <li role="presentation" class="active"><a href="index.jsp">${logout}</a></li>
+                <li role="presentation" class="active"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
         <div class="container">
