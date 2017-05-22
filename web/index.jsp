@@ -36,12 +36,18 @@ To change this template use File | Settings | File Templates.
     </head>
     <body>
         <div>
+            <fmt:message key="index.label.home" var="home"/>
+            <fmt:message key="index.label.registration" var="regis"/>
+            <fmt:message key="index.label.view" var="view"/>
+            <fmt:message key="index.label.projecthours" var="hours"/>
+            <fmt:message key="index.label.login" var="login"/>
+
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation"><a href="index.jsp">Home</a></li>
-                <li role="presentation" class="disabled"><a href="#">Uren registratie</a></li>
-                <li role="presentation" class="disabled"><a href="#">Overzicht</a></li>
-                <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
-                <li role="presentation" class="active"><a href="index.jsp"> Inloggen</a></li>
+                <li role="presentation"><a href="index.jsp">${home}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${regis}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${view}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
+                <li role="presentation" class="active"><a href="index.jsp">${login}</a></li>
             </ul>
         </div>
         <div class="container">
