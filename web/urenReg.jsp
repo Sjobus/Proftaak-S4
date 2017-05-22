@@ -8,7 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+<%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />--%>
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text" />
+
+<html lang="${language}">
     <head>
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -32,12 +38,18 @@
     </head>
     <body>
         <div>
+            <fmt:message key="index.label.home" var="home"/>
+            <fmt:message key="index.label.registration" var="regis"/>
+            <fmt:message key="index.label.view" var="view"/>
+            <fmt:message key="index.label.projecthours" var="hours"/>
+            <fmt:message key="index.label.login" var="login"/>
+
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation"><a href="index.jsp">Home</a></li>
-                <li role="presentation" class="active"><a href="urenReg.jsp">Uren registratie</a> </li>
-                <li role="presentation" ><a href="urenOverzicht.jsp">Overzicht</a></li>
-                <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
-                <li role="presentation"><a onclick="signOut()"> Uitloggen</a> </li>
+                <li role="presentation"><a href="index.jsp">${home}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${regis}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${view}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
+                <li role="presentation" class="active"><a href="index.jsp">${login}</a></li>
             </ul>
         </div>
         <div class="container">
@@ -61,7 +73,8 @@
             %>
             <form class="form-horizontal" action="TimestampController" method="post">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Project">Project Code:</label>
+                    <fmt:message key="index.label.code" var="code"/>
+                    <label class="control-label col-sm-2" for="Project">${code}</label>
                     <div class="col-sm-10">
                         <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                         <%
@@ -82,13 +95,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Uren">Uren:</label>
+                    <fmt:message key="index.label.hours" var="hours"/>
+                    <label class="control-label col-sm-2" for="Uren">${hours}</label>
                     <div class="col-sm-10">
                         <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Work_Date">Datum:</label>
+                    <fmt:message key="index.label.submit" var="date"/>
+                    <label class="control-label col-sm-2" for="Work_Date">${date}</label>
                     <div class="col-sm-10">
                         <div class="input-group date">
                             <input type="text" class="form-control" id="Work_Date" name="Work_Date">
@@ -111,7 +126,8 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Geef uren op.</button>
+                        <fmt:message key="index.label.submit" var="submit"/>
+                        <button type="submit" class="btn btn-default">${submit}</button>
                     </div>
                 </div>
             </form>
