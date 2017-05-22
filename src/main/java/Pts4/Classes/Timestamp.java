@@ -3,6 +3,7 @@ package Pts4.Classes;
 import Pts4.Database.dbTimestamp;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -104,6 +105,12 @@ public class Timestamp {
         {
             return null;
         }
+    }
+    public static int getWeekNumber(Date date)
+    {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.WEEK_OF_YEAR);
     }
 
     @Override
