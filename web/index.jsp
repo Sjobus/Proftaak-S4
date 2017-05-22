@@ -55,7 +55,9 @@ To change this template use File | Settings | File Templates.
             <%--<LANGUAGE IS NL/EN>--%>
             <c:if test="${not empty errorMessage}" >
                 <div class="alert alert-danger">
-                    <c:out value="${errorMessage}" />
+                   <%--//hier message--%>
+                       <fmt:message key="index.label.error" var="error"/>
+                       <label>${error}</label>
                 </div>
             </c:if>
 
