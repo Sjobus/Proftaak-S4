@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <fmt:message key="urenReg.label.submit" var="date"/>
+                    <fmt:message key="urenReg.label.date" var="date"/>
                     <label class="control-label col-sm-2" for="Work_Date">${date}</label>
                     <div class="col-sm-10">
                         <div class="input-group date">
