@@ -51,16 +51,14 @@ To change this template use File | Settings | File Templates.
             </ul>
         </div>
         <div class="container">
-            <%
-                if(null!=request.getAttribute("errorMessage"))
-                {
-                    %>
-                    <div class="alert alert-danger">
-                    <% out.println(request.getAttribute("errorMessage")); %>
-                    </div>
-                    <%
-                }
-            %>
+
+            <%--<LANGUAGE IS NL/EN>--%>
+            <c:if test="${not empty errorMessage}" >
+                <div class="alert alert-danger">
+                    <c:out value="${errorMessage}" />
+                </div>
+            </c:if>
+
             <form>
                 <select id="language" name="language" onchange="submit()">
                     <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>

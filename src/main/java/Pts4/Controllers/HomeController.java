@@ -41,8 +41,7 @@ public class HomeController extends HttpServlet
             }
             else
             {
-                  request.setAttribute("errorMessageEN", "Invalid user or password");
-                  request.setAttribute( "errorMessageNL", "Ongeldige gebruikersnaam of wachtwoord");
+                  request.setAttribute("errorMessage", "Invalid user or password");
                   RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                   rd.forward(request, response);
 //                RequestDispatcher view = request.getRequestDispatcher("index.jsp");
