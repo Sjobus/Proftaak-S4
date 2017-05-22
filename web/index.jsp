@@ -32,10 +32,6 @@ To change this template use File | Settings | File Templates.
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogin.js"></script>
         <script src="js/GoogleLogout.js"></script>
-
-        <script src="js/msdropdown/jquery-1.3.2.min.js" type="text/javascript"></script>
-        <script src="js/msdropdown/jquery.dd.min.js" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="css/msdropdown/dd.css" />
         <title>AXI</title>
     </head>
     <body>
@@ -69,8 +65,8 @@ To change this template use File | Settings | File Templates.
                 <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
                 <label for="language" id="languageKeuze">${taalKeuze}</label><br>
                 <select id="language" name="language" onchange="submit()">
-                    <option value="nl" data-image="resources/icons/nl-Flag.png" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
-                    <option value="en" data-image="resources/icons/en-Flag.png" ${language == 'en' ? 'selected' : ''}>English</option>
+                    <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
+                    <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                 </select>
             </form>
 
@@ -104,15 +100,5 @@ To change this template use File | Settings | File Templates.
             </form>
 
         </div>
-
-        <script language="javascript">
-            $(document).ready(function(e) {
-                try {
-                    $("body select").msDropDown();
-                } catch(e) {
-                    alert(e.message);
-                }
-            });
-        </script>
     </body>
 </html>
