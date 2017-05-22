@@ -55,16 +55,16 @@ To change this template use File | Settings | File Templates.
             </ul>
         </div>
         <div class="container">
-            <%
-                if(null!=request.getAttribute("errorMessage"))
-                {
-                    %>
-                    <div class="alert alert-danger">
-                    <% out.println(request.getAttribute("errorMessage")); %>
-                    </div>
-                    <%
-                }
-            %>
+
+            <%--<LANGUAGE IS NL/EN>--%>
+            <c:if test="${not empty errorMessage}" >
+                <div class="alert alert-danger">
+                   <%--//hier message--%>
+                       <fmt:message key="index.label.error" var="error"/>
+                       <label>${error}</label>
+                </div>
+            </c:if>
+
             <form>
                 <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
                 <label for="language" id="languageKeuze">${taalKeuze}</label><br>
