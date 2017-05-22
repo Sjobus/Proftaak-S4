@@ -12,7 +12,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Pts4.Classes.Person" %>
 
+<%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text" />
 <html>
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -35,12 +39,17 @@
     </head>
     <body>
         <div>
+            <fmt:message key="navBar.label.home" var="home"/>
+            <fmt:message key="navBar.label.registration" var="regis"/>
+            <fmt:message key="navBar.label.view" var="view"/>
+            <fmt:message key="navBar.label.projecthours" var="hours"/>
+            <fmt:message key="navBar.label.logout" var="logout"/>
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation"><a href="index.jsp">Home</a></li>
-                <li role="presentation"><a href="urenReg.jsp">Uren registratie</a> </li>
-                <li role="presentation" class="active"><a href="urenOverzicht.jsp">Overzicht</a></li>
-                <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
-                <li role="presentation"><a onclick="signOut()"> Uitloggen</a></li>
+                <li role="presentation"><a href="index.jsp">${home}</a></li>
+                <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
+                <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
+                <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
+                <li role="presentation" class="active"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
         <div class="container">

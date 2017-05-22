@@ -36,11 +36,11 @@ To change this template use File | Settings | File Templates.
     </head>
     <body>
         <div>
-            <fmt:message key="index.label.home" var="home"/>
-            <fmt:message key="index.label.registration" var="regis"/>
-            <fmt:message key="index.label.view" var="view"/>
-            <fmt:message key="index.label.projecthours" var="hours"/>
-            <fmt:message key="index.label.login" var="login"/>
+            <fmt:message key="navBar.label.home" var="home"/>
+            <fmt:message key="navBar.label.registration" var="regis"/>
+            <fmt:message key="navBar.label.view" var="view"/>
+            <fmt:message key="navBar.label.projecthours" var="hours"/>
+            <fmt:message key="navBar.label.login" var="login"/>
 
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
@@ -60,6 +60,8 @@ To change this template use File | Settings | File Templates.
             </c:if>
 
             <form>
+                <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
+                <label for="language" id="languageKeuze">${taalKeuze}</label><br>
                 <select id="language" name="language" onchange="submit()">
                     <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
                     <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
