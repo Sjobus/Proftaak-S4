@@ -1,6 +1,5 @@
 package Pts4.Controllers;
 
-import com.sun.corba.se.spi.activation.Server;
 import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
@@ -42,7 +41,8 @@ public class HomeController extends HttpServlet
             }
             else
             {
-                  request.setAttribute("errorMessage", "Invalid user or password");
+                  request.setAttribute("errorMessageEN", "Invalid user or password");
+                  request.setAttribute( "errorMessageNL", "Ongeldige gebruikersnaam of wachtwoord");
                   RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
                   rd.forward(request, response);
 //                RequestDispatcher view = request.getRequestDispatcher("index.jsp");
