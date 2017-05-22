@@ -38,18 +38,18 @@
     </head>
     <body>
         <div>
-            <fmt:message key="index.label.home" var="home"/>
-            <fmt:message key="index.label.registration" var="regis"/>
-            <fmt:message key="index.label.view" var="view"/>
-            <fmt:message key="index.label.projecthours" var="hours"/>
-            <fmt:message key="index.label.login" var="login"/>
+            <fmt:message key="navBar.label.home" var="home"/>
+            <fmt:message key="navBar.label.registration" var="regis"/>
+            <fmt:message key="navBar.label.view" var="view"/>
+            <fmt:message key="navBar.label.projecthours" var="hours"/>
+            <fmt:message key="navBar.label.logout" var="logout"/>
 
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
                 <li role="presentation" class="disabled"><a href="#">${regis}</a></li>
                 <li role="presentation" class="disabled"><a href="#">${view}</a></li>
                 <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
-                <li role="presentation" class="active"><a href="index.jsp">${login}</a></li>
+                <li role="presentation" class="active"><a href="index.jsp">${logout}</a></li>
             </ul>
         </div>
         <div class="container">
@@ -73,7 +73,7 @@
             %>
             <form class="form-horizontal" action="TimestampController" method="post">
                 <div class="form-group">
-                    <fmt:message key="index.label.code" var="code"/>
+                    <fmt:message key="urenReg.label.code" var="code"/>
                     <label class="control-label col-sm-2" for="Project">${code}</label>
                     <div class="col-sm-10">
                         <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -95,14 +95,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <fmt:message key="index.label.hours" var="hours"/>
+                    <fmt:message key="urenReg.label.hours" var="hours"/>
                     <label class="control-label col-sm-2" for="Uren">${hours}</label>
                     <div class="col-sm-10">
                         <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
-                    <fmt:message key="index.label.submit" var="date"/>
+                    <fmt:message key="urenReg.label.submit" var="date"/>
                     <label class="control-label col-sm-2" for="Work_Date">${date}</label>
                     <div class="col-sm-10">
                         <div class="input-group date">
@@ -126,7 +126,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <fmt:message key="index.label.submit" var="submit"/>
+                        <fmt:message key="urenReg.label.submit" var="submit"/>
                         <button type="submit" class="btn btn-default">${submit}</button>
                     </div>
                 </div>
