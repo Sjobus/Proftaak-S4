@@ -57,15 +57,15 @@
             <c:if test="${not empty errorMessage}" >
                 <div class="alert alert-danger">
                         <%--//hier message--%>
-                    <fmt:message key="index.label.error" var="error"/>
+                    <fmt:message key="errors.label.errorUR" var="error"/>
                     <label>${error}</label>
                 </div>
             </c:if>
             <c:if test="${not empty confrimMessage}" >
                 <div class="alert alert-success">
                         <%--//hier message--%>
-                    <fmt:message key="index.label.error" var="error"/>
-                    <label>${error}</label>
+                    <fmt:message key="errors.label.succesUR" var="succes"/>
+                    <label>${succes}</label>
                 </div>
             </c:if>
 
