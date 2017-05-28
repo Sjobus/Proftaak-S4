@@ -4,8 +4,6 @@ import Pts4.Database.dbTimestamp;
 
 import java.util.*;
 
-import static Pts4.Classes.WeekComparator.getWeekOfYear;
-
 /**
  * Created by Gebruiker on 20-3-2017.
  */
@@ -77,12 +75,15 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
         return dbTimestamp.InsertTimestamp(this);
     }
 
-
+    public static HashMap<String, Integer> GetProjectsHours()
+    {
+        return dbTimestamp.GetTotalHoursProjects();
+    }
 
     public static ArrayList<Timestamp> GetAllTimestampsByProject(Project PrProject)
     {
         ArrayList<Timestamp> TimeStampList;
-               TimeStampList = dbTimestamp.GetTimeStampForManager(PrProject);
+        TimeStampList = dbTimestamp.GetTimeStampForManager(PrProject);
         if(TimeStampList != null)
         {
             return TimeStampList;
@@ -92,6 +93,11 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
             return null;
         }
     }
+/*
+    public static int GetTotalHoursFromProject(Project PrProject)
+    {
+        return dbTimestamp.GetTotalHoursProject(PrProject);
+    }*/
 
     public static ArrayList<Timestamp> GetTimestampsByPerson(Person person)
     {
@@ -119,7 +125,7 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
             return null;
         Collections.sort(timestamps, new WeekComparator());
         for (Timestamp timestamp : timestamps) {
-            if (woy != getWeekOfYear(timestamp)) {
+            if (woy != getWeekOfYear(timestamp) || !CheckSameYear(timestamp.GetDate(), newWeek.getDay())) {
                 woy = getWeekOfYear(timestamp);
                 week++;
                 newWeek = new WeekBean(woy);
@@ -165,22 +171,30 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
             return 0;
         return o1.GetDate().compareTo(o2.GetDate());
     }
-}
 
-class WeekComparator implements Comparator<Timestamp> {
-
-    @Override
-    public int compare(Timestamp o1, Timestamp o2) {
-        int result = getWeekOfYear(o1) - getWeekOfYear(o2);
-        if (result == 0) {
-            result = o1.compareTo(o2);
-        }
-        return result;
-    }
-    protected static int getWeekOfYear(Timestamp timestamp) {
+    static int getWeekOfYear(Timestamp timestamp) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(timestamp.GetDate());
         return cal.get(Calendar.WEEK_OF_YEAR);
     }
 
+    static boolean CheckSameYear(Date d1, Date d2)
+    {
+        Calendar cal1 = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        cal1.setTime(d1);
+        cal2.setTime(d2);
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR);
+    }
+}
+
+class WeekComparator implements Comparator<Timestamp> {
+
+    @Override
+    public int compare(Timestamp o1, Timestamp o2)
+    {
+        if (o1.GetDate() == null || o2.GetDate() == null)
+            return 0;
+        return o1.GetDate().compareTo(o2.GetDate());
+    }
 }

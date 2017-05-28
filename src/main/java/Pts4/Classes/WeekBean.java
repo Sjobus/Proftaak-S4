@@ -25,7 +25,7 @@ public class WeekBean
     {
         return this.week;
     }
-
+    public Date getDay(){return this.day;}
     public ArrayList<Timestamp> getTimestamps()
     {
         return this.timestamps;

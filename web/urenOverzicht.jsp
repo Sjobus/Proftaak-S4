@@ -60,9 +60,9 @@
                 pageContext.setAttribute("weekList",WeekListPerson);
             %>
             <c:if test="${empty weekList}">
-                <div class="alert alert-danger">
-                    <fmt:message key="errors.label.errorUI" var="error"/>
-                    <label>${error}</label>
+                <div class="alert alert-info">
+                    <fmt:message key="info.label.nohours" var="info"/>
+                    <label>${info}</label>
                 </div>
             </c:if>
             <div class="panel panel-default">
@@ -81,7 +81,7 @@
                             <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
                              ${tm}
                             <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
-                            ${total} <c:out value="${weekEntry.getHours()}"/>
+                            ${totaal} <c:out value="${weekEntry.getHours()}"/>
                         </button>
                     </div>
                     <div class="panel-collapse collapse out">

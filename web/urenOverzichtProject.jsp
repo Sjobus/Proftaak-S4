@@ -12,6 +12,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Pts4.Classes.Person" %>
 <%@ page import="Pts4.Classes.WeekBean" %>
+<%@ page import="java.util.HashMap" %>
 
 <%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -55,36 +56,26 @@
         </div>
         <div class="container">
             <%
-                Person person = new Person(staticPerson.GetID(), staticPerson.GetName(), staticPerson.GetFunction());
-                ArrayList<WeekBean> WeekListPerson = Timestamp.getWeekBeansByPerson(person);
-                pageContext.setAttribute("weekList",WeekListPerson);
+                HashMap<String, Integer> ProjectsHours = Timestamp.GetProjectsHours();
+                pageContext.setAttribute("projectsHours",ProjectsHours);
             %>
-            <c:if test="${empty weekList}">
-                <div class="alert alert-danger">
-                    <fmt:message key="errors.label.errorUI" var="error"/>
-                    <label>${error}</label>
+            <c:if test="${empty projectsHours}">
+                <div class="alert alert-info">
+                    <fmt:message key="info.label.noprojects" var="info"/>
+                    <label>${info}</label>
                 </div>
             </c:if>
             <div class="panel panel-default">
-
-                <fmt:message key="urenOverzicht.label.week" var="week"/>
-                <fmt:message key="urenOverzicht.label.date" var="date"/>
                 <fmt:message key="urenOverzicht.label.project" var="project"/>
-                <fmt:message key="urenOverzicht.label.tm" var="tm"/>
-                <fmt:message key="urenOverzicht.label.totaal" var="total"/>
-                <fmt:message key="urenOverzicht.label.uren" var="hours"/>
-
                 <!-- Projects -->
-                <c:forEach items="${weekList}" var="weekEntry">
+                <c:forEach items="${projectsHours}" var="weekEntry">
                     <div class="panel-heading">
-                        <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">
-                            ${week} <c:out value="${weekEntry.getWeek()}"/>
-                            <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
-                             ${tm}
-                            <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
-                            ${total} <c:out value="${weekEntry.getHours()}"/>
+                        <button type="button" class="btn btn-default btn-xs" data-toggle="collapse">
+                            ${project} <c:out value="${weekEntry.key}"/>
+                            ${totaal} <c:out value="${weekEntry.value}"/>
                         </button>
                     </div>
+                    <%-- removed spoiler-trigger from the button
                     <div class="panel-collapse collapse out">
                         <div class="panel-body">
                             <ul class="list-group">
@@ -98,7 +89,7 @@
                                 </c:forEach>
                             </ul>
                         </div>
-                    </div>
+                    </div> --%>
                 </c:forEach>
             </div>
         </div>

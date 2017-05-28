@@ -4,10 +4,12 @@ import Pts4.Classes.Person;
 import Pts4.Classes.Project;
 import Pts4.Classes.Timestamp;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 import static Pts4.Database.DatabaseConnection.connect;
 import static Pts4.Database.DatabaseConnection.disconnect;
@@ -124,4 +126,31 @@ public class dbTimestamp {
     }
 
 
+    public static HashMap<String, Integer> GetTotalHoursProjects()
+    {
+        HashMap<String, Integer> projectHourMap = new HashMap<>();
+
+        String sql = "SELECT H.PROJECTID, sum(H.HOURS) AS Hours FROM TBHOURS H GROUP BY H.PROJECTID";
+        try
+        {
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next())
+            {
+                String project = resultSet.getString("ProjectID");
+                int hours = resultSet.getInt("Hours");
+                projectHourMap.put(project, hours);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        finally
+        {
+            disconnect();
+        }
+        return  projectHourMap;
+    }
 }
