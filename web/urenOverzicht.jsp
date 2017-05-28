@@ -11,6 +11,7 @@
 <%@ page import="Pts4.Classes.staticPerson" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Pts4.Classes.Person" %>
+<%@ page import="Pts4.Classes.WeekBean" %>
 
 <%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -55,33 +56,39 @@
         <div class="container">
             <%
                 Person person = new Person(staticPerson.GetID(), staticPerson.GetName(), staticPerson.GetFunction());
-                ArrayList<Timestamp> TimeListPerson = Timestamp.GetTimestampsByProject(person);
-                pageContext.setAttribute("timeList",TimeListPerson);
+                ArrayList<WeekBean> WeekListPerson = Timestamp.getWeekBeansByPerson(person);
+                pageContext.setAttribute("weekList",WeekListPerson);
             %>
+            <c:if test="${empty weekList}">
+                <div class="alert alert-danger">
+                Foutmelding lijst is leeg
+                </div>
+            </c:if>
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">
-                        Week 13  22-03 t/m 29-03 Totaal aantal uren: 24
-                    </button>
-                </div>
-                <div class="panel-collapse collapse out">
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <c:forEach items="${timeList}" var="timeEntry">
-                                <a href="#" class="list-group-item">
-                                    Date: <c:out value="${timeEntry.GetDate()}"/>
-                                    Project: <c:out value="${timeEntry.Getproject().GetID()}"/>
-                                    Uren: <c:out value="${timeEntry.GetHour()}"/>
-                                </a>
-                            </c:forEach>
-                            <a href="#" class="list-group-item">22-03-2017  Project: PTS41  Uren: 5</a>
-                            <a href="#" class="list-group-item">22-03-2017  Project: PTS32  Uren: 3</a>
-                            <a href="#" class="list-group-item">23-03-2017  Project: S42T   Uren: 8</a>
-                            <a href="#" class="list-group-item">24-03-2017  Project: S42T   Uren: 5</a>
-                            <a href="#" class="list-group-item">25-03-2017  Project: S42T   Uren: 3</a>
-                        </ul>
+                <c:forEach items="${weekList}" var="weekEntry">
+                    <div class="panel-heading">
+                        <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">
+                            Week: <c:out value="${weekEntry.getWeek()}"/>
+                            <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
+                             t/m
+                            <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
+                            Totaal aantal uren: <c:out value="${weekEntry.getHours()}"/>
+                        </button>
                     </div>
-                </div>
+                    <div class="panel-collapse collapse out">
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <c:forEach items="${weekEntry.getTimestamps()}" var="timeEntry">
+                                    <a href="#" class="list-group-item">
+                                        Date: <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
+                                        Project: <c:out value="${timeEntry.Getproject().GetID()}"/>
+                                        Uren: <c:out value="${timeEntry.GetHour()}"/>
+                                    </a>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </body>
