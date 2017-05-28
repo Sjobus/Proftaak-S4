@@ -65,7 +65,7 @@ To change this template use File | Settings | File Templates.
             </c:if>
 
             <form class="navbar-form">
-                <div class="input-group">
+                <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
                     <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
                     <label for="language" id="languageKeuze">${taalKeuze}</label>
                     <%-- <span class="input-group-addon"><i class="flag-icon flag-icon-${language == '' ? 'gb' : language == 'en' ? 'gb' : 'nl'}"></i></span> --%>
@@ -76,8 +76,8 @@ To change this template use File | Settings | File Templates.
                 </div>
             </form>
 
-            <form action="HomeController" method="post" id="loginForm" class="navbar-form">
-                <div class="input-group">
+            <form action="HomeController" method="post" id="loginForm" class="form-horizontal">
+                    <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
 
                     <%--<label for="tbUserName"><fmt:message key="index.label.username"/>:</label>--%>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -85,25 +85,35 @@ To change this template use File | Settings | File Templates.
                     <fmt:message key="index.label.username" var="userInput"/>
                     <input type="text" id="tbUserName" name="tbUserName" class="form-control" placeholder="${userInput}" autofocus/>
 
+                <br />
+
+                    </div>
+                        <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+                        <fmt:message key="index.label.password" var="passInput"/>
+                        <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" />
+                    </div>
+
+                <br />
+
+
+                <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+                <fmt:message key="index.button.submit" var="buttonValue" />
+
+                <input type="submit" class="btn btn-primary" value="${buttonValue}">
+                <%--<button type="submit" class="btn btn-primary" value="${buttonValue}" />--%>
+            </div>
+
+
+                <br />
+                <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+                    <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
+                    <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-
-                    <fmt:message key="index.label.password" var="passInput"/>
-                    <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" />
-
-                </div>
-                <div class="input-group">
-                    <fmt:message key="index.button.submit" var="buttonValue" />
-
-                    <input type="submit" class="btn btn-primary" value="${buttonValue}">
-                    <%--<button type="submit" class="btn btn-primary" value="${buttonValue}" />--%>
-                </div>
 
 
-                <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
-                <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
             </form>
 
         </div>
