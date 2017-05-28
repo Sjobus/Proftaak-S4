@@ -61,7 +61,7 @@
                     <label>${error}</label>
                 </div>
             </c:if>
-            <c:if test="${not empty confrimMessage}" >
+            <c:if test="${not empty confirmMessage}" >
                 <div class="alert alert-success">
                         <%--//hier message--%>
                     <fmt:message key="errors.label.succesUR" var="succes"/>
