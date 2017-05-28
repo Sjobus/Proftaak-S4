@@ -61,18 +61,27 @@
             %>
             <c:if test="${empty weekList}">
                 <div class="alert alert-danger">
-                Foutmelding lijst is leeg
+                    <fmt:message key="errors.label.errorUI" var="error"/>
+                    <label>${error}</label>
                 </div>
             </c:if>
             <div class="panel panel-default">
+
+                <fmt:message key="urenOverzicht.label.week" var="week"/>
+                <fmt:message key="urenOverzicht.label.date" var="date"/>
+                <fmt:message key="urenOverzicht.label.project" var="project"/>
+                <fmt:message key="urenOverzicht.label.tm" var="tm"/>
+                <fmt:message key="urenOverzicht.label.totaal" var="total"/>
+                <fmt:message key="urenOverzicht.label.uren" var="hours"/>
+
                 <c:forEach items="${weekList}" var="weekEntry">
                     <div class="panel-heading">
                         <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">
-                            Week: <c:out value="${weekEntry.getWeek()}"/>
+                            ${week} <c:out value="${weekEntry.getWeek()}"/>
                             <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
-                             t/m
+                             ${tm}
                             <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
-                            Totaal aantal uren: <c:out value="${weekEntry.getHours()}"/>
+                            ${total} <c:out value="${weekEntry.getHours()}"/>
                         </button>
                     </div>
                     <div class="panel-collapse collapse out">
@@ -80,9 +89,9 @@
                             <ul class="list-group">
                                 <c:forEach items="${weekEntry.getTimestamps()}" var="timeEntry">
                                     <a href="#" class="list-group-item">
-                                        Date: <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
-                                        Project: <c:out value="${timeEntry.Getproject().GetID()}"/>
-                                        Uren: <c:out value="${timeEntry.GetHour()}"/>
+                                        ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
+                                        ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
+                                        ${hours} <c:out value="${timeEntry.GetHour()}"/>
                                     </a>
                                 </c:forEach>
                             </ul>
