@@ -36,7 +36,7 @@
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogout.js"></script>
         <script src="js/Spoiler.js"></script>
-        <title>UrenOverzicht | AXI</title>
+        <title>Project Uren Overzicht | AXI</title>
     </head>
     <body>
         <div>
@@ -48,8 +48,8 @@
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
                 <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
-                <li role="presentation" class="active"><a href="urenOverzicht.jsp">${view}</a></li>
-                <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
+                <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
+                <li role="presentation" class="active"><a href="#">${hours}</a></li>
                 <li role="presentation"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
@@ -74,6 +74,7 @@
                 <fmt:message key="urenOverzicht.label.totaal" var="total"/>
                 <fmt:message key="urenOverzicht.label.uren" var="hours"/>
 
+                <!-- Projects -->
                 <c:forEach items="${weekList}" var="weekEntry">
                     <div class="panel-heading">
                         <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">
@@ -87,6 +88,7 @@
                     <div class="panel-collapse collapse out">
                         <div class="panel-body">
                             <ul class="list-group">
+                                <!-- Employes -->
                                 <c:forEach items="${weekEntry.getTimestamps()}" var="timeEntry">
                                     <a href="#" class="list-group-item">
                                         ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
