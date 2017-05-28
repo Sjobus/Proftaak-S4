@@ -53,30 +53,29 @@
             </ul>
         </div>
         <div class="container">
-            <%
-                if(null!=request.getAttribute("errorMessage"))
-                {
-                    %>
-                    <div class="alert alert-danger">
-                    <% out.println(request.getAttribute("errorMessage")); %>
-                    </div>
-                    <%
-                }
-                if(null!=request.getAttribute("confirmMessage"))
-                {
-                    %>
-                    <div class="alert alert-success">
-                    <% out.println(request.getAttribute("confirmMessage")); %>
-                    </div>
-                    <%
-                }
-            %>
+            <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+            <c:if test="${not empty errorMessage}" >
+                <div class="alert alert-danger">
+                        <%--//hier message--%>
+                    <fmt:message key="errors.label.errorUR" var="error"/>
+                    <label>${error}</label>
+                </div>
+            </c:if>
+            <c:if test="${not empty confirmMessage}" >
+                <div class="alert alert-success">
+                        <%--//hier message--%>
+                    <fmt:message key="errors.label.succesUR" var="succes"/>
+                    <label>${succes}</label>
+                </div>
+            </c:if>
+
+            
             <form class="form-horizontal" action="TimestampController" method="post">
                 <div class="form-group">
                     <fmt:message key="urenReg.label.code" var="code"/>
                     <label class="control-label col-sm-2" for="Project">${code}</label>
                     <div class="col-sm-10">
-                        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
                         <%
                             ArrayList<Project> topList = Project.GetTopProjects();
                             ArrayList<Project> bottomList = Project.GetBottomProjects();
@@ -102,7 +101,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <fmt:message key="urenReg.label.submit" var="date"/>
+                    <fmt:message key="urenReg.label.date" var="date"/>
                     <label class="control-label col-sm-2" for="Work_Date">${date}</label>
                     <div class="col-sm-10">
                         <div class="input-group date">
