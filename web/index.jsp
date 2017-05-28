@@ -25,7 +25,10 @@ To change this template use File | Settings | File Templates.
         <link rel="stylesheet" href="css/custom.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+        <!-- Language Select + flags-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
@@ -61,16 +64,18 @@ To change this template use File | Settings | File Templates.
                 </div>
             </c:if>
 
-            <form>
-                <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
-                <br />
-                <label for="language" id="languageKeuze">${taalKeuze}</label><br>
-                <select style="width: 250px" class="form-control" id="language" name="language" onchange="submit()">
-                    <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
-                    <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                </select>
+            <form class="navbar-form">
+                <div class="input-group">
+                    <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
+                    <label for="language" id="languageKeuze">${taalKeuze}</label>
+                    <%-- <span class="input-group-addon"><i class="flag-icon flag-icon-${language == '' ? 'gb' : language == 'en' ? 'gb' : 'nl'}"></i></span> --%>
+                    <select class="form-control" id="language" name="language" onchange="submit()">
+                        <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
+                        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                    </select>
+                </div>
             </form>
-            <br />
+
             <form action="HomeController" method="post" id="loginForm" class="navbar-form">
                 <div class="input-group">
 
