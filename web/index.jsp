@@ -63,13 +63,14 @@ To change this template use File | Settings | File Templates.
 
             <form>
                 <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
+                <br />
                 <label for="language" id="languageKeuze">${taalKeuze}</label><br>
-                <select id="language" name="language" onchange="submit()">
+                <select style="width: 250px" class="form-control" id="language" name="language" onchange="submit()">
                     <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
                     <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
                 </select>
             </form>
-
+            <br />
             <form action="HomeController" method="post" id="loginForm" class="navbar-form">
                 <div class="input-group">
 
@@ -93,6 +94,7 @@ To change this template use File | Settings | File Templates.
                     <input type="submit" class="btn btn-primary" value="${buttonValue}">
                     <%--<button type="submit" class="btn btn-primary" value="${buttonValue}" />--%>
                 </div>
+
 
                 <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
                 <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
