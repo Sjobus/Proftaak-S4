@@ -8,10 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="Pts4.Classes.Timestamp" %>
-<%@ page import="Pts4.Classes.staticPerson" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Pts4.Classes.Person" %>
-<%@ page import="Pts4.Classes.WeekBean" %>
 <%@ page import="java.util.HashMap" %>
 
 <%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -50,7 +46,7 @@
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
                 <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
                 <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
-                <li role="presentation" class="active"><a href="#">${hours}</a></li>
+                <li role="presentation" class="active"><a href="urenOverzichtProject.jsp">${hours}</a></li>
                 <li role="presentation"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
@@ -67,12 +63,13 @@
             </c:if>
             <div class="panel panel-default">
                 <fmt:message key="urenOverzicht.label.project" var="project"/>
+                <fmt:message key="urenOverzicht.label.uren" var="totalhours"/>
                 <!-- Projects -->
                 <c:forEach items="${projectsHours}" var="weekEntry">
                     <div class="panel-heading">
                         <button type="button" class="btn btn-default btn-xs" data-toggle="collapse">
                             ${project} <c:out value="${weekEntry.key}"/>
-                            ${totaal} <c:out value="${weekEntry.value}"/>
+                            ${totalhours} <c:out value="${weekEntry.value}"/>
                         </button>
                     </div>
                     <%-- removed spoiler-trigger from the button

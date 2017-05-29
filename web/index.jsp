@@ -54,68 +54,67 @@ To change this template use File | Settings | File Templates.
             </ul>
         </div>
         <div class="container">
-
-            <%--<LANGUAGE IS NL/EN>--%>
-            <c:if test="${not empty errorMessage}" >
-                <div class="alert alert-danger">
-                   <%--//hier message--%>
-                       <fmt:message key="index.label.error" var="error"/>
-                       <label>${error}</label>
-                </div>
-            </c:if>
-
-            <form class="navbar-form">
-                <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-                    <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
-                    <label for="language" id="languageKeuze">${taalKeuze}</label>
-                    <%-- <span class="input-group-addon"><i class="flag-icon flag-icon-${language == '' ? 'gb' : language == 'en' ? 'gb' : 'nl'}"></i></span> --%>
-                    <select class="form-control" id="language" name="language" onchange="submit()">
-                        <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
-                        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
-                    </select>
-                </div>
-            </form>
-
-            <form action="HomeController" method="post" id="loginForm" class="form-horizontal">
-                    <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-
-                    <%--<label for="tbUserName"><fmt:message key="index.label.username"/>:</label>--%>
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-
-                    <fmt:message key="index.label.username" var="userInput"/>
-                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" placeholder="${userInput}" autofocus/>
-
-                <br />
-
-                    </div>
-                        <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-
-                        <fmt:message key="index.label.password" var="passInput"/>
-                        <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" />
+            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <fmt:message key="index.button.submit" var="buttonValue" />
+                        <div class="panel-title">${buttonValue}</div>
                     </div>
 
-                <br />
+                    <div style="padding-top:30px" class="panel-body" >
+                        <%--<LANGUAGE IS NL/EN>--%>
+                        <c:if test="${not empty errorMessage}" >
+                            <div class="alert alert-danger">
+                                    <%--//hier message--%>
+                                <fmt:message key="index.label.error" var="error"/>
+                                <label>${error}</label>
+                            </div>
+                        </c:if>
+                        <form class="form-horizontal" role="form">
+                            <div class="input-group margin-bottom">
+                                <fmt:message key="index.label.dropKeuze" var="taalKeuze" />
+                                <%--<label for="language" id="languageKeuze">${taalKeuze}</label>--%>
+                                <span class="input-group-addon"><i class="flag-icon flag-icon-${language == '' ? 'gb' : language == 'en' ? 'gb' : 'nl'}"></i></span>
+                                <select class="form-control" id="language" name="language" onchange="submit()">
+                                    <option value="nl" ${language == 'nl' ? 'selected' : ''}>Nederlands</option>
+                                    <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                                </select>
+                            </div>
+                        </form>
 
+                        <form action="HomeController" method="post" id="loginForm" class="form-horizontal" role="form">
+                                <div class="input-group margin-bottom">
 
-                <div class="input-group col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-                <fmt:message key="index.button.submit" var="buttonValue" />
+                                    <%--<label for="tbUserName"><fmt:message key="index.label.username"/>:</label>--%>
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
-                <input type="submit" class="btn btn-primary" value="${buttonValue}">
-                <%--<button type="submit" class="btn btn-primary" value="${buttonValue}" />--%>
+                                    <fmt:message key="index.label.username" var="userInput"/>
+                                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" placeholder="${userInput}" autofocus/>
+
+                                </div>
+                                <div class="input-group margin-bottom">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+                                    <fmt:message key="index.label.password" var="passInput"/>
+                                    <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" />
+                                </div>
+
+                            <div class="input-group margin-bottom">
+                                <fmt:message key="index.button.submit" var="buttonValue" />
+
+                                <input type="submit" class="btn btn-primary" value="${buttonValue}">
+                                <%--<button type="submit" class="btn btn-primary" value="${buttonValue}" />--%>
+                            </div>
+                            <hr>
+                            <div class="input-group">
+                                <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
+                                <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-
-                <br />
-                <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
-                    <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
-                    <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                </div>
-
-
-            </form>
-
         </div>
     </body>
 </html>

@@ -49,7 +49,7 @@
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
                 <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
                 <li role="presentation" class="active"><a href="urenOverzicht.jsp">${view}</a></li>
-                <li role="presentation" class="disabled"><a href="#">${hours}</a></li>
+                <li role="presentation"><a href="urenOverzichtProject.jsp">${hours}</a></li>
                 <li role="presentation"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
@@ -71,8 +71,8 @@
                 <fmt:message key="urenOverzicht.label.date" var="date"/>
                 <fmt:message key="urenOverzicht.label.project" var="project"/>
                 <fmt:message key="urenOverzicht.label.tm" var="tm"/>
-                <fmt:message key="urenOverzicht.label.totaal" var="total"/>
-                <fmt:message key="urenOverzicht.label.uren" var="hours"/>
+                <fmt:message key="urenOverzicht.label.totaal" var="totaal"/>
+                <fmt:message key="urenOverzicht.label.uren" var="totalhours"/>
 
                 <c:forEach items="${weekList}" var="weekEntry">
                     <div class="panel-heading">
@@ -91,7 +91,7 @@
                                     <a href="#" class="list-group-item">
                                         ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
                                         ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
-                                        ${hours} <c:out value="${timeEntry.GetHour()}"/>
+                                        ${totalhours} <c:out value="${timeEntry.GetHour()}"/>
                                     </a>
                                 </c:forEach>
                             </ul>
