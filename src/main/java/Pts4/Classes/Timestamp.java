@@ -105,7 +105,7 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
         TimeStampList = dbTimestamp.GetTimeStampForPerson(person);
         if(TimeStampList != null)
         {
-            Collections.sort(TimeStampList);
+            //Collections.sort(TimeStampList);
             return TimeStampList;
         }
         else
@@ -130,11 +130,14 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
                 week++;
                 newWeek = new WeekBean(woy);
                 weekBeans.add(newWeek);
-                System.out.println("Week " + week + ":" + woy);
+                //System.out.println("Week " + week + ":" + woy);
             }
             newWeek.addTimestamp(timestamp);
-            System.out.println(timestamp);
+            //System.out.println(timestamp);
         }
+        Collections.reverse(weekBeans);
+        for (WeekBean wb : weekBeans)
+            Collections.reverse(wb.getTimestamps());
         return weekBeans;
     }
 

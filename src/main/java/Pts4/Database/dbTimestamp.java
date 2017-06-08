@@ -61,16 +61,18 @@ public class dbTimestamp {
         cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY); //Last day of the week
         java.sql.Date sqlDate = new java.sql.Date(cal.getTimeInMillis());
 
-        try {
+        try
+        {
             String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID, pr.DESCRIPTION " +
                     "from tbhours t " +
                     "join tbperson p on t.PersonID = p.ID " +
                     "join tbproject pr on pr.ID = t.PROJECTID " +
-                    "where p.ID = ? AND t.DATEWORKED > ? - 35";
+                    "where p.ID = ? AND t.DATEWORKED BETWEEN ? - 35 AND ? ORDER BY t.DATEWORKED DESC";
 
             PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setString(1, personID);
             preparedStatement.setDate(2, sqlDate);
+            preparedStatement.setDate(3, sqlDate);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

@@ -119,7 +119,8 @@
                             daysOfWeekHighlighted: "0,6",
                             autoclose: true,
                             todayHighlight: true,
-                            orientation: "auto"
+                            orientation: "auto",
+                            calendarWeeks: true
                         });
                     </script>
                 </div>
