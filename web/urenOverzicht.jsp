@@ -75,23 +75,37 @@
                 <fmt:message key="urenOverzicht.label.uren" var="totalhours"/>
 
                 <c:forEach items="${weekList}" var="weekEntry">
-                    <div class="panel-heading">
-                        <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">
-                            ${week} <c:out value="${weekEntry.getWeek()}"/>
-                            <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
-                             ${tm}
-                            <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
-                            ${totaal} <c:out value="${weekEntry.getHours()}"/>
-                        </button>
+                    <div class="panel-heading spoiler-trigger" data-toggle="collapse">
+                        <div class="container row">
+                            <div class="col-xs-3">
+                                ${week} <c:out value="${weekEntry.getWeek()}"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
+                                 ${tm}
+                                <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
+                            </div>
+                            <div class="col-xs-3">
+                                ${totaal} <c:out value="${weekEntry.getHours()}"/>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-collapse collapse out">
                         <div class="panel-body">
                             <ul class="list-group">
                                 <c:forEach items="${weekEntry.getTimestamps()}" var="timeEntry">
                                     <a href="#" class="list-group-item">
-                                        ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
-                                        ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
-                                        ${totalhours} <c:out value="${timeEntry.GetHour()}"/>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
+                                            </div>
+                                            <div class="col-xs-6">
+                                                ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                    ${totalhours} <c:out value="${timeEntry.GetHour()}"/>
+                                            </div>
+                                        </div>
                                     </a>
                                 </c:forEach>
                             </ul>

@@ -67,10 +67,14 @@
                 <!-- Projects -->
                 <c:forEach items="${projectsHours}" var="weekEntry">
                     <div class="panel-heading">
-                        <button type="button" class="btn btn-default btn-xs" data-toggle="collapse">
-                            ${project} <c:out value="${weekEntry.key}"/>
-                            ${totalhours} <c:out value="${weekEntry.value}"/>
-                        </button>
+                        <div class="container row">
+                            <div class="col-xs-3">
+                                ${project} <c:out value="${weekEntry.key}"/>
+                            </div>
+                            <div class="col-xs-3">
+                                ${totalhours} <c:out value="${weekEntry.value}"/>
+                            </div>
+                        </div>
                     </div>
                     <%-- removed spoiler-trigger from the button
                     <div class="panel-collapse collapse out">
