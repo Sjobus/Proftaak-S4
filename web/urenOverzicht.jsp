@@ -76,7 +76,7 @@
 
                 <c:forEach items="${weekList}" var="weekEntry">
                     <div class="panel-heading spoiler-trigger" data-toggle="collapse">
-                        <div class="container row">
+                        <div class="row">
                             <div class="col-xs-3">
                                 ${week} <c:out value="${weekEntry.getWeek()}"/>
                             </div>

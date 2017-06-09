@@ -51,6 +51,15 @@
             </ul>
         </div>
         <div class="container">
+            <fmt:message key="urenOverzicht.label.search" var="search"/>
+            <form action="SearchController" method="post" id="searchForm" class="form-horizontal" role="search">
+                <div class="input-group margin-bottom">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="${search}" autofocus>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
             <%
                 HashMap<String, Integer> ProjectsHours = Timestamp.GetProjectsHours();
                 pageContext.setAttribute("projectsHours",ProjectsHours);
@@ -67,7 +76,7 @@
                 <!-- Projects -->
                 <c:forEach items="${projectsHours}" var="weekEntry">
                     <div class="panel-heading">
-                        <div class="container row">
+                        <div class="row">
                             <div class="col-xs-3">
                                 ${project} <c:out value="${weekEntry.key}"/>
                             </div>
