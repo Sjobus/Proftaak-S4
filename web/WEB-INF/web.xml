@@ -20,4 +20,13 @@
         <servlet-name>TimestampController</servlet-name>
         <url-pattern>/TimestampController</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>Pts4.Controllers.SearchController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
 </web-app>
