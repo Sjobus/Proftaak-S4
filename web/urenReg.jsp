@@ -128,7 +128,6 @@
                             maxViewModeL: 1,
                             todayBtn: "linked",
                             language: "nl",
-                            daysOfWeekDisabled: "0,6",
                             daysOfWeekHighlighted: "0,6",
                             autoclose: true,
                             todayHighlight: true,
