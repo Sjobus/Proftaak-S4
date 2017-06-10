@@ -86,12 +86,12 @@
             <form class="form-horizontal" action="TimestampController" method="post">
                 <div class="form-group">
                     <fmt:message key="urenReg.label.code" var="code"/>
-                    <label class="control-label col-sm-2" for="Project">${code}</label>
+                    <label class="control-label col-sm-2" for="Project">${code}</label
                     <div class="col-sm-10">
 
                         <%
-                            ArrayList<Project> topList = Project.GetTopProjects();
-                            ArrayList<Project> bottomList = Project.GetBottomProjects();
+                            ArrayList<Project> topList = Project.GetTopProjects(session.getAttribute("Account"));
+                            ArrayList<Project> bottomList = Project.GetBottomProjects(session.getAttribute("Account"));
                             pageContext.setAttribute("TopProject", topList);
                             pageContext.setAttribute("BottomProject",bottomList);
                         %>

@@ -64,9 +64,10 @@ public class Project {
         }
     }
 
-    public static ArrayList<Project> GetTopProjects()
+    public static ArrayList<Project> GetTopProjects(Object object)
     {
-        ArrayList<Project> toplist = dbProject.GetTop();
+        Person p = (Person)object;
+        ArrayList<Project> toplist = dbProject.GetTop(p.GetID());
         if(toplist != null)
         {
             return toplist;
@@ -77,9 +78,10 @@ public class Project {
         }
     }
 
-    public static ArrayList<Project> GetBottomProjects()
+    public static ArrayList<Project> GetBottomProjects(Object object)
     {
-        ArrayList<Project> toplist = dbProject.GetTheRest();
+        Person p = (Person)object;
+        ArrayList<Project> toplist = dbProject.GetTheRest(p.GetID());
         if(toplist != null)
         {
             return toplist;
