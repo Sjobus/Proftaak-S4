@@ -29,12 +29,23 @@ public class ProjectTest {
         Assert.assertFalse(dbProject.GetTop().equals(null));
     }
 
+
     @Test
     public void GetTheMostLikelyTest() throws Exception
     {
         Person person = new Person(12345, "Jan", Function.Werknemer);
 
         ArrayList<Project> list = dbProject.GetTopMostLikely(person);
+
+        Assert.assertNotEquals(list.size(), 0);
+    }
+
+    @Test
+    public void GetTheRestLikelyTest() throws Exception
+    {
+        Person person = new Person(12345, "Jan", Function.Werknemer);
+
+        ArrayList<Project> list = dbProject.GetTheRestLikely(person);
 
         Assert.assertNotEquals(list.size(), 0);
     }
