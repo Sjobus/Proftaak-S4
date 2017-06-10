@@ -1,6 +1,7 @@
 package Pts4.UnitTestClasses;
 
-import Pts4.Classes.staticPerson;
+import Pts4.Classes.Person;
+// import Pts4.Classes.staticPerson;
 import Pts4.Enums.Function;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,15 +16,17 @@ public class PersonTest {
     @Test
     public void PersonGetTest() throws Exception
     {
-        Assert.assertTrue(staticPerson.GetPersonData("Jan", "Jan123"));
+        Person p = new Person();
+        p.GetPersonData("Jan", "Jan123");
+        Assert.assertTrue(p != null);
 
-        String name = staticPerson.GetName();
+        String name = p.GetName();
         Assert.assertTrue(name.equals("Jan"));
 
-        int ID = staticPerson.GetID();
+        int ID = p.GetID();
         Assert.assertEquals(ID, 12345);
 
-        Function Function = staticPerson.GetFunction();
+        Function Function = p.GetFunction();
         Assert.assertTrue(Function.equals(Function.Werknemer));
     }
 

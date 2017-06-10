@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="Pts4.Classes.Timestamp" %>
-<%@ page import="Pts4.Classes.staticPerson" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="Pts4.Classes.Person" %>
 <%@ page import="Pts4.Classes.WeekBean" %>
@@ -55,7 +54,7 @@
         </div>
         <div class="container">
             <%
-                Person person = new Person(staticPerson.GetID(), staticPerson.GetName(), staticPerson.GetFunction());
+                Person person = (Person)session.getAttribute("Account");
                 ArrayList<WeekBean> WeekListPerson = Timestamp.getWeekBeansByPerson(person);
                 pageContext.setAttribute("weekList",WeekListPerson);
             %>

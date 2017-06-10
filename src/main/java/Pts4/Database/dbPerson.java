@@ -1,7 +1,7 @@
 package Pts4.Database;
 
 import Pts4.Classes.Person;
-import Pts4.Classes.staticPerson;
+// import Pts4.Classes.staticPerson;
 import Pts4.Enums.Function;
 
 import java.sql.PreparedStatement;
@@ -29,9 +29,10 @@ public class dbPerson {
                 //String name = resultSet.getString("max");
                 String function = resultSet.getString("Function");
 
-                Function Func = staticPerson.Translatefunction(function);
+                Person p = new Person();
+                Function Func = p.Translatefunction(function);
 
-                Person p = new Person(ID, Name, Func);
+                p = new Person(ID, Name, Func);
                 return p;
             }
         } catch (Exception ex) {
@@ -56,11 +57,12 @@ public class dbPerson {
             while (resultSet.next()) {
                 //int ID = resultSet.getInt("ID");
                 String name = resultSet.getString("Name");
-                String Function = resultSet.getString("Function");
+                String function = resultSet.getString("Function");
 
-                Function Func = staticPerson.Translatefunction(Function);
+                Person p = new Person();
+                Function Func = p.Translatefunction(function);
 
-                Person p = new Person(PersonID, name, Func);
+                 p = new Person(PersonID, name, Func);
                 return p;
             }
         } catch (Exception ex) {
@@ -87,9 +89,10 @@ public class dbPerson {
                 String name = resultSet.getString("Name");
                 String function = resultSet.getString("Function");
 
-                Function Func = staticPerson.Translatefunction(function);
+                Person p = new Person();
+                Function Func = p.Translatefunction(function);
 
-                Person p = new Person(ID, name, Func);
+                p = new Person(ID, name, Func);
 
                 return p;
             }

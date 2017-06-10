@@ -3,7 +3,7 @@ package Pts4.Controllers;
 import Pts4.Classes.Person;
 import Pts4.Classes.Project;
 import Pts4.Classes.Timestamp;
-import Pts4.Classes.staticPerson;
+// import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class TimestampController extends HttpServlet{
         Project pro = new Project(projectID);
         pro.Getproject();
 
-        Person per = new Person(staticPerson.GetID(), staticPerson.GetName(), staticPerson.GetFunction());
+        Person per = (Person)request.getSession().getAttribute("Account");
 
 //        String dateStr = "22/12/2017";
         SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
