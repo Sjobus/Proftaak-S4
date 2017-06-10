@@ -24,9 +24,13 @@ public class TimestampController extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ImagingOpException, ServletException, IOException
     {
 
-        int Hour = Integer.parseInt(request.getParameter("Uren"));
+        String hourStr = request.getParameter("Uren");
         String dateStr = request.getParameter("Work_Date"); //moet geconvert worden naar date
         String projectID = request.getParameter("Project");
+
+        System.out.println("========================================");
+        System.out.println("Uren: " + hourStr + " Datum: " + dateStr + " Project: " + projectID);
+        System.out.println("========================================");
 
         Project pro = new Project(projectID);
         pro.Getproject();
@@ -36,11 +40,20 @@ public class TimestampController extends HttpServlet{
 //        String dateStr = "22/12/2017";
         SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
-        try {
+        int Hour = 1;
+        try
+        {
+            Hour = Integer.parseInt(hourStr);
             date = dateformat.parse(dateStr);
         }
-        catch(ParseException e) {
+        catch (ParseException e)
+        {
+            System.out.println("Er is een Parse fout op getreden. Error:" + e.getMessage());
             e.printStackTrace();
+        }
+        catch (NumberFormatException e)
+        {
+            System.out.println("Er is een Format fout op getreden. Error:" + e.getMessage());
         }
         Timestamp time = new Timestamp(Hour, date , pro, per);
         try

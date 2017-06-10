@@ -8,6 +8,7 @@ import Pts4.Enums.Function;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -30,10 +31,13 @@ public class TimestampTest {
         Assert.assertTrue(ts.InsertTimestamp());
     }
 
+
     @Test
     public void TimestampFormanager() throws Exception
     {
         Project pr = new Project("PTS41", "test");
+        ArrayList<Timestamp> testlist = Timestamp.GetAllTimestampsByProject(pr);
+
         Assert.assertFalse(Timestamp.GetAllTimestampsByProject(pr).equals(null));
     }
 }

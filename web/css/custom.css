@@ -1,0 +1,17 @@
+body {
+    min-height: 700px;
+}
+
+.test {
+    display: inline-block;
+}
+.margin-bottom {
+    margin-bottom: 25px;
+}
+#searchForm button {
+    padding: 9px 12px;
+}
+
+.container{
+    margin-top: 32px;
+}

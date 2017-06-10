@@ -1,6 +1,5 @@
 package Pts4.Controllers;
 
-import com.sun.corba.se.spi.activation.Server;
 import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;

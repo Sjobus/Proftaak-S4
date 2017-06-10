@@ -15,27 +15,17 @@ public class TimestampGetForPersonTest {
     public void TimestampGetTest() throws Exception
     {
         DatabaseConnection db = new DatabaseConnection();
-        dbTimestamp dbTimestamp = new dbTimestamp();
+
         Person person = new Person(12345,"Henk", Function.Werknemer);
 
         ArrayList<Timestamp> arraylist = dbTimestamp.GetTimeStampForPerson(person);
-        System.out.println("Getting stuff");
+
         System.out.println("Size of list: " + arraylist.size());
 
         for (Timestamp timestamp : arraylist) {
             System.out.println(timestamp.GetID());
         }
 
-        if (arraylist.size() > 2)
-        {
-            boolean bool = false;
-           Assert.assertFalse(bool);
-        }
-
-        else {
-            boolean bool = true;
-            Assert.assertFalse(bool);
-        }
 
     }
 }

@@ -8,7 +8,13 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
+<%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />--%>
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text" />
+
+<html lang="${language}">
     <head>
         <!-- JQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,6 +24,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/custom.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <!-- Latest compiled and minified JavaScript -->
@@ -31,38 +38,44 @@
     </head>
     <body>
         <div>
+            <fmt:message key="navBar.label.home" var="home"/>
+            <fmt:message key="navBar.label.registration" var="regis"/>
+            <fmt:message key="navBar.label.view" var="view"/>
+            <fmt:message key="navBar.label.projecthours" var="hours"/>
+            <fmt:message key="navBar.label.logout" var="logout"/>
+
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation"><a href="index.jsp">Home</a></li>
-                <li role="presentation" class="active"><a href="urenReg.jsp">Uren registratie</a> </li>
-                <li role="presentation" ><a href="urenOverzicht.jsp">Overzicht</a></li>
-                <li role="presentation" class="disabled"><a href="#">Project Uren</a></li>
-                <li role="presentation"><a onclick="signOut()"> Uitloggen</a> </li>
+                <li role="presentation"><a href="index.jsp">${home}</a></li>
+                <li role="presentation" class="active"><a href="urenReg.jsp">${regis}</a></li>
+                <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
+                <li role="presentation"><a href="urenOverzichtProject.jsp">${hours}</a></li>
+                <li role="presentation"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
         <div class="container">
-            <%
-                if(null!=request.getAttribute("errorMessage"))
-                {
-                    %>
-                    <div class="alert alert-danger">
-                    <% out.println(request.getAttribute("errorMessage")); %>
-                    </div>
-                    <%
-                }
-                if(null!=request.getAttribute("confirmMessage"))
-                {
-                    %>
-                    <div class="alert alert-success">
-                    <% out.println(request.getAttribute("confirmMessage")); %>
-                    </div>
-                    <%
-                }
-            %>
+            <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+            <c:if test="${not empty errorMessage}" >
+                <div class="alert alert-danger">
+                        <%--//hier message--%>
+                    <fmt:message key="errors.label.errorUR" var="error"/>
+                    <label>${error}</label>
+                </div>
+            </c:if>
+            <c:if test="${not empty confirmMessage}" >
+                <div class="alert alert-success">
+                        <%--//hier message--%>
+                    <fmt:message key="errors.label.succesUR" var="succes"/>
+                    <label>${succes}</label>
+                </div>
+            </c:if>
+
+            
             <form class="form-horizontal" action="TimestampController" method="post">
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Project">Project Code:</label>
+                    <fmt:message key="urenReg.label.code" var="code"/>
+                    <label class="control-label col-sm-2" for="Project">${code}</label>
                     <div class="col-sm-10">
-                        <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
                         <%
                             ArrayList<Project> topList = Project.GetTopProjects();
                             ArrayList<Project> bottomList = Project.GetBottomProjects();
@@ -81,13 +94,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Uren">Uren:</label>
+                    <fmt:message key="urenReg.label.hours" var="hours"/>
+                    <label class="control-label col-sm-2" for="Uren">${hours}</label>
                     <div class="col-sm-10">
                         <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="Work_Date">Datum:</label>
+                    <fmt:message key="urenReg.label.date" var="date"/>
+                    <label class="control-label col-sm-2" for="Work_Date">${date}</label>
                     <div class="col-sm-10">
                         <div class="input-group date">
                             <input type="text" class="form-control" id="Work_Date" name="Work_Date">
@@ -97,19 +112,21 @@
                     <script type="text/javascript">
                         $('.input-group.date').datepicker({
                             format: "dd/mm/yyyy",
+                            maxViewModeL: 1,
                             todayBtn: "linked",
                             language: "nl",
-                            orientation: "bottom auto",
-                            daysOfWeekDisabled: "0,6",
                             daysOfWeekHighlighted: "0,6",
                             autoclose: true,
-                            todayHighlight: true
+                            todayHighlight: true,
+                            orientation: "auto",
+                            calendarWeeks: true
                         });
                     </script>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Geef uren op.</button>
+                        <fmt:message key="urenReg.label.submit" var="submit"/>
+                        <button type="submit" class="btn btn-default">${submit}</button>
                     </div>
                 </div>
             </form>

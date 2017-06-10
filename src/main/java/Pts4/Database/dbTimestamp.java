@@ -4,8 +4,12 @@ import Pts4.Classes.Person;
 import Pts4.Classes.Project;
 import Pts4.Classes.Timestamp;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 import static Pts4.Database.DatabaseConnection.connect;
 import static Pts4.Database.DatabaseConnection.disconnect;
@@ -52,16 +56,23 @@ public class dbTimestamp {
         ArrayList<Timestamp> list = new ArrayList<>();
         String personID = String.valueOf(person.GetID());
       //  int personid2 = person.GetID();
+        Calendar cal = GregorianCalendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY); //Last day of the week
+        java.sql.Date sqlDate = new java.sql.Date(cal.getTimeInMillis());
 
-        try {
-            String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID , pr.DESCRIPTION from tbhours t\n" +
-                    "join tbperson p on t.PersonID = p.ID\n" +
-                    "join tbproject pr on pr.ID = t.PROJECTID\n" +
-                    "where p.ID = ? AND dateworked > sysdate - 35;";
-
+        try
+        {
+            String sql = "select t.ID, t.DATEWORKED, t.Hours, pr.ID as prID, pr.DESCRIPTION " +
+                    "from tbhours t " +
+                    "join tbperson p on t.PersonID = p.ID " +
+                    "join tbproject pr on pr.ID = t.PROJECTID " +
+                    "where p.ID = ? AND t.DATEWORKED BETWEEN ? - 35 AND ? ORDER BY t.DATEWORKED DESC";
 
             PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setString(1, personID);
+            preparedStatement.setDate(2, sqlDate);
+            preparedStatement.setDate(3, sqlDate);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -70,7 +81,6 @@ public class dbTimestamp {
                 int hours = resultSet.getInt("Hours");
                 Date date = resultSet.getDate("DateWorked");
                 String Description = resultSet.getString("Description");
-
                 Project project = new Project(projectID, Description);
                 Timestamp timestamp = new Timestamp(ID, hours, date, project);
                 list.add(timestamp);
@@ -118,4 +128,31 @@ public class dbTimestamp {
     }
 
 
+    public static HashMap<String, Integer> GetTotalHoursProjects()
+    {
+        HashMap<String, Integer> projectHourMap = new HashMap<>();
+
+        String sql = "SELECT H.PROJECTID, sum(H.HOURS) AS Hours FROM TBHOURS H GROUP BY H.PROJECTID";
+        try
+        {
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next())
+            {
+                String project = resultSet.getString("ProjectID");
+                int hours = resultSet.getInt("Hours");
+                projectHourMap.put(project, hours);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        finally
+        {
+            disconnect();
+        }
+        return  projectHourMap;
+    }
 }

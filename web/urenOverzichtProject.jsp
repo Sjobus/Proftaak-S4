@@ -8,10 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ page import="Pts4.Classes.Timestamp" %>
-<%@ page import="Pts4.Classes.staticPerson" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="Pts4.Classes.Person" %>
-<%@ page import="Pts4.Classes.WeekBean" %>
+<%@ page import="java.util.HashMap" %>
 
 <%@taglib prefix="a" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -36,7 +33,7 @@
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogout.js"></script>
         <script src="js/Spoiler.js"></script>
-        <title>UrenOverzicht | AXI</title>
+        <title>Project Uren Overzicht | AXI</title>
     </head>
     <body>
         <div>
@@ -48,69 +45,61 @@
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation"><a href="index.jsp">${home}</a></li>
                 <li role="presentation"><a href="urenReg.jsp">${regis}</a></li>
-                <li role="presentation" class="active"><a href="urenOverzicht.jsp">${view}</a></li>
-                <li role="presentation"><a href="urenOverzichtProject.jsp">${hours}</a></li>
+                <li role="presentation"><a href="urenOverzicht.jsp">${view}</a></li>
+                <li role="presentation" class="active"><a href="urenOverzichtProject.jsp">${hours}</a></li>
                 <li role="presentation"><a onclick="signOut()">${logout}</a></li>
             </ul>
         </div>
         <div class="container">
+            <fmt:message key="urenOverzicht.label.search" var="search"/>
+            <form action="SearchController" method="post" id="searchForm" class="form-horizontal" role="search">
+                <div class="input-group margin-bottom">
+                    <input type="text" class="form-control" id="search" name="search" placeholder="${search}" autofocus>
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
             <%
-                Person person = new Person(staticPerson.GetID(), staticPerson.GetName(), staticPerson.GetFunction());
-                ArrayList<WeekBean> WeekListPerson = Timestamp.getWeekBeansByPerson(person);
-                pageContext.setAttribute("weekList",WeekListPerson);
+                HashMap<String, Integer> ProjectsHours = Timestamp.GetProjectsHours();
+                pageContext.setAttribute("projectsHours",ProjectsHours);
             %>
-            <c:if test="${empty weekList}">
+            <c:if test="${empty projectsHours}">
                 <div class="alert alert-info">
-                    <fmt:message key="info.label.nohours" var="info"/>
+                    <fmt:message key="info.label.noprojects" var="info"/>
                     <label>${info}</label>
                 </div>
             </c:if>
             <div class="panel panel-default">
-
-                <fmt:message key="urenOverzicht.label.week" var="week"/>
-                <fmt:message key="urenOverzicht.label.date" var="date"/>
                 <fmt:message key="urenOverzicht.label.project" var="project"/>
-                <fmt:message key="urenOverzicht.label.tm" var="tm"/>
-                <fmt:message key="urenOverzicht.label.totaal" var="totaal"/>
                 <fmt:message key="urenOverzicht.label.uren" var="totalhours"/>
-
-                <c:forEach items="${weekList}" var="weekEntry">
-                    <div class="panel-heading spoiler-trigger" data-toggle="collapse">
+                <!-- Projects -->
+                <c:forEach items="${projectsHours}" var="weekEntry">
+                    <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                ${week} <c:out value="${weekEntry.getWeek()}"/>
-                            </div>
-                            <div class="col-xs-6">
-                                <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getFirstday()}" />
-                                 ${tm}
-                                <fmt:formatDate pattern = "dd-MM-yyyy" value = "${weekEntry.getLastday()}" />
+                                ${project} <c:out value="${weekEntry.key}"/>
                             </div>
                             <div class="col-xs-3">
-                                ${totaal} <c:out value="${weekEntry.getHours()}"/>
+                                ${totalhours} <c:out value="${weekEntry.value}"/>
                             </div>
                         </div>
                     </div>
+                    <%-- removed spoiler-trigger from the button
                     <div class="panel-collapse collapse out">
                         <div class="panel-body">
                             <ul class="list-group">
+                                <!-- Employes -->
                                 <c:forEach items="${weekEntry.getTimestamps()}" var="timeEntry">
                                     <a href="#" class="list-group-item">
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
-                                            </div>
-                                            <div class="col-xs-6">
-                                                ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                    ${totalhours} <c:out value="${timeEntry.GetHour()}"/>
-                                            </div>
-                                        </div>
+                                        ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
+                                        ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
+                                        ${hours} <c:out value="${timeEntry.GetHour()}"/>
                                     </a>
                                 </c:forEach>
                             </ul>
                         </div>
-                    </div>
+                    </div> --%>
                 </c:forEach>
             </div>
         </div>
