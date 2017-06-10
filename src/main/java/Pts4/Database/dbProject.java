@@ -1,5 +1,6 @@
 package Pts4.Database;
 
+import Pts4.Classes.Person;
 import Pts4.Classes.Project;
 import Pts4.Classes.staticPerson;
 
@@ -122,5 +123,90 @@ public class dbProject {
         finally {
             disconnect();
         }
+    }
+
+
+    //nieuwe algoritme
+
+    public static ArrayList<Project> GetTopMostLikely(Person person)
+    {
+        ArrayList<Project> list = new ArrayList<>();
+
+        try {
+            String sql = "Select ProjectID From(select ProjectID, count(ProjectID) as aantal, sum(Hours) as WorkedHours From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 And P.NAME = 'Jan' Group by ProjectID Order BY aantal desc, WorkedHours desc) Where Rownum <= 3";
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            preparedStatement.setInt(1, person.GetID());
+            //preparedStatement.setString(1, name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String ProjectID = resultSet.getString("PROJECTID");
+                Project p = new Project(ProjectID);
+                list.add(p);
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            disconnect();
+        }
+        return list;
+    }
+
+    public static ArrayList<Project> GetTheRestLikely(Person person)
+    {
+        ArrayList<Project> list = new ArrayList<>();
+
+        try {
+            String sql = "SELECT H.PROJECTID From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where H.PROJECTID not in (Select ProjectID From(select ProjectID, count(ProjectID) as aantal, sum(Hours) as WorkedHours From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 And P.NAME = 'Jan' Group by ProjectID Order BY aantal desc, WorkedHours desc) Where Rownum <= 3) group by H.ProjectID";
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            preparedStatement.setInt(1, person.GetID());
+            //preparedStatement.setString(1, name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String ProjectID = resultSet.getString("PROJECTID");
+                Project p = new Project(ProjectID);
+                list.add(p);
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        finally {
+            disconnect();
+        }
+        return list;
+    }
+
+    public static Project GetMostLikely(Person person)
+    {
+        ArrayList<Project> list = new ArrayList<>();
+
+        try {
+            String sql = "Select ProjectID From(select ProjectID, count(ProjectID) as aantal, sum(Hours) as WorkedHours From TBHOURS H Join TBPerson P on H.PERSONID = P.ID Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 And P.NAME = 'Jan' Group by ProjectID Order BY aantal desc, WorkedHours desc) Where Rownum <= 1";
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            preparedStatement.setInt(1, person.GetID());
+            //preparedStatement.setString(1, name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String ProjectID = resultSet.getString("PROJECTID");
+                Project p = new Project(ProjectID);
+                return p;
+            }
+        }
+        catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+        finally {
+            disconnect();
+        }
+        return null;
     }
 }
