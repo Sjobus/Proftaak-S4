@@ -89,14 +89,14 @@ To change this template use File | Settings | File Templates.
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 
                                     <fmt:message key="index.label.username" var="userInput"/>
-                                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" placeholder="${userInput}" autofocus/>
+                                    <input type="text" id="tbUserName" name="tbUserName" class="form-control" placeholder="${userInput}" autofocus required/>
 
                                 </div>
                                 <div class="input-group margin-bottom">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 
                                     <fmt:message key="index.label.password" var="passInput"/>
-                                    <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" />
+                                    <input type="password" id="tbPassword" name="tbPassword" class="form-control" placeholder="${passInput}" required/>
                                 </div>
 
                             <div class="input-group margin-bottom">

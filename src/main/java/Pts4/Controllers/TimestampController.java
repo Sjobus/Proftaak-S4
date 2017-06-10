@@ -40,7 +40,7 @@ public class TimestampController extends HttpServlet{
 //        String dateStr = "22/12/2017";
         SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = null;
-        int Hour = 1;
+        int Hour = 0;
         try
         {
             Hour = Integer.parseInt(hourStr);
@@ -56,24 +56,39 @@ public class TimestampController extends HttpServlet{
             System.out.println("Er is een Format fout op getreden. Error:" + e.getMessage());
         }
         Timestamp time = new Timestamp(Hour, date , pro, per);
-        try
+        if(Hour == 0)
         {
-            if(time.InsertTimestamp())
-            {
-                request.setAttribute("confirmMessage", "Opdracht opgeslagen");
-                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-                view.forward(request, response);
-            }
-            else
-            {
-                request.setAttribute("errorMessage", "Niet alles goed ingevuld");
-                RequestDispatcher rd = request.getRequestDispatcher("urenReg.jsp");
-                rd.forward(request, response);
-            }
+            request.setAttribute("errorMessage", "hour");
+            RequestDispatcher rd = request.getRequestDispatcher("urenReg.jsp");
+            rd.forward(request, response);
         }
-        catch (Exception e)
+        else if(date == null)
         {
-            System.out.println("Er is een fout op getreden. Error:" + e.getMessage());
+            request.setAttribute("errorMessage", "date");
+            RequestDispatcher rd = request.getRequestDispatcher("urenReg.jsp");
+            rd.forward(request, response);
+        }
+        else
+        {
+            try
+            {
+                if (time.InsertTimestamp())
+                {
+                    request.setAttribute("confirmMessage", "Opdracht opgeslagen");
+                    RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+                    view.forward(request, response);
+                }
+                else
+                {
+                    request.setAttribute("errorMessage", "db");
+                    RequestDispatcher rd = request.getRequestDispatcher("urenReg.jsp");
+                    rd.forward(request, response);
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println("Er is een fout op getreden. Error:" + e.getMessage());
+            }
         }
     }
 }
