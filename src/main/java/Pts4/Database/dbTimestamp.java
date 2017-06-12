@@ -128,7 +128,7 @@ public class dbTimestamp {
     }
 
 
-    public static HashMap<String, Integer> GetTotalHoursProjects()
+    public static HashMap<String, Integer> GetTotalHoursProjects() //moet aangepast worden
     {
         HashMap<String, Integer> projectHourMap = new HashMap<>();
 
@@ -154,5 +154,56 @@ public class dbTimestamp {
             disconnect();
         }
         return  projectHourMap;
+    }
+
+    public static void GetHoursManager(String like)
+    {
+        String sql = "";
+        if(like == null)
+        {
+            //do normal
+            sql = "select Pr.ID AS projectID, P.NAME as Name, sum(HOURS) as hours " +
+                    "from TBProject Pr " +
+                    "Join TBHOURS H on Pr.ID = H.PROJECTID " +
+                    "Join TBPERSON P on P.ID = H.PERSONID " +
+                    "GROUP BY Pr.ID, P.NAME" +
+                    " order BY Pr.ID";
+        }
+        else
+        {
+            //do search
+            sql = "select Pr.ID AS projectID, P.NAME as Name, sum(HOURS) as hours " +
+                    "from TBProject Pr " +
+                    "Join TBHOURS H on Pr.ID = H.PROJECTID " +
+                    "Join TBPERSON P on P.ID = H.PERSONID " +
+                    "Where PR.ID LIKE ? " +
+                    "GROUP BY Pr.ID, P.NAME" +
+                    " order BY Pr.ID";
+        }
+
+        try
+        {
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            if(like != null) {
+                preparedStatement.setString(1, "%"+like+"%");
+            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next())
+            {
+                String projectID = resultSet.getString("projectID");
+                String Name = resultSet.getString("Name");
+                int Hours = resultSet.getInt("hours");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        finally
+        {
+            disconnect();
+        }
+
     }
 }
