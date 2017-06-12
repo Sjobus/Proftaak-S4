@@ -64,6 +64,7 @@ public class Project {
         }
     }
 
+    //Old algorithm
     public static ArrayList<Project> GetTopProjects(Object object)
     {
         Person p = (Person)object;
@@ -85,6 +86,50 @@ public class Project {
         if(toplist != null)
         {
             return toplist;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+
+    //New algorithm
+    public static ArrayList<Project> GetTopMostLikely(Object object)
+    {
+        Person p = (Person)object;
+        ArrayList<Project> toplist = dbProject.GetTopMostLikely(p);
+        if(toplist != null)
+        {
+            return toplist;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public static ArrayList<Project> GetBottomTopMostLikely(Object object)
+    {
+        Person p = (Person)object;
+        ArrayList<Project> toplist = dbProject.GetTheRestLikely(p);
+        if(toplist != null)
+        {
+            return toplist;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    public static Project GetMostlikely(Object object)
+    {
+        Person p = (Person)object;
+        Project project = dbProject.GetMostLikely(p);
+        if(project != null)
+        {
+            return project;
         }
         else
         {

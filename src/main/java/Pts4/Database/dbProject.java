@@ -139,7 +139,10 @@ public class dbProject {
                     "on H.PERSONID = P.ID " +
                     "Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') " +
                     "AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 " +
-                    "And P.ID = ? Group by ProjectID " +
+                    "And P.ID = ? And H.ProjectID != (Select ProjectID" +
+                                "                        from TBhours H" +
+                                "                        Join TBPerson P on H.PERSONID = P.ID" +
+                                "                        Where H.DateWorked = TO_CHAR(CURRENT_DATE)) Group by ProjectID " +
                     "Order BY aantal desc, WorkedHours desc) " +
                     "Where Rownum <= 3";
             PreparedStatement preparedStatement = connect().prepareStatement(sql);
@@ -176,6 +179,10 @@ public class dbProject {
                                                 "From TBHOURS H Join TBPerson P on H.PERSONID = P.ID " +
                                                 "Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') " +
                                                 "AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 And P.ID = ? " +
+                                                                                                "And H.ProjectID != (Select ProjectID" +
+                                                                                                "                        from TBhours H " +
+                                                                                                "                        Join TBPerson P on H.PERSONID = P.ID" +
+                                                                                                "                        Where H.DateWorked = TO_CHAR(CURRENT_DATE))" +
                                                 "Group by ProjectID Order BY aantal desc, WorkedHours desc) " +
                     "Where Rownum <= 3) " +
                     "group by H.ProjectID";
@@ -209,7 +216,11 @@ public class dbProject {
                             "From TBHOURS H Join TBPerson P on H.PERSONID = P.ID " +
                             "Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') " +
                             "AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 " +
-                            "And P.ID = ? Group by ProjectID Order BY aantal desc, WorkedHours desc) " +
+                            "And P.ID = ? And H.ProjectID != (Select ProjectID" +
+                    "                        from TBhours H " +
+                    "                        Join TBPerson P on H.PERSONID = P.ID" +
+                    "                        Where H.DateWorked = TO_CHAR(CURRENT_DATE))" +
+                    " Group by ProjectID Order BY aantal desc, WorkedHours desc) " +
                             "Where Rownum <= 1";
             PreparedStatement preparedStatement = connect().prepareStatement(sql);
             preparedStatement.setInt(1, person.GetID());
