@@ -34,7 +34,8 @@ public class HomeController extends HttpServlet
 
             if(!googleID.equals(""))
             {
-                person.GetGooglePersonData(Integer.parseInt(googleID));
+                person = person.GetGooglePersonData(Integer.parseInt(googleID));
+                request.getSession().setAttribute("Account", person);
                 System.out.println(googleID);
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
