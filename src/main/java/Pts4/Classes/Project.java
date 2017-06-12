@@ -109,7 +109,7 @@ public class Project {
         }
     }
 
-    public static ArrayList<Project> GetBottomTopMostLikely(Object object)
+    public static ArrayList<Project> GetBottomMostLikely(Object object)
     {
         Person p = (Person)object;
         ArrayList<Project> toplist = dbProject.GetTheRestLikely(p);

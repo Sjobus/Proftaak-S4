@@ -139,7 +139,7 @@ public class dbProject {
                     "on H.PERSONID = P.ID " +
                     "Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') " +
                     "AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 " +
-                    "And P.ID = ? And H.ProjectID != (Select ProjectID" +
+                    "And P.ID = ? And H.ProjectID NOT IN (Select ProjectID" +
                                 "                        from TBhours H" +
                                 "                        Join TBPerson P on H.PERSONID = P.ID" +
                                 "                        Where H.DateWorked = TO_CHAR(CURRENT_DATE)) Group by ProjectID " +
@@ -179,7 +179,7 @@ public class dbProject {
                                                 "From TBHOURS H Join TBPerson P on H.PERSONID = P.ID " +
                                                 "Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') " +
                                                 "AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 And P.ID = ? " +
-                                                                                                "And H.ProjectID != (Select ProjectID" +
+                                                                                                "And H.ProjectID NOT IN (Select ProjectID" +
                                                                                                 "                        from TBhours H " +
                                                                                                 "                        Join TBPerson P on H.PERSONID = P.ID" +
                                                                                                 "                        Where H.DateWorked = TO_CHAR(CURRENT_DATE))" +
@@ -216,7 +216,7 @@ public class dbProject {
                             "From TBHOURS H Join TBPerson P on H.PERSONID = P.ID " +
                             "Where TO_CHAR(H.DateWorked,'fmDay') = TO_CHAR(CURRENT_DATE,'fmDay') " +
                             "AND H.DateWorked >= CURRENT_DATE - 36 AND H.DateWorked < CURRENT_DATE - 1 " +
-                            "And P.ID = ? And H.ProjectID != (Select ProjectID" +
+                            "And P.ID = ? And H.ProjectID NOT IN (Select ProjectID" +
                     "                        from TBhours H " +
                     "                        Join TBPerson P on H.PERSONID = P.ID" +
                     "                        Where H.DateWorked = TO_CHAR(CURRENT_DATE))" +
