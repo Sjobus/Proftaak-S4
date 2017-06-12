@@ -4,6 +4,7 @@ import Pts4.Classes.Person;
 import Pts4.Classes.Project;
 import Pts4.Classes.Timestamp;
 import Pts4.Database.DatabaseConnection;
+import Pts4.Database.dbTimestamp;
 import Pts4.Enums.Function;
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,4 +41,13 @@ public class TimestampTest {
 
         Assert.assertFalse(Timestamp.GetAllTimestampsByProject(pr).equals(null));
     }
+
+
+    @Test
+    public void GetTimestampForlistTest() throws Exception
+    {
+        String like = "3";
+        dbTimestamp.GetHoursManager(like);
+    }
+
 }

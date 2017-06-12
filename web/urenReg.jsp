@@ -90,8 +90,8 @@
                     <div class="col-sm-10">
 
                         <%
-                            ArrayList<Project> topList = Project.GetTopProjects(session.getAttribute("Account"));
-                            ArrayList<Project> bottomList = Project.GetBottomProjects(session.getAttribute("Account"));
+                            ArrayList<Project> topList = Project.GetTopMostLikely(session.getAttribute("Account"));
+                            ArrayList<Project> bottomList = Project.GetBottomMostLikely(session.getAttribute("Account"));
                             pageContext.setAttribute("TopProject", topList);
                             pageContext.setAttribute("BottomProject",bottomList);
                         %>
