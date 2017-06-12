@@ -2,6 +2,7 @@ package Pts4.Database;
 
 import Pts4.Classes.Person;
 import Pts4.Classes.Project;
+import Pts4.Classes.ProjectBean;
 import Pts4.Classes.Timestamp;
 
 import javax.xml.transform.Result;
@@ -156,8 +157,10 @@ public class dbTimestamp {
         return  projectHourMap;
     }
 
-    public static void GetHoursManager(String like)
+    public static ArrayList<ProjectBean> GetHoursManager(String like)
     {
+       ArrayList<ProjectBean> ProjectBeanList = new ArrayList<>();
+
         String sql = "";
         if(like == null)
         {
@@ -194,15 +197,20 @@ public class dbTimestamp {
                 String projectID = resultSet.getString("projectID");
                 String Name = resultSet.getString("Name");
                 int Hours = resultSet.getInt("hours");
+                ProjectBean bean = new ProjectBean(projectID);
+                bean.addtoPersonHours(Name, Hours);
+                ProjectBeanList.add(bean);
             }
         }
         catch (Exception ex)
         {
             System.out.println(ex.getMessage());
+            return null;
         }
         finally
         {
             disconnect();
+            return ProjectBeanList;
         }
 
     }
