@@ -9,6 +9,7 @@ function signOut() {
             console.log('User signed out.');
         }
     );
+    sessionStorage.clear();
     document.location.replace("index.jsp");
 }
 function onLoad() {
