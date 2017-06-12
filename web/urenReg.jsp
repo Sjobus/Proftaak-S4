@@ -56,21 +56,21 @@
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <c:if test="${not empty errorMessage}" >
                 <div class="alert alert-danger">
-                        <%--//hier message--%>
-                <c:choose>
-                    <c:when test="${errorMessage == 'hour'}">
-                        <fmt:message key="errors.label.errorHour" var="error"/>
-                    </c:when>
-                    <c:when test="${errorMessage == 'date'}" >
-                        <fmt:message key="errors.label.errorDate" var="error"/>
-                    </c:when>
-                    <c:when test="${errorMessage == 'db'}" >
-                        <fmt:message key="errors.label.errorDB" var="error"/>
-                    </c:when>
-                    <c:otherwise>
-                        <fmt:message key="errors.label.errorOther" var="error"/>
-                    </c:otherwise>
-                </c:choose>
+                    <%--//hier message--%>
+                    <c:choose>
+                        <c:when test="${errorMessage == 'hour'}">
+                            <fmt:message key="errors.label.errorHour" var="error"/>
+                        </c:when>
+                        <c:when test="${errorMessage == 'date'}" >
+                            <fmt:message key="errors.label.errorDate" var="error"/>
+                        </c:when>
+                        <c:when test="${errorMessage == 'db'}" >
+                            <fmt:message key="errors.label.errorDB" var="error"/>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message key="errors.label.errorOther" var="error"/>
+                        </c:otherwise>
+                    </c:choose>
                     <label>${error}</label>
                 </div>
             </c:if>
@@ -86,7 +86,7 @@
             <form class="form-horizontal" action="TimestampController" method="post">
                 <div class="form-group">
                     <fmt:message key="urenReg.label.code" var="code"/>
-                    <label class="control-label col-sm-2" for="Project">${code}</label
+                    <label class="control-label col-sm-2" for="Project">${code}</label>
                     <div class="col-sm-10">
 
                         <%
