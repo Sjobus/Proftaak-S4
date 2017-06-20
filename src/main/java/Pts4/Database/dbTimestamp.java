@@ -158,7 +158,7 @@ public class dbTimestamp {
     public static ArrayList<ProjectBean> GetHoursManager(String like)
     {
         String sql = "";
-        if(like == null)
+        if(like == "")
         {
             //do normal
             sql = "select Pr.ID AS projectID, P.NAME as Name, sum(HOURS) as hours " +
@@ -183,7 +183,7 @@ public class dbTimestamp {
         try
         {
             PreparedStatement preparedStatement = connect().prepareStatement(sql);
-            if(like != null) {
+            if(like != "") {
                 preparedStatement.setString(1, "%"+like+"%");
             }
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -197,7 +197,7 @@ public class dbTimestamp {
                 String name = resultSet.getString("Name");
                 int hours = resultSet.getInt("hours");
 
-                if(prBean == null || prBean.getProjectID() != projectID)
+                if(prBean == null || !prBean.getProjectID().equalsIgnoreCase(projectID))
                 {
                     prBean = new ProjectBean(projectID);
                     projectBeanList.add(prBean);

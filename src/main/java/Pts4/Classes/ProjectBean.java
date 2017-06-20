@@ -8,8 +8,8 @@ import java.util.HashMap;
 public class ProjectBean
 {
     private String projectID;
-    private HashMap<String, Integer> PersonHours;
-    private int totalHours;
+    private HashMap<String, Integer> PersonHours = new HashMap<>();
+    private int totalHours = 0;
 
     public String getProjectID()
     {

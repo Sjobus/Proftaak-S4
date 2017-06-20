@@ -63,7 +63,7 @@
                 </div>
             </form>
             <%
-                String search = null;
+                String search = (String)request.getAttribute("searchTerms");
                 ArrayList<ProjectBean> ProjectsHours = Timestamp.GetProjectInfoManager(search);
                 pageContext.setAttribute("projectsHours",ProjectsHours);
             %>
@@ -78,7 +78,7 @@
                 <fmt:message key="urenOverzicht.label.uren" var="totalhours"/>
                 <!-- Projects -->
                 <c:forEach items="${projectsHours}" var="ProjectEntry">
-                    <div class="panel-heading">
+                    <div class="panel-heading spoiler-trigger" data-toggle="collapse">
                         <div class="row">
                             <div class="col-xs-3">
                                 ${project} <c:out value="${ProjectEntry.projectID}"/>
@@ -88,21 +88,20 @@
                             </div>
                         </div>
                     </div>
-                    <%-- removed spoiler-trigger from the button
+                    <%-- removed  from the button --%>
                     <div class="panel-collapse collapse out">
                         <div class="panel-body">
                             <ul class="list-group">
                                 <!-- Employes -->
-                                <c:forEach items="${weekEntry.getTimestamps()}" var="timeEntry">
+                                <c:forEach items="${ProjectEntry.personHours}" var="timeEntry">
                                     <a href="#" class="list-group-item">
-                                        ${date} <fmt:formatDate pattern = "dd-MM-yyyy" value = "${timeEntry.GetDate()}" />
-                                        ${project} <c:out value="${timeEntry.Getproject().GetID()}"/>
-                                        ${hours} <c:out value="${timeEntry.GetHour()}"/>
+                                        <c:out value="${timeEntry.key}"/>
+                                        ${totalhours} <c:out value="${timeEntry.value}"/>
                                     </a>
                                 </c:forEach>
                             </ul>
                         </div>
-                    </div> --%>
+                    </div>
                 </c:forEach>
             </div>
         </div>
