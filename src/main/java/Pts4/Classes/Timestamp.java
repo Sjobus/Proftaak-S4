@@ -4,6 +4,8 @@ import Pts4.Database.dbTimestamp;
 
 import java.util.*;
 
+import static Pts4.Database.dbTimestamp.GetHoursManager;
+
 /**
  * Created by Gebruiker on 20-3-2017.
  */
@@ -92,6 +94,10 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
         {
             return null;
         }
+    }
+    public static ArrayList<ProjectBean> GetProjectInfoManager (String search)
+    {
+        return GetHoursManager(search);
     }
 /*
     public static int GetTotalHoursFromProject(Project PrProject)

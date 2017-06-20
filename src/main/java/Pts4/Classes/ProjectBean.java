@@ -9,6 +9,7 @@ public class ProjectBean
 {
     private String projectID;
     private HashMap<String, Integer> PersonHours;
+    private int totalHours;
 
     public String getProjectID()
     {
@@ -20,14 +21,20 @@ public class ProjectBean
         return PersonHours;
     }
 
+    public int getTotalHours()
+    {
+        return totalHours;
+    }
+
     public ProjectBean(String projectID)
     {
         this.projectID = projectID;
     }
 
-    public void addtoPersonHours(String person, Integer hours)
+    public void addtoProjectHours(String person, Integer hours)
     {
         PersonHours.put(person, hours);
+        totalHours += hours;
     }
 
 

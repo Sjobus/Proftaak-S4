@@ -2,14 +2,13 @@ package Pts4.Database;
 
 import Pts4.Classes.Person;
 import Pts4.Classes.Project;
+import Pts4.Classes.ProjectBean;
 import Pts4.Classes.Timestamp;
 
 import javax.xml.transform.Result;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
+import java.sql.Date;
+import java.util.*;
 
 import static Pts4.Database.DatabaseConnection.connect;
 import static Pts4.Database.DatabaseConnection.disconnect;
@@ -156,7 +155,7 @@ public class dbTimestamp {
         return  projectHourMap;
     }
 
-    public static void GetHoursManager(String like)
+    public static ArrayList<ProjectBean> GetHoursManager(String like)
     {
         String sql = "";
         if(like == null)
@@ -189,12 +188,23 @@ public class dbTimestamp {
             }
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            ArrayList<ProjectBean> projectBeanList = new ArrayList<>();
+            ProjectBean prBean = null;
+
             while (resultSet.next())
             {
                 String projectID = resultSet.getString("projectID");
-                String Name = resultSet.getString("Name");
-                int Hours = resultSet.getInt("hours");
+                String name = resultSet.getString("Name");
+                int hours = resultSet.getInt("hours");
+
+                if(prBean == null || prBean.getProjectID() != projectID)
+                {
+                    prBean = new ProjectBean(projectID);
+                    projectBeanList.add(prBean);
+                }
+                prBean.addtoProjectHours(name, hours);
             }
+            return projectBeanList;
         }
         catch (Exception ex)
         {
@@ -204,6 +214,6 @@ public class dbTimestamp {
         {
             disconnect();
         }
-
+        return null;
     }
 }
