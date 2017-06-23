@@ -35,9 +35,15 @@ To change this template use File | Settings | File Templates.
         <meta name="google-signin-client_id" content="395763735612-foaeca42c7840m6r9s0vsut09o8nc8i0.apps.googleusercontent.com">
         <script src="js/GoogleLogin.js"></script>
         <script src="js/GoogleLogout.js"></script>
+
+
         <title>AXI</title>
     </head>
     <body>
+    <!-- Load FacebookSDK -->
+    <script src="js/FacebookSDK.js"></script>
+    <!--Check facebook login status -->
+    <script src="js/FacebookLoginStatusCheck.js"></script>
         <div>
             <fmt:message key="navBar.label.home" var="home"/>
             <fmt:message key="navBar.label.registration" var="regis"/>
@@ -110,6 +116,11 @@ To change this template use File | Settings | File Templates.
                                 <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
                                 <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                            </div>
+                            <!-- facebook ligin button -->
+                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false"
+                                 data-auto-logout-link="true" data-use-continue-as="true" onlogin="">
+
                             </div>
                         </form>
                     </div>
