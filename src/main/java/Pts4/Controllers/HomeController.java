@@ -27,6 +27,7 @@ public class HomeController extends HttpServlet
             String googleID = request.getParameter("googleID");
             String userName = request.getParameter("tbUserName");
             String Password = request.getParameter("tbPassword");
+            String facebookName = request.getParameter("fbName");
 
             Person person = new Person();
             person = person.GetPersonData(userName, Password);
@@ -48,6 +49,9 @@ public class HomeController extends HttpServlet
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }
+            else if(facebookName != ""){
+                System.out.println("facebook yo!");
+            }
             else
             {
                   request.setAttribute("errorMessage", "Invalid user or password");
@@ -56,6 +60,7 @@ public class HomeController extends HttpServlet
 //                RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 //                view.forward(request, response);
             }
+
         }
         catch (Exception e)
         {

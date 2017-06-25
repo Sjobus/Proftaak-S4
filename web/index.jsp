@@ -40,10 +40,48 @@ To change this template use File | Settings | File Templates.
         <title>AXI</title>
     </head>
     <body>
+    <script>
+        function checkLoginState(){
+            FB.getLoginStatus(function(response){
+                statusChangeCallback(response);
+            });
+        }
+
+        window.fbAsyncInit = function(){
+            FB.init({
+                appId   : '293400821069118',
+                cookie  : true,
+                xfbml   : true,
+                version : 'v2.9'
+            });
+
+            FB.getLoginStatus(function(response){
+                statusChangeCallback(response);
+            });
+        };
+
+        (function(d,s,id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if(d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=l&version=v2.9&appId=293400821069118";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function testAPI(){
+            console.log('welcome! fetching your info....');
+            FB.api('/me', function(response){
+                console.log('successful login for: ' + response.name);
+                document.getElementById('status').innerHTML = 'Thanks for loggin in, ' + response.name + '!';
+
+            });
+        }
+    </script>
+
     <!-- Load FacebookSDK -->
-    <script src="js/FacebookSDK.js"></script>
-    <!--Check facebook login status -->
-    <script src="js/FacebookLoginStatusCheck.js"></script>
+    <!--<script src="js/FacebookSDK.js"></script> -->
+    <!--Check facebook login status
+    <script src="js/FacebookLoginStatusCheck.js"></script> -->
         <div>
             <fmt:message key="navBar.label.home" var="home"/>
             <fmt:message key="navBar.label.registration" var="regis"/>
@@ -118,7 +156,24 @@ To change this template use File | Settings | File Templates.
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                                 <!-- facebook ligin button -->
                                 <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false"
-                                     data-auto-logout-link="true" data-use-continue-as="true" onlogin=""></div>
+                                     data-auto-logout-link="true" data-use-continue-as="true" onclick="statusChangeCallback()">
+                                    <input name="fbName" type="hidden" id="fbName" value=""><%-- hidden tag--%>
+                                        <script>
+                                            function statusChangeCallback(response){
+                                            console.log('statusChangeCallback');
+                                            console.log(response);
+                                            if(response.status === 'connected'){
+                                                document.getElementById('fbName').value = response.name;
+                                                testAPI();
+                                            }
+                                            else if(response.status === 'unknown'){
+                                                console.log('niemand ingelogd. Status: ' + response.status);
+
+                                            }
+                                        }
+                                        </script>
+                                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                                </div>
                             </div>
 
                         </form>
