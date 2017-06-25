@@ -50,22 +50,39 @@ public class Person {
         }
     }
 
-       public Person GetGooglePersonData(int googleID)
-      {
-           Person per = dbPerson.GetpersonDataByGoogleID(googleID);
+    public Person GetGooglePersonData(int googleID)
+    {
+       Person per = dbPerson.GetpersonDataByGoogleID(googleID);
 
-         if(per != null)
-         {
-              ID = per.GetID();
-              Name = per.GetName();
-              function = per.GetFunction();
-              return per;
-         }
-         else
-         {
-              return null;
-          }
+     if(per != null)
+     {
+          ID = per.GetID();
+          Name = per.GetName();
+          function = per.GetFunction();
+          return per;
+     }
+     else
+     {
+          return null;
       }
+  }
+
+    public Person GetFacebookPersonData(String email)
+    {
+      Person per = dbPerson.GetPersonByFacebookEmail(email);
+
+      if(per != null)
+      {
+          ID = per.GetID();
+          Name = per.GetName();
+          function = per.GetFunction();
+          return per;
+      }
+      else
+      {
+          return null;
+      }
+  }
 
     public Function Translatefunction(String function)
     {

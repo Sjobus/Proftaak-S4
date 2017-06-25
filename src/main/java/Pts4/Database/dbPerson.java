@@ -105,8 +105,38 @@ public class dbPerson {
         }
 
         return null;
+    }
 
+    public static Person GetPersonByFacebookEmail(String email)
+    {
+        String sql = "Select * From TBPerson Where Email = ?";
+        try {
+            PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
+            preparedStatement.setString(1, email);
 
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int ID = resultSet.getInt("ID");
+                String name = resultSet.getString("Name");
+                String function = resultSet.getString("Function");
+
+                Person p = new Person();
+                Function Func = p.Translatefunction(function);
+
+                p = new Person(ID, name, Func);
+
+                return p;
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+
+            return null;
+        } finally {
+            disconnect();
+        }
+
+        return null;
     }
 
     public static Boolean SetPersonData(Person person)
