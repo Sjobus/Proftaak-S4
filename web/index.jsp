@@ -116,11 +116,12 @@ To change this template use File | Settings | File Templates.
                                 <input name="googleID" type="hidden" id="googleID" value=""><%--hidden tag--%>
                                 <input type=hidden id="prGoogleID" name="prGoogleID"> <%--hidden tag--%>
                                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                <!-- facebook ligin button -->
-                                <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false"
-                                     data-auto-logout-link="true" data-use-continue-as="true" onlogin=""></div>
                             </div>
+                            <!-- facebook ligin button -->
+                            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false"
+                                 data-auto-logout-link="true" data-use-continue-as="true" onlogin="">
 
+                            </div>
                         </form>
                     </div>
                 </div>
