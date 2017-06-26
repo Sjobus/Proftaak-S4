@@ -95,8 +95,14 @@
                                 <!-- Employes -->
                                 <c:forEach items="${ProjectEntry.personHours}" var="timeEntry">
                                     <a href="#" class="list-group-item">
-                                        <c:out value="${timeEntry.key}"/>
-                                        ${totalhours} <c:out value="${timeEntry.value}"/>
+                                        <div class="row">
+                                            <div class="col-xs-3">
+                                                <c:out value="${timeEntry.key}"/>
+                                            </div>
+                                            <div class="col-xs-3">
+                                                ${totalhours} <c:out value="${timeEntry.value}"/>
+                                            </div>
+                                        </div>
                                     </a>
                                 </c:forEach>
                             </ul>
