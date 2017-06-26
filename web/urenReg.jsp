@@ -56,8 +56,21 @@
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <c:if test="${not empty errorMessage}" >
                 <div class="alert alert-danger">
-                        <%--//hier message--%>
-                    <fmt:message key="errors.label.errorUR" var="error"/>
+                    <%--//hier message--%>
+                    <c:choose>
+                        <c:when test="${errorMessage == 'hour'}">
+                            <fmt:message key="errors.label.errorHour" var="error"/>
+                        </c:when>
+                        <c:when test="${errorMessage == 'date'}" >
+                            <fmt:message key="errors.label.errorDate" var="error"/>
+                        </c:when>
+                        <c:when test="${errorMessage == 'db'}" >
+                            <fmt:message key="errors.label.errorDB" var="error"/>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message key="errors.label.errorOther" var="error"/>
+                        </c:otherwise>
+                    </c:choose>
                     <label>${error}</label>
                 </div>
             </c:if>
@@ -77,12 +90,12 @@
                     <div class="col-sm-10">
 
                         <%
-                            ArrayList<Project> topList = Project.GetTopProjects();
-                            ArrayList<Project> bottomList = Project.GetBottomProjects();
+                            ArrayList<Project> topList = Project.GetTopMostLikely(session.getAttribute("Account"));
+                            ArrayList<Project> bottomList = Project.GetBottomMostLikely(session.getAttribute("Account"));
                             pageContext.setAttribute("TopProject", topList);
                             pageContext.setAttribute("BottomProject",bottomList);
                         %>
-                        <select class="form-control" name="Project" id="Project">
+                        <select class="form-control" name="Project" id="Project" required>
                             <c:forEach items="${TopProject}" var="topcurrent">
                                 <option value="${topcurrent.GetID()}"><c:out value="${topcurrent.GetID()}"/></option>
                             </c:forEach>
@@ -97,7 +110,7 @@
                     <fmt:message key="urenReg.label.hours" var="hours"/>
                     <label class="control-label col-sm-2" for="Uren">${hours}</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus>
+                        <input class="form-control" type="number" name="Uren" id="Uren" min="1" max="24" placeholder="1" autofocus required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -105,7 +118,7 @@
                     <label class="control-label col-sm-2" for="Work_Date">${date}</label>
                     <div class="col-sm-10">
                         <div class="input-group date">
-                            <input type="text" class="form-control" id="Work_Date" name="Work_Date">
+                            <input type="text" class="form-control" id="Work_Date" name="Work_Date" required>
                             <span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                         </div>
                     </div>

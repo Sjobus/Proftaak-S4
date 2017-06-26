@@ -2,14 +2,13 @@ package Pts4.Database;
 
 import Pts4.Classes.Person;
 import Pts4.Classes.Project;
+import Pts4.Classes.ProjectBean;
 import Pts4.Classes.Timestamp;
 
 import javax.xml.transform.Result;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
+import java.sql.Date;
+import java.util.*;
 
 import static Pts4.Database.DatabaseConnection.connect;
 import static Pts4.Database.DatabaseConnection.disconnect;
@@ -128,7 +127,7 @@ public class dbTimestamp {
     }
 
 
-    public static HashMap<String, Integer> GetTotalHoursProjects()
+    public static HashMap<String, Integer> GetTotalHoursProjects() //moet aangepast worden
     {
         HashMap<String, Integer> projectHourMap = new HashMap<>();
 
@@ -154,5 +153,67 @@ public class dbTimestamp {
             disconnect();
         }
         return  projectHourMap;
+    }
+
+    public static ArrayList<ProjectBean> GetHoursManager(String like)
+    {
+        String sql = "";
+        if(like == "")
+        {
+            //do normal
+            sql = "select Pr.ID AS projectID, P.NAME as Name, sum(HOURS) as hours " +
+                    "from TBProject Pr " +
+                    "Join TBHOURS H on Pr.ID = H.PROJECTID " +
+                    "Join TBPERSON P on P.ID = H.PERSONID " +
+                    "GROUP BY Pr.ID, P.NAME" +
+                    " order BY Pr.ID";
+        }
+        else
+        {
+            //do search
+            sql = "select Pr.ID AS projectID, P.NAME as Name, sum(HOURS) as hours " +
+                    "from TBProject Pr " +
+                    "Join TBHOURS H on Pr.ID = H.PROJECTID " +
+                    "Join TBPERSON P on P.ID = H.PERSONID " +
+                    "Where PR.ID LIKE ? " +
+                    "GROUP BY Pr.ID, P.NAME" +
+                    " order BY Pr.ID";
+        }
+
+        try
+        {
+            PreparedStatement preparedStatement = connect().prepareStatement(sql);
+            if(like != "") {
+                preparedStatement.setString(1, "%"+like+"%");
+            }
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ArrayList<ProjectBean> projectBeanList = new ArrayList<>();
+            ProjectBean prBean = null;
+
+            while (resultSet.next())
+            {
+                String projectID = resultSet.getString("projectID");
+                String name = resultSet.getString("Name");
+                int hours = resultSet.getInt("hours");
+
+                if(prBean == null || !prBean.getProjectID().equalsIgnoreCase(projectID))
+                {
+                    prBean = new ProjectBean(projectID);
+                    projectBeanList.add(prBean);
+                }
+                prBean.addtoProjectHours(name, hours);
+            }
+            return projectBeanList;
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        finally
+        {
+            disconnect();
+        }
+        return null;
     }
 }

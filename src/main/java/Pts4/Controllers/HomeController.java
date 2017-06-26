@@ -1,6 +1,7 @@
 package Pts4.Controllers;
 
-import Pts4.Classes.staticPerson;
+import Pts4.Classes.Person;
+// import Pts4.Classes.staticPerson;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,26 +27,36 @@ public class HomeController extends HttpServlet
             String googleID = request.getParameter("googleID");
             String userName = request.getParameter("tbUserName");
             String Password = request.getParameter("tbPassword");
+
+            Person person = new Person();
+            request.getSession();
+
             if(!googleID.equals(""))
             {
+                person = person.GetGooglePersonData(googleID);
+                request.getSession().setAttribute("Account", person);
                 System.out.println(googleID);
-                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-                view.forward(request, response);
-            }
-            else if(staticPerson.GetPersonData(userName, Password))
-            {
-                System.out.println(userName);
-                System.out.println(Password);
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }
             else
             {
-                  request.setAttribute("errorMessage", "Invalid user or password");
-                  RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                  rd.forward(request, response);
-//                RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-//                view.forward(request, response);
+                person = person.GetPersonData(userName, Password);
+                if(person != null)
+                {
+
+                    request.getSession().setAttribute("Account", person);
+                    System.out.println(userName);
+                    System.out.println(Password);
+                    RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+                    view.forward(request, response);
+                }
+                else
+                {
+                      request.setAttribute("errorMessage", "Invalid user or password");
+                      RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                      rd.forward(request, response);
+                }
             }
         }
         catch (Exception e)
