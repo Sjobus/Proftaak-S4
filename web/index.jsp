@@ -68,6 +68,9 @@ To change this template use File | Settings | File Templates.
                                     <%--//hier message--%>
                                 <fmt:message key="index.label.error" var="error"/>
                                 <label>${error}</label>
+                                <script>
+                                    signOut();
+                                </script>
                             </div>
                         </c:if>
                         <form class="form-horizontal" role="form">

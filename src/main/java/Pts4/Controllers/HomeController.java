@@ -34,10 +34,20 @@ public class HomeController extends HttpServlet
             if(!googleID.equals(""))
             {
                 person = person.GetGooglePersonData(googleID);
-                request.getSession().setAttribute("Account", person);
-                System.out.println(googleID);
-                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-                view.forward(request, response);
+                if(person != null)
+                {
+                    request.getSession().setAttribute("Account", person);
+                    System.out.println(googleID);
+                    RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+                    view.forward(request, response);
+                }
+                else
+                {
+                    request.setAttribute("errorMessage", "Invalid user");
+                    RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+                    view.forward(request, response);
+                }
+
             }
             else
             {
