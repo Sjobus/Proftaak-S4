@@ -97,6 +97,8 @@ public class Timestamp implements Comparable<Timestamp>, Comparator<Timestamp> {
     }
     public static ArrayList<ProjectBean> GetProjectInfoManager (String search)
     {
+        if(search == null)
+            search = "";
         return GetHoursManager(search);
     }
 /*
