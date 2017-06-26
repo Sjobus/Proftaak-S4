@@ -29,33 +29,34 @@ public class HomeController extends HttpServlet
             String Password = request.getParameter("tbPassword");
 
             Person person = new Person();
-            person = person.GetPersonData(userName, Password);
             request.getSession();
 
             if(!googleID.equals(""))
             {
-                System.out.println(googleID);
                 person = person.GetGooglePersonData(googleID);
                 request.getSession().setAttribute("Account", person);
                 System.out.println(googleID);
                 RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
                 view.forward(request, response);
             }
-            else if(person != null)
-            {
-                request.getSession().setAttribute("Account", person);
-                System.out.println(userName);
-                System.out.println(Password);
-                RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
-                view.forward(request, response);
-            }
             else
             {
-                  request.setAttribute("errorMessage", "Invalid user or password");
-                  RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-                  rd.forward(request, response);
-//                RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-//                view.forward(request, response);
+                person = person.GetPersonData(userName, Password);
+                if(person != null)
+                {
+
+                    request.getSession().setAttribute("Account", person);
+                    System.out.println(userName);
+                    System.out.println(Password);
+                    RequestDispatcher view = request.getRequestDispatcher("urenReg.jsp");
+                    view.forward(request, response);
+                }
+                else
+                {
+                      request.setAttribute("errorMessage", "Invalid user or password");
+                      RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+                      rd.forward(request, response);
+                }
             }
         }
         catch (Exception e)
