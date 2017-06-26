@@ -1,6 +1,5 @@
 package Pts4.Classes;
 
-import Pts4.Database.DatabaseConnection;
 import Pts4.Database.dbPerson;
 import Pts4.Enums.Function;
 
@@ -50,12 +49,14 @@ public class Person {
         }
     }
 
-       public Person GetGooglePersonData(int googleID)
+       public Person GetGooglePersonData(String googleID)
       {
+          System.out.println("in methode");
            Person per = dbPerson.GetpersonDataByGoogleID(googleID);
 
          if(per != null)
          {
+             System.out.println("in verdere methode");
               ID = per.GetID();
               Name = per.GetName();
               function = per.GetFunction();

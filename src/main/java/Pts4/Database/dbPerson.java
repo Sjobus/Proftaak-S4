@@ -75,12 +75,12 @@ public class dbPerson {
 
     }
 
-    public static Person GetpersonDataByGoogleID(int googleID)
+    public static Person GetpersonDataByGoogleID(String googleID)
     {
         String sql = "Select * From TBPerson Where GoogleID = ?";
         try {
             PreparedStatement preparedStatement = DatabaseConnection.connect().prepareStatement(sql);
-            preparedStatement.setInt(1, googleID);
+            preparedStatement.setString(1, googleID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
